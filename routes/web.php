@@ -26,3 +26,8 @@ Route::get('/my-purchases', 'Auth\UserController@myPurchases')->name('my-purchas
 
 // Subscribe
 Route::get('/subscribe', 'Auth\UserController@subscribe')->name('subscribe');
+
+// Admin Routes
+Route::prefix('admin')->group(function () {
+    Route::get('/', 'Admin\HomeController@index')->name('admin.dashboard');
+});
