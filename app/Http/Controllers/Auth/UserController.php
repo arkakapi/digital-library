@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('verified');
     }
 
     /**
@@ -71,5 +71,28 @@ class UserController extends Controller
 
         return redirect()->route('profile');
     }
+
+    /**
+     * My purchases page.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function myPurchases(Request $request)
+    {
+        return 'my purchases page';
+    }
+
+    /**
+     * Show payment form for subscription.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function subscribe(Request $request)
+    {
+        return 'subscription page';
+    }
+
 
 }

@@ -45,6 +45,15 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}">{{ __('Homepage') }}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('subscribe') }}">{{ __('Subscribe') }}</a>
+                    </li>
+
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
@@ -56,13 +65,17 @@
                             </li>
                         @endif
                     @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('my-purchases') }}">{{ __('My Purchases') }}</a>
+                        </li>
+                    
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a href="{{ route('profile') }}" class="dropdown-item">{{ _('Profile') }}</a>
+                                <a href="{{ route('profile') }}" class="dropdown-item">{{ __('Profile') }}</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
