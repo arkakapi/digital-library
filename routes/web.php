@@ -15,4 +15,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@index')->name('home');
 
+// Profile
+Route::get('/profile', 'Auth\UserController@profile')->name('profile');
+Route::post('/profile', 'Auth\UserController@update');
+
 Route::get('/orders', 'Auth\PageController@orders')->name('orders');
