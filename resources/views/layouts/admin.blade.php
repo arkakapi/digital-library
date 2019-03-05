@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
 
     @yield('css')
 
@@ -84,9 +85,17 @@
 
     <div id="content-wrapper">
 
-    @yield('content')
+        <div class="container-fluid">
+            @if(Session::has('message'))
+                <div class="alert alert-{{Session::get('class')}}" role="alert">
+                    {{Session::get('message')}}
+                </div>
+            @endif
+        </div>
 
-    <!-- Sticky Footer -->
+        @yield('content')
+
+        <!-- Sticky Footer -->
         <footer class="sticky-footer">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
@@ -107,6 +116,7 @@
 </a>
 
 <script src="{{ asset('js/admin.js') }}"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 
 @yield('js')
 

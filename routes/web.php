@@ -28,6 +28,12 @@ Route::get('/my-purchases', 'Auth\UserController@myPurchases')->name('my-purchas
 Route::get('/subscribe', 'Auth\UserController@subscribe')->name('subscribe');
 
 // Admin Routes
-Route::prefix('admin')->group(function () {
-    Route::get('/', 'Admin\HomeController@index')->name('admin.dashboard');
+Route::prefix('admin')->name('admin.')->group(function () {
+
+    // Dashboard
+    Route::get('/', 'Admin\HomeController@index')->name('dashboard');
+
+    // Issues
+    Route::resource('/issues', 'Admin\IssueController');
+
 });
