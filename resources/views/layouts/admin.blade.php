@@ -50,8 +50,8 @@
                 <span>Misafir Okurlar</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="">
+        <li class="nav-item @if(getParentRouteName() == 'admin.issues') active @endif">
+            <a class="nav-link" href="{{ route('admin.issues.index') }}">
                 <i class="fas fa-fw fa-book-open"></i>
                 <span>Sayılar</span>
             </a>

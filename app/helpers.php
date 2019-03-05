@@ -12,3 +12,10 @@ function getRouteName($route)
     $routes = explode('.', Route::currentRouteName());
     return $routes[0] . '.' . $routes[1] . '.' . $route;
 }
+
+// Get parent route for active menu class
+function getParentRouteName()
+{
+    $routes = explode('.', Route::currentRouteName());
+    return $routes[0] . '.' . $routes[1];
+}
