@@ -14,6 +14,6 @@ class HomeController extends AdminController
      */
     public function index()
     {
-        return 'admin dashboard';
+        return view('admin.dashboard');
     }
 }

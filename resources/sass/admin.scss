@@ -1,0 +1,14 @@
+// Import Custom Variables
+@import "admin/variables.scss";
+
+// Import Bootstrap
+@import "~bootstrap/scss/bootstrap.scss";
+
+// Import Custom SCSS
+@import "admin/mixins.scss";
+@import "admin/global.scss";
+@import "admin/utilities.scss";
+@import "admin/navbar.scss";
+@import "admin/cards.scss";
+@import "admin/login.scss";
+@import "admin/footer.scss";
