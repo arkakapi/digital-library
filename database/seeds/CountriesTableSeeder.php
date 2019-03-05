@@ -14,6 +14,7 @@ class CountriesTableSeeder extends Seeder
         DB::table('countries')->delete();
 
         $countries = array(
+            array('code' => '--', 'name' => '-'),
             array('code' => 'US', 'name' => 'United States'),
             array('code' => 'CA', 'name' => 'Canada'),
             array('code' => 'AF', 'name' => 'Afghanistan'),

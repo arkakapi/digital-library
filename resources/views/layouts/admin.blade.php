@@ -32,7 +32,7 @@
 
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
-        <li class="nav-item @if(Route::currentRouteName() == 'admin.dashboard') active @endif">
+        <li class="nav-item{{ Route::currentRouteName() == 'admin.dashboard' ? ' active' : '' }}">
             <a class="nav-link" href="{{ route('admin.dashboard') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span>
@@ -50,7 +50,7 @@
                 <span>Misafir Okurlar</span>
             </a>
         </li>
-        <li class="nav-item @if(getParentRouteName() == 'admin.issues') active @endif">
+        <li class="nav-item{{ getParentRouteName() == 'admin.issues' ? ' active' : '' }}">
             <a class="nav-link" href="{{ route('admin.issues.index') }}">
                 <i class="fas fa-fw fa-book-open"></i>
                 <span>Sayılar</span>

@@ -33,7 +33,7 @@
                                 <div class="col-md-6">
                                     <select name="country_id" id="country_id" class="form-control{{ $errors->has('country_id') ? ' is-invalid' : '' }}">
                                         @foreach($countries as $country)
-                                            <option value="{{ $country->id }}" @if($country->id==$user->country_id) selected @endif>{{ $country->name }}</option>
+                                            <option value="{{ $country->id }}" {{ $country->id == $user->country_id ? 'selected' : '' }}>{{ $country->name }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('country_id'))
@@ -48,8 +48,8 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Language') }}</label>
                                 <div class="col-md-6">
                                     <select name="language" id="language" class="form-control{{ $errors->has('language') ? ' is-invalid' : '' }}">
-                                        <option value="tr" @if($user->language=='tr') selected @endif>{{ __('Turkish') }}</option>
-                                        <option value="en" @if($user->language=='en') selected @endif>{{ __('English') }}</option>
+                                        <option value="tr" {{ $user->language == 'tr' ? 'selected' : '' }}>{{ __('Turkish') }}</option>
+                                        <option value="en" {{ $user->language == 'en' ? 'selected' : '' }}>{{ __('English') }}</option>
                                     </select>
                                     @if ($errors->has('language'))
                                         <span class="invalid-feedback" role="alert">
