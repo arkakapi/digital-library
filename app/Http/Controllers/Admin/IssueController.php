@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helper\Datatables;
 use App\Issue;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdminController;
@@ -17,10 +18,47 @@ class IssueController extends AdminController
      */
     public function index()
     {
-        return view('admin.datatables', [
-            'title' => 'Sayılar',
-            'thead' => ['id', 'column 1', 'column 2', 'column 3', 'column 4'],
-        ]);
+        if (!isset($_GET['json']))
+            return view('admin.datatables', [
+                'title' => 'Sayılar',
+                'thead' => ['id', 'Başlık', 'Fiyat', 'Ay/Yıl', 'Dil', 'Kapak', 'Düzenle'],
+            ]);
+
+        $table = 'issues';
+        $primaryKey = 'id';
+        $columns = array(
+            array('db' => 'id', 'dt' => 0),
+            array('db' => 'title', 'dt' => 1),
+            array('db' => 'price', 'dt' => 2),
+            array('db' => 'month', 'dt' => 3),
+            array(
+                'db' => 'language',
+                'dt' => 4,
+                'formatter' => function ($data, $row) {
+                    if ($data == 'tr')
+                        return '<span class="label label-success">Türkçe (Arka Kapı Dergi)</span>';
+                    return '<span class="label label-info">İngilizce (Arka Kapı Magazine)</span>';
+                }
+            ),
+            array(
+                'db' => 'cover',
+                'dt' => 5,
+                'formatter' => function ($data, $row) {
+                    return '<a href="' . config('app.url') . '/storage/' . $data . '" target="_blank">' . $data . '</a>';
+                }
+            ),
+            array(
+                'db' => 'id',
+                'dt' => 6,
+                'formatter' => function ($data, $row) {
+                    return '<a href="' . route('admin.issues.edit', $data) . '" class="btn btn-sm btn-primary">Düzenle</a>';
+                }
+            )
+        );
+
+        return response()->json(
+            Datatables::simple($_GET, $table, $primaryKey, $columns)
+        );
     }
 
     /**

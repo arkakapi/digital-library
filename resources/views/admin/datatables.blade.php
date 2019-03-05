@@ -32,6 +32,7 @@
                 "processing": true,
                 "serverSide": true,
                 "ajax": "?json",
+                "order": [[0, "desc"]],
                 "language": {
                     "sDecimal": ",",
                     "sEmptyTable": "Tabloda herhangi bir veri mevcut değil",
