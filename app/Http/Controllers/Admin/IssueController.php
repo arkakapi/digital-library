@@ -117,17 +117,6 @@ class IssueController extends AdminController
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int $id
@@ -135,7 +124,11 @@ class IssueController extends AdminController
      */
     public function edit($id)
     {
-        //
+        $issue = Issue::findOrFail($id);
+
+        return view('admin.issues.edit', [
+            'issue' => $issue
+        ]);
     }
 
     /**
@@ -147,17 +140,42 @@ class IssueController extends AdminController
      */
     public function update(Request $request, $id)
     {
-        //
+        // Validation
+        $request->validate([
+            'title' => ['required', 'string', 'starts_with:Arka Kapı'],
+            'price' => ['required', 'between:0,99.99'],
+            'month' => ['required', 'string'],
+            'cover' => ['image', 'mimes:jpeg,png,jpg'],
+            'language' => ['required', 'string', 'regex:(tr|en)'],
+            'content' => ['required', 'string'],
+        ]);
+
+        // Create slug
+        $slug = str_slug($request->input('title'), '-', 'tr');
+
+        // Edit issue
+        $issue = Issue::findOrFail($id);
+        $issue->slug = $slug;
+        $issue->title = $request->input('title');
+        $issue->price = $request->input('price');
+
+        if ($request->file('cover')) {
+            $cover = $request->file('cover');
+            $cover_filename = $slug . '.' . $cover->getClientOriginalExtension();
+            $issue->cover = $cover_filename;
+            Storage::disk('public')->put($cover_filename, file_get_contents($cover));
+        }
+
+        $issue->month = $request->input('month');
+        $issue->content = $request->input('content');
+        $issue->language = $request->input('language');
+        $issue->save();
+
+        // Redirect Issues page
+        Session::flash('class', 'success');
+        Session::flash('message', 'Sayı başarıyla güncellendi!');
+
+        return redirect()->route('admin.issues.edit', $id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
