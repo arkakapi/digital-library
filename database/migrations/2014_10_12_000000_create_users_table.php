@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('job')->nullable();
             $table->string('role');
             $table->string('language', 2);
+            $table->longText('purchases_tr')->default('[]');
+            $table->longText('purchases_en')->default('[]');
             $table->rememberToken();
             $table->timestamps();
         });

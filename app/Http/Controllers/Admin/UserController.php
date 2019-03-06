@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Country;
 use App\Helper\Datatables;
+use App\Issue;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdminController;
@@ -81,9 +82,13 @@ class UserController extends AdminController
      */
     public function edit($id)
     {
+        $user = User::findOrFail($id);
         return view('admin.users.edit', [
-            'user' => User::findOrFail($id),
-            'countries' => Country::all()
+            'user' => $user,
+            'countries' => Country::all(),
+            'issues_all_count' => Issue::all('id')->count(),
+            'purchases_tr' => json_decode($user->purchases_tr, true),
+            'purchases_en' => json_decode($user->purchases_en, true)
         ]);
     }
 
@@ -101,17 +106,27 @@ class UserController extends AdminController
             'language' => ['required', 'string', 'regex:(tr|en)'],
             'country_id' => ['required', 'exists:countries,id'],
         ]);
-
         $data = $request->all();
+
+        // Set password (if sent)
         $data['password'] = Hash::make($request->input('password'));
         if (!$request->input('password'))
             unset($data['password']);
 
+        // Set purchases
+        $purchases_tr = $request->input('purchases_tr') ? $request->input('purchases_tr') : [];
+        $purchases_en = $request->input('purchases_en') ? $request->input('purchases_en') : [];
+        $data['purchases_tr'] = json_encode($purchases_tr);
+        $data['purchases_en'] = json_encode($purchases_en);
+
+        // Update user
         User::findOrFail($id)->fill($data)->save();
 
+        // Return
         Session::flash('class', 'success');
         Session::flash('message', 'Kullanıcı başarıyla güncellendi!');
 
         return redirect()->route('admin.users.edit', $id);
     }
+
 }

@@ -12,7 +12,7 @@
                         <div class="card-body-icon">
                             <i class="fas fa-fw fa-users"></i>
                         </div>
-                        <div class="mr-5">Bu üyenin satın aldığı sayı sayısı: <b>21</b></div>
+                        <div class="mr-5">Bu üyenin satın aldığı sayı sayısı: <b>{{ count($purchases_tr) + count($purchases_en) }}</b></div>
                     </div>
                 </div>
             </div>
@@ -30,16 +30,17 @@
 
         </div>
 
-        <div class="card mb-3">
-            <div class="card-header">
-                Düzenle: {{ $user->name . ' - ' . $user->email }}
-            </div>
-            <div class="card-body">
-                <form action="{{ route('admin.users.update', $user->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin.users.update', $user->id) }}" method="post" enctype="multipart/form-data">
 
-                    <input name="_method" type="hidden" value="PATCH">
+            <input name="_method" type="hidden" value="PATCH">
 
-                    @csrf
+            @csrf
+
+            <div class="card mb-3">
+                <div class="card-header">
+                    Düzenle: {{ $user->name . ' - ' . $user->email }}
+                </div>
+                <div class="card-body">
 
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
@@ -143,18 +144,57 @@
 
                     <button class="btn btn-success" type="submit">Gönder</button>
 
-                </form>
+                </div>
             </div>
-        </div>
+
+            <div class="card mb-3">
+                <div class="card-header">
+                    Satın Almalar
+                </div>
+                <div class="card-body">
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="purchases_tr"><b>Arka Kapı Dergi (Türkçe)</b></label>
+                            <select id="purchases_tr" name="purchases_tr[]" multiple size="10" class="form-control{{ $errors->has('purchases_tr') ? ' is-invalid' : '' }}">
+                                @for($i = 1; $i <= $issues_all_count + 3; $i++)
+                                    <option value="{{ $i }}" {{ in_array($i, $purchases_tr) ? 'selected' : '' }}>Sayı {{ $i }}</option>
+                                @endfor
+                            </select>
+                            @if ($errors->has('purchases_tr'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('purchases_tr') }}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="purchases_en"><b>Arka Kapı Magazine (İngilizce)</b></label>
+                            <select id="purchases_en" name="purchases_en[]" multiple size="10" class="form-control{{ $errors->has('purchases_en') ? ' is-invalid' : '' }}">
+                                @for($i = 1; $i <= $issues_all_count + 3; $i++)
+                                    <option value="{{ $i }}" {{ in_array($i, $purchases_en) ? 'selected' : '' }}>Sayı {{ $i }}</option>
+                                @endfor
+                            </select>
+                            @if ($errors->has('purchases_en'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('purchases_en') }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+
+                    <button class="btn btn-success" type="submit">Gönder</button>
+
+                </div>
+            </div>
+
+        </form>
+
     </div>
 @stop
 
 @section('js')
     <script>
-        $(document).ready(function () {
-            $('textarea#content').summernote({
-                height: 300
-            });
-        });
+        $('#purchases_tr').multiSelect();
+        $('#purchases_en').multiSelect();
     </script>
 @stop

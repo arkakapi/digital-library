@@ -21,6 +21,8 @@ class UsersTableSeeder extends Seeder
                 'job' => 'Security Researcher',
                 'role' => 'admin',
                 'language' => 'tr',
+                'purchases_tr' => json_encode([1, 3, 5, 7, 9]),
+                'purchases_en' => json_encode([2, 4, 6, 8, 10]),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
@@ -33,6 +35,8 @@ class UsersTableSeeder extends Seeder
                 'job' => 'Software Developer',
                 'role' => 'subscriber',
                 'language' => 'tr',
+                'purchases_tr' => json_encode([]),
+                'purchases_en' => json_encode([]),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]

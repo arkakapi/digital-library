@@ -47,15 +47,22 @@ class UserController extends Controller
         $request->validate([
             'language' => ['required', 'string', 'regex:(tr|en)'],
             'country_id' => ['required', 'exists:countries,id'],
-            'password' => ['nullable', 'string', 'min:8', 'confirmed']
         ]);
 
-        $data = $request->all();
-        $data['password'] = Hash::make($request->input('password'));
-        if (!$request->input('password'))
-            unset($data['password']);
+        $user = Auth::user();
+        $user->name = Input::get('name');
+        $user->job = Input::get('job');
+        $user->language = Input::get('language');
+        $user->country_id = Input::get('country_id');
 
-        Auth::user()->fill($data)->save();
+        if (Input::get('password')) {
+            $request->validate([
+                'password' => ['string', 'min:8', 'confirmed'],
+            ]);
+            $user->password = Hash::make(Input::get('password'));
+        }
+
+        $user->save();
 
         Session::flash('class', 'success');
         Session::flash('message', 'Your profile has been successfully updated.');
