@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec599520-14ad-4eae-b728-574701a17c7a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/IssueController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/IssueController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Issue.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Issue.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/CountriesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/CountriesTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/IssuesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/IssuesTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/issues/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/issues/create.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,20 +34,61 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_05_173539_create_issues_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            <state relative-caret-position="340">
+              <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database/seeds/IssuesTableSeeder.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5520">
+              <caret line="303" column="28" selection-start-line="303" selection-start-column="28" selection-end-line="303" selection-end-column="28" />
+              <folding>
+                <element signature="n#ul#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/seeds/UsersTableSeeder.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="514">
+              <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Issue.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="14" column="72" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/IssueController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="36" column="83" selection-start-line="36" selection-start-column="83" selection-end-line="36" selection-end-column="83" />
+            <state relative-caret-position="314">
+              <caret line="107" column="44" selection-start-line="107" selection-start-column="44" selection-end-line="107" selection-end-column="44" />
               <folding>
                 <element signature="e#46#72#0#PHP" expanded="true" />
+                <element signature="e#398#2242#0#PHP" />
+                <element signature="e#2363#2470#0#PHP" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/issues/create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="28" column="74" selection-start-line="28" selection-start-column="74" selection-end-line="28" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -56,10 +104,12 @@
       <find>@if</find>
       <find>(</find>
       <find>)</find>
+      <find>modified_at</find>
     </findStrings>
     <replaceStrings>
       <replace>[</replace>
       <replace>]</replace>
+      <replace>updated_at</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\Users\omer\Desktop\subscriptions\app</dir>
@@ -86,7 +136,6 @@
         <option value="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_04_194054_create_countries_table.php" />
-        <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
@@ -110,17 +159,19 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/UserController.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/profile.blade.php" />
         <option value="$PROJECT_DIR$/resources/sass/admin.scss" />
-        <option value="$PROJECT_DIR$/resources/views/admin/issues/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Helper/Datatables.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/datatables.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/issues/edit.blade.php" />
-        <option value="$PROJECT_DIR$/database/seeds/CountriesTableSeeder.php" />
         <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
-        <option value="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_05_173539_create_issues_table.php" />
-        <option value="$PROJECT_DIR$/database/seeds/IssuesTableSeeder.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/issues/create.blade.php" />
+        <option value="$PROJECT_DIR$/app/Issue.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/IssueController.php" />
+        <option value="$PROJECT_DIR$/database/seeds/CountriesTableSeeder.php" />
+        <option value="$PROJECT_DIR$/app/User.php" />
+        <option value="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" />
+        <option value="$PROJECT_DIR$/database/seeds/IssuesTableSeeder.php" />
       </list>
     </option>
   </component>
@@ -414,18 +465,18 @@
       <workItem from="1551719935013" duration="13709000" />
       <workItem from="1551806668388" duration="43000" />
       <workItem from="1551806846369" duration="22193000" />
-      <workItem from="1551887808074" duration="3765000" />
+      <workItem from="1551887808074" duration="7084000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53193000" />
+    <option name="totallyTimeSpent" value="56512000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26332623" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26332623" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -452,16 +503,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="41" column="61" selection-start-line="41" selection-start-column="61" selection-end-line="41" selection-end-column="61" />
-          <folding>
-            <element signature="e#23#63#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -557,9 +598,6 @@
           <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Issue.php">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -737,27 +775,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/issues/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
-          <caret line="90" column="4" selection-start-line="90" selection-start-column="4" selection-end-line="96" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/admin.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
           <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/CountriesTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="259" column="51" lean-forward="true" selection-start-line="259" selection-start-column="8" selection-end-line="259" selection-end-column="51" />
-          <folding>
-            <element signature="e#254#14777#0#PHP" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -775,31 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/UsersTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/IssuesTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="286" column="13" lean-forward="true" selection-start-line="286" selection-start-column="13" selection-end-line="286" selection-end-column="13" />
-          <folding>
-            <element signature="e#219#520#1#PHP" />
-            <element signature="e#525#817#1#PHP" />
-            <element signature="e#831#1123#1#PHP" />
-            <element signature="e#1137#1429#1#PHP" />
-            <element signature="e#1443#1735#1#PHP" />
-            <element signature="e#1749#2041#1#PHP" />
-            <element signature="e#21757#25630#1#PHP" />
-            <element signature="e#22071#22371#1#PHP" />
-            <element signature="e#22385#22685#1#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -807,19 +803,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_05_173539_create_issues_table.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/issues/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
-          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+          <caret line="28" column="74" selection-start-line="28" selection-start-column="74" selection-end-line="28" selection-end-column="74" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/IssueController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="36" column="83" selection-start-line="36" selection-start-column="83" selection-end-line="36" selection-end-column="83" />
+        <state relative-caret-position="314">
+          <caret line="107" column="44" selection-start-line="107" selection-start-column="44" selection-end-line="107" selection-end-column="44" />
           <folding>
             <element signature="e#46#72#0#PHP" expanded="true" />
+            <element signature="e#398#2242#0#PHP" />
+            <element signature="e#2363#2470#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_05_173539_create_issues_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Issue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="72" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="18" column="97" selection-start-line="18" selection-start-column="97" selection-end-line="18" selection-end-column="97" />
+          <folding>
+            <element signature="e#23#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/CountriesTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="259" column="28" selection-start-line="259" selection-start-column="28" selection-end-line="259" selection-end-column="28" />
+          <folding>
+            <element signature="e#209#13512#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/UsersTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/IssuesTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5520">
+          <caret line="303" column="28" selection-start-line="303" selection-start-column="28" selection-end-line="303" selection-end-column="28" />
+          <folding>
+            <element signature="n#ul#0;n#!!top" />
           </folding>
         </state>
       </provider>

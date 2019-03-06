@@ -75,7 +75,9 @@ class IssueController extends AdminController
      */
     public function create()
     {
-        return view('admin.issues.create');
+        return view('admin.issues.create', [
+            'issues_all_count' => Issue::all('id')->count()
+        ]);
     }
 
     /**
@@ -88,38 +90,46 @@ class IssueController extends AdminController
     {
         // Validation
         $request->validate([
-            'title' => ['required', 'string', 'starts_with:Arka Kapı'],
             'price' => ['required', 'between:0,99.99'],
+            'issue' => ['required', 'integer'],
             'month' => ['required', 'string'],
-            'cover' => ['required', 'image', 'mimes:jpeg,png,jpg'],
             'language' => ['required', 'string', 'regex:(tr|en)'],
+            'cover' => ['required', 'image', 'mimes:jpeg'],
+            'pdf' => ['required', 'mimes:pdf'],
             'content' => ['required', 'string'],
         ]);
 
+        // Create title
+        $title = 'Arka Kapı Dergi Sayı ' . $request->input('issue');
+        if ($request->input('language') == 'en')
+            $title = 'Arka Kapı Magazine Issue ' . $request->input('issue');
+
         // Create slug
-        $slug = str_slug($request->input('title'), '-', 'tr');
+        $slug = str_slug($title, '-', 'tr');
 
         // Upload Cover
         $cover = $request->file('cover');
-        $cover_filename = $slug . '.' . $cover->getClientOriginalExtension();
-        Storage::disk('public')->put($cover_filename, file_get_contents($cover));
+        Storage::disk('public')->put($slug . '.jpg', file_get_contents($cover));
+
+        // Upload PDF
+        $pdf = $request->file('pdf');
+        Storage::disk('local')->put($slug . '.pdf', file_get_contents($pdf));
 
         // Create issue
-        $issue = new Issue();
-        $issue->slug = $slug;
-        $issue->title = $request->input('title');
-        $issue->price = $request->input('price');
-        $issue->cover = $cover_filename;
-        $issue->month = $request->input('month');
-        $issue->content = $request->input('content');
-        $issue->language = $request->input('language');
-        $issue->save();
-
+        try {
+            $data = $request->all();
+            $data['slug'] = $slug;
+            $data['title'] = $title;
+            Issue::create($data);
+        } catch (Exception $e) {
+            Session::flash('class', 'error');
+            Session::flash('message', 'Bir hata oluştu!: ' . $e->getMessage());
+            return redirect()->route('admin.issues.index');
+        }
 
         // Redirect Issues page
         Session::flash('class', 'success');
         Session::flash('message', 'Yeni sayi başarıyla yüklendi! Üyelere hatırlatma epostası göndermeyi unutmayın!');
-
         return redirect()->route('admin.issues.index');
     }
 
