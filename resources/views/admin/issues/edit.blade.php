@@ -44,21 +44,34 @@
                     @csrf
 
                     <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                            <label for="title"><b>Başlık</b> <i>Örneğin; Arka Kapı Dergi Sayı X veya Arka Kapı Magazine Issue X</i></label>
-                            <input id="title" name="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" placeholder="Arka Kapı Dergi Sayı X" value="{{ $issue->title }}" required>
-                            @if ($errors->has('title'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('title') }}
-                                </div>
-                            @endif
-                        </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label for="price"><b>Ücret</b> <i>Dil Türkçe seçilir ise birim TL, İngilizce seçilir ise birim USD olur.</i></label>
                             <input id="price" name="price" type="number" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" placeholder="XX.YY" step="0.01" value="{{ $issue->price }}" required>
                             @if ($errors->has('price'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('price') }}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="issue"><b>Sayı</b></label>
+                            <select id="issue" name="issue" class="form-control{{ $errors->has('issue') ? ' is-invalid' : '' }}" required>
+                                @for($i = 1; $i <= $issues_all_count + 3; $i++)
+                                    <option value="{{ $i }}" {{ $issue->issue == $i ? 'selected' : '' }}>Sayı {{ $i }}</option>
+                                @endfor
+                            </select>
+                            @if ($errors->has('issue'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('issue') }}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="pdf"><b>Dijital Dergi</b> <i>PDF olmalı.</i></label>
+                            <input id="pdf" name="pdf" type="file" class="form-control-file{{ $errors->has('pdf') ? ' is-invalid' : '' }}">
+                            @if ($errors->has('pdf'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('pdf') }}
                                 </div>
                             @endif
                         </div>
@@ -87,7 +100,7 @@
                             @endif
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="cover"><b>Kapak</b> <a href="{{ config('app.url') . '/storage/' . $issue->cover }}" target="_blank">{{ $issue->cover }}</a></label>
+                            <label for="cover"><b>Kapak</b> <i>JPG olmalı.</i> <a href="{{ config('app.url') . '/storage/' . $issue->slug }}.jpg" target="_blank">{{ $issue->slug }}.jpg</a></label>
                             <input id="cover" name="cover" type="file" class="form-control-file{{ $errors->has('cover') ? ' is-invalid' : '' }}">
                             @if ($errors->has('cover'))
                                 <div class="invalid-feedback">
