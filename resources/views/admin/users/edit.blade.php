@@ -23,7 +23,7 @@
                         <div class="card-body-icon">
                             <i class="fas fa-fw fa-shopping-cart"></i>
                         </div>
-                        <div class="mr-5">Bu üyeden elde edilen toplam gelir: <b>99,99.00 TL</b></div>
+                        <div class="mr-5">Bu üyeden elde edilen toplam gelir: <b>{{ $user->total_tl }} TL, {{ $user->total_usd }} USD</b></div>
                     </div>
                 </div>
             </div>

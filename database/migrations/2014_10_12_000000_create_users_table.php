@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('language', 2);
             $table->longText('purchases_tr')->default('[]');
             $table->longText('purchases_en')->default('[]');
+            $table->float('total_tl')->default(0);
+            $table->float('total_usd')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
