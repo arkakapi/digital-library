@@ -12,8 +12,7 @@
                         <div class="card-body-icon">
                             <i class="fas fa-fw fa-users"></i>
                         </div>
-                        <div class="mr-5">Bu ay kaydolan üye sayısı: <b>21</b></div>
-                        <div class="mr-5">Toplam üye sayısı: <b>21</b></div>
+                        <div class="mr-5">Toplam üye sayısı: <b>{{ $total_users_count }}</b></div>
                     </div>
                 </div>
             </div>
@@ -24,8 +23,7 @@
                         <div class="card-body-icon">
                             <i class="fas fa-fw fa-users"></i>
                         </div>
-                        <div class="mr-5">Bu ay alım yapan üye sayısı: <b>21</b></div>
-                        <div class="mr-5">Toplam alım yapan üye sayısı: <b>21</b></div>
+                        <div class="mr-5">Toplam alım yapan üye sayısı: <b>{{ $bought_users_count }}</b></div>
                     </div>
                 </div>
             </div>
@@ -36,8 +34,7 @@
                         <div class="card-body-icon">
                             <i class="fas fa-fw fa-shopping-cart"></i>
                         </div>
-                        <div class="mr-5">Bu ayki TL geliri: <b>99,99.00 TL</b></div>
-                        <div class="mr-5">Bu ayki USD geliri: <b>99,99.00 USD</b></div>
+                        <div class="mr-5">Toplam TL geliri: <b>{{ $total_tl }} TL</b></div>
                     </div>
                 </div>
             </div>
@@ -48,8 +45,7 @@
                         <div class="card-body-icon">
                             <i class="fas fa-fw fa-shopping-cart"></i>
                         </div>
-                        <div class="mr-5">Toplam TL geliri: <b>99,99.00 TL</b></div>
-                        <div class="mr-5">Toplam USD geliri: <b>99,99.00 USD</b></div>
+                        <div class="mr-5">Toplam USD geliri: <b>{{ $total_usd }} USD</b></div>
                     </div>
                 </div>
             </div>
@@ -80,9 +76,9 @@
         new Chart(document.getElementById("statistics"), {
             type: 'line',
             data: {
-                labels: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+                labels: [{!! '"' . implode('", "', $months) . '"'  !!}],
                 datasets: [
-                    {
+                    /*{
                         label: "Satın Alınan Dergi Sayısı",
                         lineTension: 0.3,
                         backgroundColor: "rgba(2,117,216,0.2)",
@@ -95,7 +91,7 @@
                         pointHitRadius: 50,
                         pointBorderWidth: 2,
                         data: [10000, 30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984],
-                    },
+                    },*/
                     {
                         label: "Kayıt Olan Üyeler",
                         lineTension: 0.3,
@@ -108,7 +104,7 @@
                         pointHoverBackgroundColor: "rgba(2,134,49,1)",
                         pointHitRadius: 50,
                         pointBorderWidth: 2,
-                        data: [30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984, 10000],
+                        data: [{!! '"' . implode('", "', $bought_users_graphic) . '"'  !!}],
                     }
                 ],
             }
