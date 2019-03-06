@@ -1,0 +1,160 @@
+@extends('layouts.admin')
+
+@section('content')
+    <div class="container-fluid">
+
+        <!-- Icon Cards-->
+        <div class="row">
+
+            <div class="col-xl-6 col-sm-6 mb-3">
+                <div class="card text-white bg-primary o-hidden">
+                    <div class="card-body">
+                        <div class="card-body-icon">
+                            <i class="fas fa-fw fa-users"></i>
+                        </div>
+                        <div class="mr-5">Bu üyenin satın aldığı sayı sayısı: <b>21</b></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-sm-6 mb-3">
+                <div class="card text-white bg-success o-hidden">
+                    <div class="card-body">
+                        <div class="card-body-icon">
+                            <i class="fas fa-fw fa-shopping-cart"></i>
+                        </div>
+                        <div class="mr-5">Bu üyeden elde edilen toplam gelir: <b>99,99.00 TL</b></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                Düzenle: {{ $user->name . ' - ' . $user->email }}
+            </div>
+            <div class="card-body">
+                <form action="{{ route('admin.users.update', $user->id) }}" method="post" enctype="multipart/form-data">
+
+                    <input name="_method" type="hidden" value="PATCH">
+
+                    @csrf
+
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="name"><b>Adı-Soyadı</b></label>
+                            <input id="name" name="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ $user->name }}">
+                            @if ($errors->has('name'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('name') }}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="email"><b>Eposta</b></label>
+                            <input id="email" name="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ $user->email }}" disabled>
+                            @if ($errors->has('email'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('email') }}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="created_at"><b>Kayıt Tarihi</b></label>
+                            <input id="created_at" name="created_at" type="text" class="form-control" value="{{ $user->created_at }}" disabled>
+                            @if ($errors->has('created_at'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('created_at') }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="password"><b>Parola</b> <i>Değiştirmeyecekseniz boş bırakın.</i></label>
+                            <input id="password" name="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
+                            @if ($errors->has('password'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('password') }}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="role"><b>Yetki</b></label>
+                            <select id="role" name="role" class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" required>
+                                <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>admin</option>
+                                <option value="subscriber" {{ $user->role == 'subscriber' ? 'selected' : '' }}>subscriber</option>
+                            </select>
+                            @if ($errors->has('role'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('role') }}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="email_verified_at"><b>Email Doğrulama Tarihi</b></label>
+                            <input id="email_verified_at" name="email_verified_at" type="text" class="form-control" value="{{ $user->email_verified_at ? $user->email_verified_at : 'Eposta Onaylanmamış' }}" disabled>
+                            @if ($errors->has('email_verified_at'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('email_verified_at') }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="job"><b>Meslek</b></label>
+                            <input id="job" name="job" type="text" class="form-control{{ $errors->has('job') ? ' is-invalid' : '' }}" value="{{ $user->job }}">
+                            @if ($errors->has('job'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('job') }}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="language"><b>Dil</b></label>
+                            <select id="language" name="language" class="form-control{{ $errors->has('language') ? ' is-invalid' : '' }}">
+                                <option value="tr" {{ $user->language == 'tr' ? 'selected' : '' }}>Türkçe</option>
+                                <option value="en" {{ $user->language == 'en' ? 'selected' : '' }}>İngilizce</option>
+                            </select>
+                            @if ($errors->has('language'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('language') }}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="country_id"><b>Ülke</b></label>
+                            <select id="country_id" name="country_id" class="form-control{{ $errors->has('country_id') ? ' is-invalid' : '' }}">
+                                @foreach($countries as $country)
+                                    <option value="{{ $country->id }}" {{ $country->id == $user->country_id ? 'selected' : '' }}>{{ $country->name }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('country_id'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('country_id') }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+
+                    <button class="btn btn-success" type="submit">Gönder</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+@stop
+
+@section('js')
+    <script>
+        $(document).ready(function () {
+            $('textarea#content').summernote({
+                height: 300
+            });
+        });
+    </script>
+@stop

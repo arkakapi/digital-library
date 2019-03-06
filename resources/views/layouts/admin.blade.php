@@ -39,16 +39,16 @@
                 <span>Dashboard</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="">
+        <li class="nav-item{{ getParentRouteName() == 'admin.users' ? ' active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.users.index') }}">
                 <i class="fas fa-fw fa-users"></i>
-                <span>Üyeler</span>
+                <span>Kullanıcılar</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="">
                 <i class="fas fa-fw fa-address-book"></i>
-                <span>Misafir Okurlar</span>
+                <span>Misafir Kullanıcılar</span>
             </a>
         </li>
         <li class="nav-item{{ getParentRouteName() == 'admin.issues' ? ' active' : '' }}">
@@ -93,9 +93,9 @@
             @endif
         </div>
 
-        @yield('content')
+    @yield('content')
 
-        <!-- Sticky Footer -->
+    <!-- Sticky Footer -->
         <footer class="sticky-footer">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
