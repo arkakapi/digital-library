@@ -157,7 +157,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="purchases_tr"><b>Arka Kapı Dergi (Türkçe)</b></label>
                             <select id="purchases_tr" name="purchases_tr[]" multiple size="10" class="form-control{{ $errors->has('purchases_tr') ? ' is-invalid' : '' }}">
-                                @for($i = 1; $i <= $issues_all_count + 3; $i++)
+                                @for($i = 1; $i <= $issues_all_count + 6; $i++)
                                     <option value="{{ $i }}" {{ in_array($i, $purchases_tr) ? 'selected' : '' }}>Sayı {{ $i }}</option>
                                 @endfor
                             </select>
@@ -170,7 +170,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="purchases_en"><b>Arka Kapı Magazine (İngilizce)</b></label>
                             <select id="purchases_en" name="purchases_en[]" multiple size="10" class="form-control{{ $errors->has('purchases_en') ? ' is-invalid' : '' }}">
-                                @for($i = 1; $i <= $issues_all_count + 3; $i++)
+                                @for($i = 1; $i <= $issues_all_count + 6; $i++)
                                     <option value="{{ $i }}" {{ in_array($i, $purchases_en) ? 'selected' : '' }}>Sayı {{ $i }}</option>
                                 @endfor
                             </select>

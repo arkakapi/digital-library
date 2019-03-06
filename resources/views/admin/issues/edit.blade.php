@@ -56,7 +56,7 @@
                         <div class="col-md-4 mb-3">
                             <label for="issue"><b>Sayı</b></label>
                             <select id="issue" name="issue" class="form-control{{ $errors->has('issue') ? ' is-invalid' : '' }}" required>
-                                @for($i = 1; $i <= $issues_all_count + 3; $i++)
+                                @for($i = 1; $i <= $issues_all_count + 6; $i++)
                                     <option value="{{ $i }}" {{ $issue->issue == $i ? 'selected' : '' }}>Sayı {{ $i }}</option>
                                 @endfor
                             </select>
