@@ -21,40 +21,47 @@ class IssueController extends AdminController
         if (!isset($_GET['json']))
             return view('admin.datatables', [
                 'title' => 'Sayılar',
-                'thead' => ['id', 'Başlık', 'Fiyat', 'Ay/Yıl', 'Dil', 'Kapak', 'Düzenle'],
+                'thead' => ['id', 'Başlık', 'Sayı', 'Fiyat', 'Ay/Yıl', 'Dil', 'Kapak', 'Düzenle'],
             ]);
 
         $table = 'issues';
         $primaryKey = 'id';
-        $columns = array(
-            array('db' => 'id', 'dt' => 0),
-            array('db' => 'title', 'dt' => 1),
-            array('db' => 'price', 'dt' => 2),
-            array('db' => 'month', 'dt' => 3),
-            array(
-                'db' => 'language',
-                'dt' => 4,
+        $columns = [
+            ['db' => 'id', 'dt' => 0],
+            ['db' => 'title', 'dt' => 1],
+            ['db' => 'issue', 'dt' => 2],
+            [
+                'db' => 'price',
+                'dt' => 3,
                 'formatter' => function ($data, $row) {
+                    return $data . ' ' . ($row['language'] == 'tr' ? 'TL' : 'USD');
+                }
+            ],
+            ['db' => 'month', 'dt' => 4],
+            [
+                'db' => 'language',
+                'dt' => 5,
+                'formatter' => function ($data) {
                     if ($data == 'tr')
                         return '<span class="label label-success">Türkçe (Arka Kapı Dergi)</span>';
                     return '<span class="label label-info">İngilizce (Arka Kapı Magazine)</span>';
                 }
-            ),
-            array(
-                'db' => 'cover',
-                'dt' => 5,
-                'formatter' => function ($data, $row) {
-                    return '<a href="' . config('app.url') . '/storage/' . $data . '" target="_blank">' . $data . '</a>';
-                }
-            ),
-            array(
-                'db' => 'id',
+            ],
+            [
+                'db' => 'slug',
                 'dt' => 6,
-                'formatter' => function ($data, $row) {
+                'formatter' => function ($data) {
+                    return '<a href="' . config('app.url') . '/storage/' . $data . '.jpg" target="_blank">' . $data . '.jpg</a>';
+                }
+            ],
+            [
+                'db' => 'id',
+                'dt' => 7,
+                'formatter' => function ($data) {
                     return '<a href="' . route('admin.issues.edit', $data) . '" class="btn btn-sm btn-primary">Düzenle</a>';
                 }
-            )
-        );
+            ]
+        ];
 
         return response()->json(
             Datatables::simple($_GET, $table, $primaryKey, $columns)
