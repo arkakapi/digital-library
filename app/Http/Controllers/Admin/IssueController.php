@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helper\Datatables;
 use App\Issue;
+use App\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdminController;
@@ -143,9 +144,19 @@ class IssueController extends AdminController
      */
     public function edit($id)
     {
+        $issues = Issue::all();
+        $issue = $issues->find($id);
+        $users = User::all();
+        $bought_users = $users->filter(function ($user) use ($issue) {
+            $purchases = $issue->language == 'tr' ? json_decode($user->purchases_tr, true) : json_decode($user->purchases_en, true);
+            return in_array($issue->issue, $purchases);
+        });
+
         return view('admin.issues.edit', [
-            'issue' => Issue::findOrFail($id),
-            'issues_all_count' => Issue::all('id')->count()
+            'issue' => $issue,
+            'issues_all_count' => $issues->count(),
+            'total_users_count' => $bought_users->count(),
+            'total_price' => $bought_users->count() * $issue->price
         ]);
     }
 

@@ -12,8 +12,7 @@
                         <div class="card-body-icon">
                             <i class="fas fa-fw fa-users"></i>
                         </div>
-                        <div class="mr-5">Bu sayıyı bu ay satın alan üye sayısı: <b>21</b></div>
-                        <div class="mr-5">Bu sayıyı satın alan toplam üye sayısı: <b>21</b></div>
+                        <div class="mr-5">Bu sayıyı satın alan toplam üye sayısı: <b>{{ $total_users_count }}</b></div>
                     </div>
                 </div>
             </div>
@@ -24,8 +23,7 @@
                         <div class="card-body-icon">
                             <i class="fas fa-fw fa-shopping-cart"></i>
                         </div>
-                        <div class="mr-5">Bu sayıdan elde edilen bu ayki gelir: <b>99,99.00 TL</b></div>
-                        <div class="mr-5">Bu sayının elde edilen toplam gelir: <b>99,99.00 USD</b></div>
+                        <div class="mr-5">Bu sayının elde edilen toplam gelir: <b>{{ $total_price . ($issue->language == 'tr' ? ' TL': ' USD') }}</b></div>
                     </div>
                 </div>
             </div>
