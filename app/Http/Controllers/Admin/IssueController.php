@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helper\Datatables;
 use App\Issue;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use League\Flysystem\FileExistsException;
 
 class IssueController extends AdminController
 {
@@ -121,8 +123,8 @@ class IssueController extends AdminController
             $data['slug'] = $slug;
             $data['title'] = $title;
             Issue::create($data);
-        } catch (Exception $e) {
-            Session::flash('class', 'error');
+        } catch (QueryException $e) {
+            Session::flash('class', 'danger');
             Session::flash('message', 'Bir hata oluştu!: ' . $e->getMessage());
             return redirect()->route('admin.issues.index');
         }
@@ -177,24 +179,32 @@ class IssueController extends AdminController
         // Create slug
         $slug = str_slug($title, '-', 'tr');
 
-        // Upload new Cover
-        if ($request->file('cover')) {
-            $cover = $request->file('cover');
-            Storage::disk('public')->put($slug . '.jpg', file_get_contents($cover));
-            Storage::disk('public')->delete($issue->slug . '.jpg');
-        } else if ($issue->slug != $slug) {
-            // If changed title and not selected any cover, change cover file name
-            Storage::disk('public')->move($issue->slug . '.jpg', $slug . '.jpg');
-        }
+        try {
 
-        // Upload new PDF
-        if ($request->file('pdf')) {
-            $pdf = $request->file('pdf');
-            Storage::disk('local')->put($slug . '.pdf', file_get_contents($pdf));
-            Storage::disk('local')->delete($issue->slug . '.pdf');
-        } else if ($issue->slug != $slug) {
-            // If changed title and not selected any pdf, change pdf file name
-            Storage::disk('local')->move($issue->slug . '.pdf', $slug . '.pdf');
+            // Upload new Cover
+            if ($request->file('cover')) {
+                $cover = $request->file('cover');
+                Storage::disk('public')->put($slug . '.jpg', file_get_contents($cover));
+                Storage::disk('public')->delete($issue->slug . '.jpg');
+            } else if ($issue->slug != $slug) {
+                // If changed title and not selected any cover, change cover file name
+                Storage::disk('public')->move($issue->slug . '.jpg', $slug . '.jpg');
+            }
+
+            // Upload new PDF
+            if ($request->file('pdf')) {
+                $pdf = $request->file('pdf');
+                Storage::disk('local')->put($slug . '.pdf', file_get_contents($pdf));
+                Storage::disk('local')->delete($issue->slug . '.pdf');
+            } else if ($issue->slug != $slug) {
+                // If changed title and not selected any pdf, change pdf file name
+                Storage::disk('local')->move($issue->slug . '.pdf', $slug . '.pdf');
+            }
+
+        } catch (FileExistsException $e) {
+            Session::flash('class', 'danger');
+            Session::flash('message', 'Seçtiğiniz Sayı ve Dile ait bir sayı zaten var! Üzerine yazamazsınız!');
+            return $this->edit($id);
         }
 
         // Edit issue
@@ -205,8 +215,8 @@ class IssueController extends AdminController
 
             $issue->fill($data);
             $issue->save();
-        } catch (Exception $e) {
-            Session::flash('class', 'error');
+        } catch (QueryException $e) {
+            Session::flash('class', 'danger');
             Session::flash('message', 'Veritabanına eklenirken bir hata oluştu!: ' . $e->getMessage());
             return redirect()->route('admin.issues.index');
         }

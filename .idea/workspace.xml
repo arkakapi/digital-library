@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ec599520-14ad-4eae-b728-574701a17c7a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/IssueController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/IssueController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/issues/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/issues/edit.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,23 +27,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/IssueController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="195" column="69" selection-start-line="195" selection-start-column="69" selection-end-line="195" selection-end-column="69" />
+            <state relative-caret-position="-124">
+              <caret line="145" column="42" selection-start-line="145" selection-start-column="42" selection-end-line="145" selection-end-column="42" />
               <folding>
                 <element signature="e#46#72#0#PHP" expanded="true" />
                 <element signature="e#398#2242#0#PHP" />
                 <element signature="e#2363#2470#0#PHP" />
-                <element signature="e#4580#4744#0#PHP" />
+                <element signature="e#2685#4430#0#PHP" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/issues/create.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="72" column="78" selection-start-line="72" selection-start-column="60" selection-end-line="72" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -52,8 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/issues/edit.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="70" column="138" selection-start-line="70" selection-start-column="138" selection-end-line="70" selection-end-column="138" />
+            <state relative-caret-position="200">
+              <caret line="64" column="60" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -70,6 +60,7 @@
       <find>(</find>
       <find>)</find>
       <find>modified_at</find>
+      <find>error</find>
     </findStrings>
     <replaceStrings>
       <replace>[</replace>
@@ -430,12 +421,12 @@
       <workItem from="1551719935013" duration="13709000" />
       <workItem from="1551806668388" duration="43000" />
       <workItem from="1551806846369" duration="22193000" />
-      <workItem from="1551887808074" duration="9626000" />
+      <workItem from="1551887808074" duration="10554000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59054000" />
+    <option name="totallyTimeSpent" value="59982000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1066" extended-state="6" />
@@ -812,6 +803,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/issues/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="64" column="60" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/issues/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -819,22 +817,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/issues/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="70" column="138" selection-start-line="70" selection-start-column="138" selection-end-line="70" selection-end-column="138" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/IssueController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="195" column="69" selection-start-line="195" selection-start-column="69" selection-end-line="195" selection-end-column="69" />
+        <state relative-caret-position="-124">
+          <caret line="145" column="42" selection-start-line="145" selection-start-column="42" selection-end-line="145" selection-end-column="42" />
           <folding>
             <element signature="e#46#72#0#PHP" expanded="true" />
             <element signature="e#398#2242#0#PHP" />
             <element signature="e#2363#2470#0#PHP" />
-            <element signature="e#4580#4744#0#PHP" />
+            <element signature="e#2685#4430#0#PHP" />
           </folding>
         </state>
       </provider>
