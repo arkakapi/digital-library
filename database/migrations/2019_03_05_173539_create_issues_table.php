@@ -17,11 +17,11 @@ class CreateIssuesTable extends Migration
             $table->bigIncrements('id');
             $table->string('slug');
             $table->string('title');
+            $table->integer('issue');
             $table->float('price');
-            $table->string('cover');
             $table->string('month');
-            $table->longText('content');
             $table->string('language');
+            $table->longText('content');
             $table->timestamps();
         });
     }
