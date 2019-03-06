@@ -21,6 +21,8 @@ class UsersTableSeeder extends Seeder
                 'job' => 'Security Researcher',
                 'role' => 'admin',
                 'language' => 'tr',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ],
             [
                 'name' => 'omer citak 2',
@@ -31,9 +33,11 @@ class UsersTableSeeder extends Seeder
                 'job' => 'Software Developer',
                 'role' => 'subscriber',
                 'language' => 'tr',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ]
         ];
 
-        DB::table('users')->insert($users);
+        \App\User::insert($users);
     }
 }

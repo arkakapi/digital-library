@@ -20,33 +20,35 @@ class IssuesTableSeeder extends Seeder
                 'month' => '02-03 2018',
                 'language' => 'tr',
                 'content' => '<ul>
- 	<li>Web 2014’te Ölmeye Başladı -  André Staltz</li>
- 	<li>Ağ Tarafsızlığı - Av. Mehmet Pehlivan</li>
- 	<li>Her 8 Kişiden 1’inin Parolası Biliniyor! - Mustafa Altınkaynak</li>
- 	<li>Parolalarınızı Tek Bir Yerden Yönetin: KeeePassXC - Ziyahan Albeniz</li>
- 	<li>Güvenli Mesajlaşma Programlarının Savaşı ve Signal’in Tartışmasız
+    <li>Web 2014’te Ölmeye Başladı -  André Staltz</li>
+    <li>Ağ Tarafsızlığı - Av. Mehmet Pehlivan</li>
+    <li>Her 8 Kişiden 1’inin Parolası Biliniyor! - Mustafa Altınkaynak</li>
+    <li>Parolalarınızı Tek Bir Yerden Yönetin: KeeePassXC - Ziyahan Albeniz</li>
+    <li>Güvenli Mesajlaşma Programlarının Savaşı ve Signal’in Tartışmasız
 Galibiyeti - Micah Lee</li>
- 	<li>"Kendi Bağlantım" ile VPN Sunucunuzu Kurun - Ömer Çıtak</li>
- 	<li>Kriptoloji’ye Giriş - Bayram Gök</li>
- 	<li>Özgürleştiren Bir Zincir: Blockchain Teknolojisi ve Akıllı (Smart)
+    <li>"Kendi Bağlantım" ile VPN Sunucunuzu Kurun - Ömer Çıtak</li>
+    <li>Kriptoloji’ye Giriş - Bayram Gök</li>
+    <li>Özgürleştiren Bir Zincir: Blockchain Teknolojisi ve Akıllı (Smart)
 Kontratlar - Musa Baş</li>
- 	<li>Devrim Niteliğindeki Blockchain Teknolojisi Güvenli mi? - Mustafa
+    <li>Devrim Niteliğindeki Blockchain Teknolojisi Güvenli mi? - Mustafa
 Yalçın</li>
- 	<li>Meltdown ve Spectre Zafiyetlerinin Düşündürdükleri - Chris Stephenson</li>
- 	<li>KRACK (Key Reinstallation Attack Anahtarı Tekrar Oluşturma Saldırısı) -
+    <li>Meltdown ve Spectre Zafiyetlerinin Düşündürdükleri - Chris Stephenson</li>
+    <li>KRACK (Key Reinstallation Attack Anahtarı Tekrar Oluşturma Saldırısı) -
 Ulaş Fırat Özdemir</li>
- 	<li>Zafiyetlerle Bluetooth: Geçmişi ve Geleceği - Ulaş Fırat Özdemir</li>
- 	<li>Mobil Uygulamalar, Tehditler ve Uygulama Güvenliğinde Gerekli
+    <li>Zafiyetlerle Bluetooth: Geçmişi ve Geleceği - Ulaş Fırat Özdemir</li>
+    <li>Mobil Uygulamalar, Tehditler ve Uygulama Güvenliğinde Gerekli
 Yaklaşımlar - Meryem Akdoğan</li>
- 	<li>WiPi Hunter Zararlı Kablosuz Ağ Aktivitelerinin Tespit Edilmesi - Besim
+    <li>WiPi Hunter Zararlı Kablosuz Ağ Aktivitelerinin Tespit Edilmesi - Besim
 Altınok</li>
- 	<li>Web Application Firewall (WAF) Atlatma Yöntemleri - Ulaş Fırat Özdemir</li>
- 	<li>iPhone 6 Telefonum Çalındı, Hırsızı Nasıl Buldum? - Bahar Anahmias</li>
- 	<li>Parrot Security OS (Parrot Project) - M. Emrah ÜNSÜR</li>
- 	<li>Amatör Telsizcilik - Erhan Altındaş</li>
- 	<li>Android Cihazınız için Güvenlik Rehberi - Arka Kapı</li>
- 	<li>Mustafa Akgül Anısına - Arka Kapı</li>
-</ul>'
+    <li>Web Application Firewall (WAF) Atlatma Yöntemleri - Ulaş Fırat Özdemir</li>
+    <li>iPhone 6 Telefonum Çalındı, Hırsızı Nasıl Buldum? - Bahar Anahmias</li>
+    <li>Parrot Security OS (Parrot Project) - M. Emrah ÜNSÜR</li>
+    <li>Amatör Telsizcilik - Erhan Altındaş</li>
+    <li>Android Cihazınız için Güvenlik Rehberi - Arka Kapı</li>
+    <li>Mustafa Akgül Anısına - Arka Kapı</li>
+</ul>',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ],
             [
                 'slug' => 'arka-kapi-dergi-sayi-2',
@@ -76,7 +78,9 @@ Google Adsense ile zengin olmak ister misiniz? Bir webmaster yaızısından fazl
 2000\'li yılların efsane dergisi Türk Crackerler Gazetesi ve TR Scene\'in hikâyesini birinci ağızdan, Projman\'dan dinleyin.
 Hacker Palas hikâyesi ile Yusuf Yaltırık, yaşanmış bir hacking hikayesini anlatıyor.
 Orwell\'in ünlü romanı 1984\'ün 70. yaşını erken kutlamak isteyenler için korkunç bir distopya Çağatay Çalı\'dan: Esir Yeni Dünya! Fark şu ki 1984\'ün distopyası Orwell\'ın kafasının içinde idi, Çağatay\'ın distopyası ise kanlı canlı karşımızda!
-Amatör Telsizcilik yazı dizisinin ilki ile Tüm Telsiz Amatörleri Derneği (TAMAD) Başkanı Murat Kaygısız, Ubuntu Kurulumu\'na dair ipuçları ile Erhan Altındaş, Kuantum Bilgisayar yazısı ile Esra Serttaş Arka Kapı Dergisi 2. sayısında!'
+Amatör Telsizcilik yazı dizisinin ilki ile Tüm Telsiz Amatörleri Derneği (TAMAD) Başkanı Murat Kaygısız, Ubuntu Kurulumu\'na dair ipuçları ile Erhan Altındaş, Kuantum Bilgisayar yazısı ile Esra Serttaş Arka Kapı Dergisi 2. sayısında!',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ],
             [
                 'slug' => 'arka-kapi-dergi-sayi-3',
@@ -103,7 +107,9 @@ Merkezi olmayan bir internet mümkün mü? Zeki Müren de bizi görebilecek mi? 
 Blok zinciri uygulamaları her derde deva. Modern dünyanın tüm problemlerini çözen dijital bir mesih! Peki kazın ayağı öyle mi? Mert Susur blok zinciri uygulamaları ve güvenlik sorunlarını bir uzman gözünden irdeliyor.
 Bir holdingin ıssız koridorlarında, gece yarısı genç bir hacker ne arıyor? Yusuf başına bir iş gelmeyecekse, bu soruya Arka Kapı Dergisi\'nde yanıt veriyor.
 Amatör Telsizcilik yazılarından sonra artık ikna oldunuz mu? Durun, siz amatör telsizci olamazsınız! Murat Kaygısız amatör telsiz kullanımlarındaki lisans zorunluluğunu kaleme aldı.
-Eski hackerlardan kim kaldı? Efsanevi hacker Bill Gopser\'ı bir de Cansu Topukçu\'dan dinleyin.'
+Eski hackerlardan kim kaldı? Efsanevi hacker Bill Gopser\'ı bir de Cansu Topukçu\'dan dinleyin.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ],
             [
                 'slug' => 'arka-kapi-dergi-sayi-4',
@@ -129,7 +135,9 @@ Domain Cached Credentials (DCC) ile Active Directory yönetici hesaplarını ele
 Bilgisayarımıza indirdiğimiz yazılım zararlı mı, arşivimizdeki dosyalar değişti mi, bağlandığımız web sitesinin sertifikası güvenli mi? Kullandığımız sistemler bütün bu sorulara yazılımların, dosyaların ve sertifikaların özet bilgilerine bakarak yanıt veriyorlar. Halit İnce ile Özet Fonksiyonları\'nın sihirli dünyasına bir yolculuğa ne dersiniz?
 Amatör Telsizcilik sınavı yaklaşıyor. Tüm Telsiz Amatörleri Derneği başkanı Murat Kaygısız her yazısında gönüllere amatör telsizcilik tohumları ekmeye devam ediyor. Kesintisiz bir GPS sistemi Automatic Packet Reporting System\'nin (APRS) bilinmeyenlerini Murat Kaygısız\'dan okuyun.
 3. sayımızda Holding koridorlarında gece yarısı macerasını okuduğumuz Yusuf Şahin bu defa bir üniversite ağına nasıl sızdığını anlatıyor.
-Uluslarası camiada zararlı yazılım çalışmalarından çokça söz ettiren kadın araştırmacı Amanda Rousseau (malwareunicorn) röportajı Utku Şen imzası ile dergimizin dördüncü sayısında.'
+Uluslarası camiada zararlı yazılım çalışmalarından çokça söz ettiren kadın araştırmacı Amanda Rousseau (malwareunicorn) röportajı Utku Şen imzası ile dergimizin dördüncü sayısında.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ],
             [
                 'slug' => 'arka-kapi-dergi-sayi-5',
@@ -172,7 +180,9 @@ Scapy kütüphanesi ile Python\'da ağ paketleri programlamak sadece kolay deği
 
 Okunacak ne çok şey, fakat ne kadar az vakit var değil mi? Üstelik yazılımcıyız gecelerimiz kısa, dört nala okumak lazım. Muhammed Hilmi Koca bu samimi yakarışı işitti ve Yazılımcılar İçin Okuma Listesini sizler için hazırladı.
 
-Zor zamanlarda imdadımıza yetişen telsizleri, eşref zamanlarımızın iletişim yolu internet ile bir arada kullanmak istemez misiniz? Şimdi voltran zamanı! İnternet ve telsiz dalgalarını birleştiren ECHOLINK teknolojisi ile ilgili ayrıntılar Murat Kaygısız\'ın kaleminden 5. sayımızda sizlerle."'
+Zor zamanlarda imdadımıza yetişen telsizleri, eşref zamanlarımızın iletişim yolu internet ile bir arada kullanmak istemez misiniz? Şimdi voltran zamanı! İnternet ve telsiz dalgalarını birleştiren ECHOLINK teknolojisi ile ilgili ayrıntılar Murat Kaygısız\'ın kaleminden 5. sayımızda sizlerle."',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ],
             [
                 'slug' => 'arka-kapi-dergi-sayi-6',
@@ -213,7 +223,9 @@ Muhammed Hilmi Koca, "Yazılımcılar İçin Okuma Listesi" ile heybesinde birik
 
 Sinyal istihbaratı çalışmaları için Murat Şişman tarafından özel olarak tasarlanan Linux dağıtımı SigintOS\'u, proje lideri Şişman\'ın kaleminden okumak ister misiniz? Öyle ise buyrun.
 
-Amatör telsizcilik serüveninde telsiz haberleşmesi için gerekli altyapı bilgileri nelerdir, neleri bilmeli, hangi konularda kendinizi geliştirmelisiniz. Murat Kaygısız, "Telsiz Haberleşmesi Altyapı Bilgileri" başlıklı yazıyı sizler için kaleme aldı.'
+Amatör telsizcilik serüveninde telsiz haberleşmesi için gerekli altyapı bilgileri nelerdir, neleri bilmeli, hangi konularda kendinizi geliştirmelisiniz. Murat Kaygısız, "Telsiz Haberleşmesi Altyapı Bilgileri" başlıklı yazıyı sizler için kaleme aldı.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ],
             [
                 'slug' => 'arka-kapi-magazine-issue-1',
@@ -237,7 +249,9 @@ Amatör telsizcilik serüveninde telsiz haberleşmesi için gerekli altyapı bil
  	<li>Signal Intelligence: Methods of Signal Listening and Analysis</li>
  	<li>How to be a shareholder of Google: Double your income with Google Adsense</li>
  	<li>Anonymizing Internet from the Router with OpenWrt and TOR</li>
-</ul>'
+</ul>',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ],
             [
                 'slug' => 'arka-kapi-magazine-issue-2',
@@ -260,7 +274,9 @@ Amatör telsizcilik serüveninde telsiz haberleşmesi için gerekli altyapı bil
  	<li>How I hacked into a college’s website! - Aditya Anand</li>
  	<li>Meltdown, Spectre and Foreshadow - Chris Stephenson</li>
  	<li>The Dangers of Wireless Networks - Besim Altınok</li>
-</ul>'
+</ul>',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ],
             [
                 'slug' => 'arka-kapi-magazine-issue-3',
@@ -283,10 +299,12 @@ Amatör telsizcilik serüveninde telsiz haberleşmesi için gerekli altyapı bil
  	<li>How I hacked into a college’s website! - Aditya Anand</li>
  	<li>Meltdown, Spectre and Foreshadow - Chris Stephenson</li>
  	<li>The Dangers of Wireless Networks - Besim Altınok</li>
-</ul>'
+</ul>',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ]
         ];
 
-        DB::table('issues')->insert($issues);
+        \App\Issue::insert($issues);
     }
 }
