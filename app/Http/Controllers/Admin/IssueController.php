@@ -100,6 +100,7 @@ class IssueController extends AdminController
             'cover' => ['required', 'image', 'mimes:jpeg'],
             'pdf' => ['required', 'mimes:pdf'],
             'content' => ['required', 'string'],
+            'preamble' => ['required', 'string'],
         ]);
 
         // Create title
@@ -178,6 +179,7 @@ class IssueController extends AdminController
             'cover' => ['image', 'mimes:jpeg'],
             'pdf' => ['mimes:pdf'],
             'content' => ['required', 'string'],
+            'preamble' => ['required', 'string'],
         ]);
 
         $issue = Issue::findOrFail($id);

@@ -111,12 +111,26 @@
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label for="content"><b>İçerik</b></label>
-                            <textarea id="content" name="content" class="form-control-file{{ $errors->has('content') ? ' is-invalid' : '' }}" required>
+                            <textarea id="content" name="content" class="summernote form-control-file{{ $errors->has('content') ? ' is-invalid' : '' }}" required>
                                 {{ $issue->content }}
                             </textarea>
                             @if ($errors->has('content'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('content') }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="preamble"><b>Önsöz</b></label>
+                            <textarea id="preamble" name="preamble" class="summernote form-control-file{{ $errors->has('preamble') ? ' is-invalid' : '' }}" required>
+                                {{ $issue->preamble }}
+                            </textarea>
+                            @if ($errors->has('preamble'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('preamble') }}
                                 </div>
                             @endif
                         </div>
@@ -133,7 +147,7 @@
 @section('js')
     <script>
         $(document).ready(function () {
-            $('textarea#content').summernote({
+            $('.summernote').summernote({
                 height: 300
             });
         });
