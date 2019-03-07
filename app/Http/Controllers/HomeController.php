@@ -27,9 +27,9 @@ class HomeController extends Controller
      */
     public function issues()
     {
-        $issues = Issue::all();
         return view('pages.issues', [
-            'issues' => $issues
+            'title' => __('All Issues'),
+            'issues' => Issue::all()
         ]);
     }
 
@@ -41,7 +41,11 @@ class HomeController extends Controller
      */
     public function issue($slug)
     {
-        return 'issue detail page';
+        $issue = Issue::where('slug', $slug)->firstOrFail();
+        return view('pages.issue', [
+            'title' => $issue->title,
+            'issue' => $issue
+        ]);
     }
 
 }

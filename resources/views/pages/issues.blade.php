@@ -9,6 +9,12 @@
 
                     <section id="issues" class="container">
                         <div class="row">
+                            <div class="col-md-12">
+                                <div class="sharethis-inline-share-buttons"></div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
                             @foreach($issues as $issue)
                                 <div class="col-md-12">
                                     <div class="card flex-md-row mb-4 box-shadow h-md-250">

@@ -14,6 +14,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5bc64da80c55ed0011c0228a&product=inline-share-buttons' async='async'></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
