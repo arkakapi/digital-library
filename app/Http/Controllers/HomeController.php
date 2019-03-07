@@ -15,16 +15,30 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home', [
+        return view('pages.home', [
             'latest_issues' => Issue::orderBy('issue', 'desc')->get()->unique('language')
         ]);
     }
 
+    /**
+     * Show the all issues page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function issues()
     {
-        return 'issues page';
+        $issues = Issue::all();
+        return view('pages.issues', [
+            'issues' => $issues
+        ]);
     }
 
+    /**
+     * Issue detail page.
+     *
+     * @param  string $slug
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function issue($slug)
     {
         return 'issue detail page';
