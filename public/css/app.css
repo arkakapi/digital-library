@@ -10727,6 +10727,11 @@ section.container {
   padding: 15px;
 }
 
+#issues .col-md-4 a,
+#issues .col-md-4 i {
+  width: 100%;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 

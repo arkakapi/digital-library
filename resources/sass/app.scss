@@ -73,6 +73,10 @@ section.container {
     padding: 15px;
 }
 
+#issues .col-md-4 a, #issues .col-md-4 i{
+    width: 100%;
+}
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -80,10 +84,12 @@ html {
     position: relative;
     min-height: 100%;
 }
+
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
 }
+
 .footer {
     position: absolute;
     bottom: 0;

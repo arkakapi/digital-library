@@ -17,15 +17,20 @@
                                                 <h3 class="mb-0">
                                                     <a class="text-dark" href="{{ route('issues.show', $issue->slug) }}">{{ $issue->title }} ({{ $issue->language == 'tr' ? __('Turkish') : __('English') }})</a>
                                                 </h3>
-                                                <div class="mb-1 text-muted">{{ $issue->month }}, <b>{{ __('Price') }}: </b><i>{{ $issue->price . ' ' . ($issue->language == 'tr' ? __('TL') : __('USD')) }}</i></div>
-                                                <p class="card-text mb-auto flex-auto d-none d-md-block">{!! $issue->content !!}</p>
-                                                <a href="{{ route('issues.show', $issue->slug) }}" class="flex-auto d-none d-md-block">{{ __('See Content') }}</a>
+                                                <div class="d-none d-md-block">
+                                                    <p>{!! $issue->content !!}</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <a href="{{ route('issues.show', $issue->slug) }}">
                                                 <img class="card-img-right" src="{{ Storage::disk('public')->url($issue->slug . '.jpg') }}" alt="{{ $issue->title }}" title="{{ $issue->title }}" data-holder-rendered="true">
                                             </a>
+                                            <hr>
+                                            <i class="btn btn-warning">{{ __('Price') }}: {{ $issue->price . ' ' . ($issue->language == 'tr' ? __('TL') : __('USD')) }}</i>
+                                            <hr>
+                                            <a href="{{ route('issues.show', $issue->slug) }}" class="btn btn-success">{{ __('See Content') }} <span class="fa fa-angle-right"></span></a>
+                                            <hr>
                                         </div>
                                     </div>
                                 </div>
