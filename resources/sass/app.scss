@@ -7,19 +7,18 @@
 
 main {
     margin-top: 1.5rem;
+    margin-bottom: 5rem;
 }
 
-/**
- * Navigation Bar
- */
+/* Navigation bar
+-------------------------------------------------- */
 .navbar-laravel {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-/**
- * Home Page
- */
+/* Home page
+-------------------------------------------------- */
 section.container {
     margin-top: 30px;
 }
@@ -62,4 +61,35 @@ section.container {
 .issue a {
     color: #000;
     text-decoration: none;
+}
+
+/* Issues page
+-------------------------------------------------- */
+#issues img.card-img-right {
+    width: 100%;
+}
+
+#issues .col-md-8, #issues .col-md-4 {
+    padding: 15px;
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.03);
 }

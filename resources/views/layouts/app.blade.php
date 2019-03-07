@@ -88,7 +88,7 @@
                                 </form>
                             </div>
 
-                            @if(Auth::user()->role == 'admin')
+                        @if(Auth::user()->role == 'admin')
                             <li class="nav-item">
                                 <a class="nav-link" style="color: #f00;" href="{{ route('admin.dashboard') }}">{{ __('Admin Panel') }}</a>
                             </li>
@@ -104,6 +104,14 @@
     <main role="main">
         @yield('content')
     </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">{{ __('Arka Kapi Magazine Digital Subscription System') . ', ' . date('Y') }}</p>
+        </div>
+    </footer>
+
 </div>
+
 </body>
 </html>
