@@ -73,7 +73,7 @@ section.container {
     padding: 15px;
 }
 
-#issues .col-md-4 a, #issues .col-md-4 i{
+#issues .col-md-4 a, #issues .col-md-4 i {
     width: 100%;
 }
 
@@ -98,4 +98,10 @@ body {
     line-height: 60px;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* My Purchases page
+-------------------------------------------------- */
+#my-purchases a {
+    width: 100%;
 }

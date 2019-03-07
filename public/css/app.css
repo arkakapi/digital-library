@@ -10755,3 +10755,10 @@ body {
   background-color: rgba(0, 0, 0, 0.03);
 }
 
+/* My Purchases page
+-------------------------------------------------- */
+
+#my-purchases a {
+  width: 100%;
+}
+

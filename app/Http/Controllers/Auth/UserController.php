@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Country;
+use App\Issue;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -78,7 +79,41 @@ class UserController extends Controller
      */
     public function myPurchases(Request $request)
     {
-        return 'my purchases page';
+        $user = Auth::user();
+        $issues = Issue::orderBy('issue', 'asc')->get();
+        $purchases_tr = json_decode($user->purchases_tr, true);
+        $purchases_en = json_decode($user->purchases_en, true);
+
+        $subscriptions = [
+            [
+                'language' => 'tr',
+                'year' => 2018,
+                'potential_issues' => [1, 2, 3, 4, 5, 6],
+                'published_issues' => getPublishedIssuesByYear($issues, 'tr', 1, 7)
+            ],
+            [
+                'language' => 'tr',
+                'year' => 2019,
+                'potential_issues' => [7, 8, 9, 10, 11, 12],
+                'published_issues' => getPublishedIssuesByYear($issues, 'tr', 7, 13)
+            ],
+            [
+                'language' => 'en',
+                'year' => 2019,
+                'potential_issues' => [1, 2, 3, 4, 5, 6],
+                'published_issues' => getPublishedIssuesByYear($issues, 'en', 1, 7)
+            ]
+        ];
+
+        //return $subscriptions;
+
+        return view('pages.my-purchases', [
+            'user' => $user,
+            'issues' => $issues,
+            'purchases_tr' => $purchases_tr,
+            'purchases_en' => $purchases_en,
+            'subscriptions' => $subscriptions
+        ]);
     }
 
     /**
