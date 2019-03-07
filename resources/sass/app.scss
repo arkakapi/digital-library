@@ -5,47 +5,23 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.body {
+main {
     margin-top: 1.5rem;
 }
 
+/**
+ * Navigation Bar
+ */
 .navbar-laravel {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-.content {
-    text-align: center;
-}
-
-.introduction {
-    text-align: center;
-}
-
-.introduction img {
-    margin-top: 50px;
-}
-
-.introduction p {
-    margin: 50px 0;
-}
-
-.introduction .links > a {
-    color: #636b6f;
-    padding: 0 25px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: .1rem;
-    text-decoration: none;
-    text-transform: uppercase;
-}
-
+/**
+ * Home Page
+ */
 section.container {
     margin-top: 30px;
-}
-
-.home-section {
-    margin-bottom: 1.5rem;
 }
 
 :root {
@@ -55,6 +31,7 @@ section.container {
 .jumbotron {
     padding-top: var(--jumbotron-padding-y);
     padding-bottom: var(--jumbotron-padding-y);
+    margin-top: -1.5rem;
     margin-bottom: 0;
     background-color: #fff;
 }
@@ -76,4 +53,13 @@ section.container {
 
 .box-shadow {
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+#issues h1 {
+    text-align: center;
+}
+
+.issue a {
+    color: #000;
+    text-decoration: none;
 }

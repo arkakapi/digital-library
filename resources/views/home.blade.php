@@ -10,48 +10,28 @@
                 {{ __('You can purchase and download the Turkish or English versions of the Arka Kapı Magazine via the Arka Kapı Magazine Digital Subscription System.') . ' ' . __('Or you can automatically purchase any number that will be released by starting a subscription.') }}</p>
             <p>
                 <a href="{{ route('subscribe') }}" class="btn btn-primary my-2">{{ __('Subscribe') }}</a>
-                <a href="#issues" class="btn btn-secondary my-2">{{ __('Buy a Issue') }}</a>
+                <a href="{{ route('issues.index') }}" class="btn btn-secondary my-2">{{ __('Buy a Issue') }}</a>
             </p>
         </div>
     </section>
 
     <section id="issues" class="container">
         <div class="row">
-
-            <div class="col-sm-12 col-md-4 issue">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" src="https://arkakapimag.com/wp-content/uploads/2019/01/arka_kapi_mag-iii-kapak-page-001.jpg" alt="">
-                    <div class="card-body">
-                        <p class="card-text text-center">Arka Kapi Magazine Issue 3</p>
-                    </div>
-                </div>
+            <div class="col-sm-12">
+                <h1>{{ __('Latest Issues') }}</h1>
             </div>
-            <div class="col-sm-12 col-md-4 issue">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" src="https://arkakapimag.com/wp-content/uploads/2019/01/arka_kapi_mag-iii-kapak-page-001.jpg" alt="">
-                    <div class="card-body">
-                        <p class="card-text text-center">Arka Kapi Magazine Issue 3</p>
-                    </div>
+            @foreach($latest_issues as $issue)
+                <div class="col-sm-12 col-md-6 issue">
+                    <a href="{{ route('issues.show', $issue->slug) }}">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="{{ Storage::disk('public')->url($issue->slug . '.jpg') }}" alt="">
+                            <div class="card-body">
+                                <p class="card-text text-center">{{ $issue->title }}</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            </div>
-            <div class="col-sm-12 col-md-4 issue">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" src="https://arkakapimag.com/wp-content/uploads/2019/01/arka_kapi_mag-iii-kapak-page-001.jpg" alt="">
-                    <div class="card-body">
-                        <p class="card-text text-center">Arka Kapi Magazine Issue 3</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-4 issue">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" src="https://arkakapimag.com/wp-content/uploads/2019/01/arka_kapi_mag-iii-kapak-page-001.jpg" alt="">
-                    <div class="card-body">
-                        <p class="card-text text-center">Arka Kapi Magazine Issue 3</p>
-                    </div>
-                </div>
-            </div>
-
-
+            @endforeach
         </div>
     </section>
 

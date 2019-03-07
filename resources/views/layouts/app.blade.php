@@ -51,6 +51,10 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('issues.index') }}">{{ __('All Issues') }}</a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('subscribe') }}">{{ __('Subscribe') }}</a>
                     </li>
 

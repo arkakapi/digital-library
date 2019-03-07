@@ -21,6 +21,10 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/profile', 'Auth\UserController@profile')->name('profile');
 Route::post('/profile', 'Auth\UserController@update');
 
+// Issues
+Route::get('/issues', 'HomeController@issues')->name('issues.index');
+Route::get('/issues/{issue}', 'HomeController@issue')->name('issues.show');
+
 // My Purchases
 Route::get('/my-purchases', 'Auth\UserController@myPurchases')->name('my-purchases');
 
