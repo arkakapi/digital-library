@@ -102,6 +102,11 @@ body {
 
 /* My Purchases page
 -------------------------------------------------- */
-#my-purchases a {
+#my-purchases .btn {
     width: 100%;
+}
+
+#my-purchases h3 .btn {
+    width: auto;
+    margin-top: -4px;
 }

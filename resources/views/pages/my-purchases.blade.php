@@ -13,7 +13,17 @@
 
                     <div id="my-purchases" class="card-body">
                         @foreach($subscriptions as $subscription)
-                            <h3>{{ $subscription['language'] == 'tr' ? 'Arka Kapı Dergi' : "Arka Kapı Magazine" }} {{ $subscription['year'] }}</h3>
+                            <h3>
+                                {{ $subscription['language'] == 'tr' ? 'Arka Kapı Dergi' : "Arka Kapı Magazine" }} {{ $subscription['year'] }}
+                                @php $intersect_count = count(array_intersect($subscription['potential_issues'], ${'purchases_'.$subscription['language']})) @endphp
+                                @if($intersect_count == 0)
+                                    <a href="{{ route('subscribe') }}" class="btn btn-success btn-sm">{{ __('Subscribe') }} <span class="fa fa-angle-right"></span></a>
+                                @elseif($intersect_count == 6)
+                                    <button class="btn btn-success btn-sm" disabled>{{ __('You have Bought All') }} <span class="fa fa-check"></span></button>
+                                @else
+                                    <span class="btn btn-warning btn-sm">{{ __('Complete The Missing Issues') }} <span class="far fa-frown"></span></span>
+                                @endif
+                            </h3>
                             <div class="row">
                                 @foreach($subscription['potential_issues'] as $potential_issue)
                                     <div class="col-sm-12 col-md-4 col-lg-2 issue">
@@ -37,7 +47,11 @@
                                                 <img class="card-img-top" src="{{ asset('images/empty_cover.jpg') }}" alt="">
                                                 <div class="card-body">
                                                     <p class="card-text text-center">{{ __('Not Yet Published') }}</p>
-                                                    <a href="#" class="btn btn-success">{{ __('Buy') }} <span class="fa fa-angle-right"></span></a>
+                                                    @if(in_array($potential_issue, ${'purchases_'.$subscription['language']}))
+                                                        <button class="btn btn-info" disabled>{{ __('Read') }} <span class="fa fa-angle-right"></span></button>
+                                                    @else
+                                                        <a href="#" class="btn btn-success">{{ __('Buy') }} <span class="fa fa-angle-right"></span></a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         @endif
