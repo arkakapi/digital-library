@@ -9,7 +9,7 @@
 
     <title>
         @if(isset($title)) {{ $title }} | @endif
-        {{ config('app.name') }}
+        {{ trans('app.name') }}
     </title>
 
     <!-- Scripts -->
@@ -35,7 +35,7 @@
             </button>
 
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ __('Arka Kapi Magazine Digital Subscription System') }}
+                {{ trans('app.name') }}
             </a>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -109,7 +109,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p class="text-muted">{{ __('Arka Kapi Magazine Digital Subscription System') . ', ' . date('Y') }}</p>
+            <p class="text-muted">{{ trans('app.name') . ', ' . date('Y') }}</p>
         </div>
     </footer>
 

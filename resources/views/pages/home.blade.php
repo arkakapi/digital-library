@@ -5,7 +5,7 @@
     <section class="jumbotron text-center">
         <div class="container">
             <img src="{{ asset('images/logo.png') }}" class="img-fluid" alt="">
-            <h1 class="jumbotron-heading">{{ __('Arka Kapi Magazine Digital Subscription System') }}</h1>
+            <h1 class="jumbotron-heading">{{ trans('app.name') }}</h1>
             <p class="lead text-muted">
                 {{ __('You can purchase and download the Turkish or English versions of the Arka Kapı Magazine via the Arka Kapı Magazine Digital Subscription System.') . ' ' . __('Or you can automatically purchase any number that will be released by starting a subscription.') }}</p>
             <p>

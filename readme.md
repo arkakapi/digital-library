@@ -30,7 +30,9 @@ $ npm install
 $ cp .env.example .env
 $ php artisan key:generate
 ```
-and fill required env variables in the **.env** file.
+and fill required env variables in the **.env** file and run following command for filling database.
+
+`$ php artisan migrate --seed`
 
 ## Deploy for Development
 
