@@ -32,6 +32,7 @@ class UserController extends Controller
     public function profile()
     {
         return view('auth.profile', [
+            'title' => __('Profile'),
             'user' => Auth::user(),
             'countries' => Country::all()
         ]);
@@ -108,6 +109,7 @@ class UserController extends Controller
         //return $subscriptions;
 
         return view('pages.my-purchases', [
+            'title' => __('My Purchases'),
             'user' => $user,
             'issues' => $issues,
             'purchases_tr' => $purchases_tr,

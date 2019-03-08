@@ -14,8 +14,9 @@
 // Auth routes
 Auth::routes(['verify' => true]);
 
-// Homepage
+// Public Pages
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/contact', 'HomeController@contact')->name('contact');
 
 // Profile
 Route::get('/profile', 'Auth\UserController@profile')->name('profile');

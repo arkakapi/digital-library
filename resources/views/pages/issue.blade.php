@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('title')
-    {{ $issue->title }}
-@stop
-
 @section('content')
     <div class="container body">
         <div class="row justify-content-center">

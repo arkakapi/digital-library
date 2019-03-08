@@ -48,4 +48,16 @@ class HomeController extends Controller
         ]);
     }
 
+    /**
+     * Contact page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function contact()
+    {
+        return view('pages.contact', [
+            'title' => __('Contact')
+        ]);
+    }
+
 }

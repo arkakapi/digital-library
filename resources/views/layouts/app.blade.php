@@ -109,7 +109,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p class="text-muted">{{ trans('app.name') . ', ' . date('Y') }}</p>
+            <p class="text-muted">{{ trans('app.name') . ', ' . date('Y') }} - <a href="{{ route('contact') }}">{{ __('Contact') }}</a></p>
         </div>
     </footer>
 
