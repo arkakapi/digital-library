@@ -23,8 +23,8 @@ $ sudo apt install git
 ## Installation
 
 ```sh
-$ git clone https://github.com/arkakapi/subscription
-$ cd subscription
+$ git clone https://github.com/arkakapi/subscription-system
+$ cd subscription-system
 $ composer install
 $ npm install
 $ cp .env.example .env
@@ -47,7 +47,7 @@ See this document: [https://laravel.com/docs/5.8/deployment]()
 
 ## Contributing
 
-Thank you for considering contributing to the Arka Kapı Digital Subscription System! See [opened issues](https://github.com/arkakapi/subscription/issues).
+Thank you for considering contributing to the Arka Kapı Digital Subscription System! See [opened issues](https://github.com/arkakapi/subscription-system/issues).
 
 ## Security Vulnerabilities
 
