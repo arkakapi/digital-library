@@ -26,14 +26,18 @@
                                     </a>
                                     <hr>
                                     <i class="btn btn-warning">{{ __('Price') }}: {{ $issue->price . ' ' . ($issue->language == 'tr' ? __('TL') : __('USD')) }}</i>
-                                    <hr>
-                                    <a href="#" class="btn btn-success">{{ __('Buy') }} <span class="fa fa-angle-right"></span></a>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
                                     {!! $issue->preamble !!}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    PAYMENT FORM
                                 </div>
                             </div>
                             <hr>

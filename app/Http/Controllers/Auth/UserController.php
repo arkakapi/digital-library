@@ -106,8 +106,6 @@ class UserController extends Controller
             ]
         ];
 
-        //return $subscriptions;
-
         return view('pages.my-purchases', [
             'title' => __('My Purchases'),
             'user' => $user,
@@ -128,6 +126,5 @@ class UserController extends Controller
     {
         return 'subscription page';
     }
-
 
 }

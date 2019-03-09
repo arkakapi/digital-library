@@ -32,9 +32,9 @@
                                                         {{ ($subscription['language'] == 'tr' ? 'Sayı' : 'Issue') . ' ' . $potential_issue}}
                                                     </p>
                                                     @if(in_array($potential_issue, ${'purchases_'.$subscription['language']}))
-                                                        <a href="#" class="btn btn-info">{{ __('Read') }} <span class="fa fa-angle-right"></span></a>
+                                                        <a href="{{ route('issues.read', $issue->slug) }}" class="btn btn-info">{{ __('Read') }} <span class="fa fa-angle-right"></span></a>
                                                     @else
-                                                        <a href="#" class="btn btn-success">{{ __('Buy') }} <span class="fa fa-angle-right"></span></a>
+                                                        <a href="{{ route('issues.show', $issue->slug) }}" class="btn btn-success">{{ __('Buy') }} <span class="fa fa-angle-right"></span></a>
                                                     @endif
                                                 </div>
                                             </div>
@@ -46,7 +46,7 @@
                                                     @if(in_array($potential_issue, ${'purchases_'.$subscription['language']}))
                                                         <button class="btn btn-info" disabled>{{ __('Read') }} <span class="fa fa-angle-right"></span></button>
                                                     @else
-                                                        <a href="#" class="btn btn-success">{{ __('Buy') }} <span class="fa fa-angle-right"></span></a>
+                                                        <a href="{{ route('issues.show', $issue->slug) }}" class="btn btn-success">{{ __('Buy') }} <span class="fa fa-angle-right"></span></a>
                                                     @endif
                                                 </div>
                                             </div>

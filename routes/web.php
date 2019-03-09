@@ -25,6 +25,8 @@ Route::post('/profile', 'Auth\UserController@update');
 // Issues
 Route::get('/issues', 'HomeController@issues')->name('issues.index');
 Route::get('/issues/{issue}', 'HomeController@issue')->name('issues.show');
+Route::get('/issues/{issue}/read', 'Auth\IssueController@read')->name('issues.read');
+Route::get('/issues/{issue}/pdf', 'Auth\IssueController@pdf')->name('issues.pdf');
 
 // My Purchases
 Route::get('/my-purchases', 'Auth\UserController@myPurchases')->name('my-purchases');
