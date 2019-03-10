@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Country;
+use App\Events\UserAdded;
 use App\Helper\Datatables;
 use App\Issue;
 use App\User;
@@ -97,6 +98,9 @@ class UserController extends AdminController
 
         // Create user
         $user = User::create($data);
+
+        // Send Welcome Email
+        event(new UserAdded($user));
 
         // Return
         Session::flash('class', 'success');
