@@ -75,10 +75,9 @@ class UserController extends Controller
     /**
      * My purchases page.
      *
-     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function myPurchases(Request $request)
+    public function myPurchases()
     {
         $user = Auth::user();
         $issues = Issue::orderBy('issue', 'asc')->get();
@@ -114,17 +113,6 @@ class UserController extends Controller
             'purchases_en' => $purchases_en,
             'subscriptions' => $subscriptions
         ]);
-    }
-
-    /**
-     * Show payment form for subscription.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function subscribe(Request $request)
-    {
-        return 'subscription page';
     }
 
 }

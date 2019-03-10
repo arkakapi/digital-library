@@ -26,18 +26,18 @@
                                     </a>
                                     <hr>
                                     <i class="btn btn-warning">{{ __('Price') }}: {{ $issue->price . ' ' . ($issue->language == 'tr' ? __('TL') : __('USD')) }}</i>
+                                    <hr>
+                                    @if($issue->is_purchased)
+                                        <a href="{{ route('issues.read', $issue->slug) }}" class="btn btn-info">{{ __('Read') }} <span class="fa fa-angle-right"></span></a>
+                                    @else
+                                        <a href="{{ route('issues.buy', $issue->slug) }}" class="btn btn-success">{{ __('Buy') }} <span class="fa fa-angle-right"></span></a>
+                                    @endif
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
                                     {!! $issue->preamble !!}
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    PAYMENT FORM
                                 </div>
                             </div>
                             <hr>

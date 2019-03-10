@@ -25,6 +25,7 @@ Route::post('/profile', 'Auth\UserController@update');
 // Issues
 Route::get('/issues', 'HomeController@issues')->name('issues.index');
 Route::get('/issues/{issue}', 'HomeController@issue')->name('issues.show');
+Route::get('/issues/{issue}/buy', 'Auth\IssueController@buyForm')->name('issues.buy');
 Route::get('/issues/{issue}/read', 'Auth\IssueController@read')->name('issues.read');
 Route::get('/issues/{issue}/pdf', 'Auth\IssueController@pdf')->name('issues.pdf');
 
@@ -32,7 +33,7 @@ Route::get('/issues/{issue}/pdf', 'Auth\IssueController@pdf')->name('issues.pdf'
 Route::get('/my-purchases', 'Auth\UserController@myPurchases')->name('my-purchases');
 
 // Subscribe
-Route::get('/subscribe', 'Auth\UserController@subscribe')->name('subscribe');
+Route::get('/subscribe', 'Auth\IssueController@subscribeForm')->name('subscribe');
 
 // Admin Routes
 Route::prefix('admin')->name('admin.')->group(function () {

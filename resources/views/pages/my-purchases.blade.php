@@ -34,7 +34,7 @@
                                                     @if(in_array($potential_issue, ${'purchases_'.$subscription['language']}))
                                                         <a href="{{ route('issues.read', $issue->slug) }}" class="btn btn-info">{{ __('Read') }} <span class="fa fa-angle-right"></span></a>
                                                     @else
-                                                        <a href="{{ route('issues.show', $issue->slug) }}" class="btn btn-success">{{ __('Buy') }} <span class="fa fa-angle-right"></span></a>
+                                                        <a href="{{ route('issues.show', $issue->slug) }}" class="btn btn-success">{{ __('View') }} <span class="fa fa-angle-right"></span></a>
                                                     @endif
                                                 </div>
                                             </div>
@@ -44,9 +44,9 @@
                                                 <div class="card-body">
                                                     <p class="card-text text-center">{{ __('Not Yet Published') }}</p>
                                                     @if(in_array($potential_issue, ${'purchases_'.$subscription['language']}))
-                                                        <button class="btn btn-info" disabled>{{ __('Read') }} <span class="fa fa-angle-right"></span></button>
+                                                        <button class="btn btn-danger" disabled>{{ __('Read') }} <span class="fa fa-angle-right"></span></button>
                                                     @else
-                                                        <a href="{{ route('issues.show', $issue->slug) }}" class="btn btn-success">{{ __('Buy') }} <span class="fa fa-angle-right"></span></a>
+                                                        <button class="btn btn-danger" disabled>{{ __('Buy') }} <span class="fa fa-angle-right"></span></button>
                                                     @endif
                                                 </div>
                                             </div>

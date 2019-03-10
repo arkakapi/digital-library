@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Issue;
-use App\User;
-use http\Env\Response;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class IssueController extends Controller
 {
@@ -21,6 +18,37 @@ class IssueController extends Controller
     public function __construct()
     {
         $this->middleware('verified');
+    }
+
+    /**
+     * Show payment form for subscription.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function subscribeForm(Request $request)
+    {
+        return 'subscription page';
+    }
+
+    /**
+     * Buy issue page.
+     *
+     * @param  string $slug
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function buyForm($slug)
+    {
+        $issue = Issue::where('slug', $slug)->firstOrFail();
+
+        // Is user already bought this issue.
+        if ($this->check($issue))
+            return redirect()->route('issues.read', $slug);
+
+        return view('pages.issue-buy', [
+            'title' => $issue->title . ' ' . __('Buy'),
+            'issue' => $issue
+        ]);
     }
 
     /**
@@ -51,7 +79,7 @@ class IssueController extends Controller
         // If user not have access this to issue
         if (!$this->check($issue))
             abort(403);
-        
+
         return response()->file(storage_path('app/' . $slug . '.pdf'));
     }
 
@@ -61,7 +89,7 @@ class IssueController extends Controller
      * @param  Issue $issue
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    private function check($issue)
+    public function check($issue)
     {
         $user = Auth::user();
         $purchases_tr = json_decode($user->purchases_tr, true);

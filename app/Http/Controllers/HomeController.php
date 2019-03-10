@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Issue;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -42,6 +42,10 @@ class HomeController extends Controller
     public function issue($slug)
     {
         $issue = Issue::where('slug', $slug)->firstOrFail();
+
+        if (Auth::check())
+            $issue->is_purchased = app('App\Http\Controllers\Auth\IssueController')->check($issue);
+
         return view('pages.issue', [
             'title' => $issue->title,
             'issue' => $issue
