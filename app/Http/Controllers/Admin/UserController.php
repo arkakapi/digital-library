@@ -69,9 +69,40 @@ class UserController extends AdminController
      */
     public function create()
     {
-        Session::flash('class', 'warning');
-        Session::flash('message', 'Kullanıcı ekleme modülü aktif değil. Eklemek istediğiniz kişiyi Kayıt formuna yönlendirin, kendi kayıt olsun.');
-        return redirect()->route('admin.users.index');
+        return view('admin.users.create', [
+            'countries' => Country::all(),
+            'issues_all_count' => Issue::all('id')->count()
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email', 'unique:users'],
+            'role' => ['required', 'string', 'regex:(admin|subscriber)'],
+            'language' => ['required', 'string', 'regex:(tr|en)'],
+            'country_id' => ['required', 'exists:countries,id'],
+        ]);
+        $data = $request->all();
+
+        // Set purchases
+        $data['purchases_tr'] = json_encode($request->input('purchases_tr') ?: []);
+        $data['purchases_en'] = json_encode($request->input('purchases_en') ?: []);
+
+        // Create user
+        $user = User::create($data);
+
+        // Return
+        Session::flash('class', 'success');
+        Session::flash('message', 'Kullanıcı başarıyla eklendi!');
+
+        return redirect()->route('admin.users.edit', $user->id);
     }
 
     /**
@@ -114,10 +145,8 @@ class UserController extends AdminController
             unset($data['password']);
 
         // Set purchases
-        $purchases_tr = $request->input('purchases_tr') ? $request->input('purchases_tr') : [];
-        $purchases_en = $request->input('purchases_en') ? $request->input('purchases_en') : [];
-        $data['purchases_tr'] = json_encode($purchases_tr);
-        $data['purchases_en'] = json_encode($purchases_en);
+        $data['purchases_tr'] = json_encode($request->input('purchases_tr') ?: []);
+        $data['purchases_en'] = json_encode($request->input('purchases_en') ?: []);
 
         // Update user
         User::findOrFail($id)->fill($data)->save();

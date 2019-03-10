@@ -45,12 +45,6 @@
                 <span>Kullanıcılar</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="">
-                <i class="fas fa-fw fa-address-book"></i>
-                <span>Misafir Kullanıcılar</span>
-            </a>
-        </li>
         <li class="nav-item{{ getParentRouteName() == 'admin.issues' ? ' active' : '' }}">
             <a class="nav-link" href="{{ route('admin.issues.index') }}">
                 <i class="fas fa-fw fa-book-open"></i>

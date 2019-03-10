@@ -120,16 +120,10 @@ class IssueController extends AdminController
         Storage::disk('local')->put($slug . '.pdf', file_get_contents($pdf));
 
         // Create issue
-        try {
-            $data = $request->all();
-            $data['slug'] = $slug;
-            $data['title'] = $title;
-            Issue::create($data);
-        } catch (QueryException $e) {
-            Session::flash('class', 'danger');
-            Session::flash('message', 'Bir hata oluştu!: ' . $e->getMessage());
-            return redirect()->route('admin.issues.index');
-        }
+        $data = $request->all();
+        $data['slug'] = $slug;
+        $data['title'] = $title;
+        Issue::create($data);
 
         // Redirect Issues page
         Session::flash('class', 'success');
@@ -221,18 +215,11 @@ class IssueController extends AdminController
         }
 
         // Edit issue
-        try {
-            $data = $request->all();
-            $data['slug'] = $slug;
-            $data['title'] = $title;
-
-            $issue->fill($data);
-            $issue->save();
-        } catch (QueryException $e) {
-            Session::flash('class', 'danger');
-            Session::flash('message', 'Veritabanına eklenirken bir hata oluştu!: ' . $e->getMessage());
-            return redirect()->route('admin.issues.index');
-        }
+        $data = $request->all();
+        $data['slug'] = $slug;
+        $data['title'] = $title;
+        $issue->fill($data);
+        $issue->save();
 
         // Redirect Issues page
         Session::flash('class', 'success');

@@ -65,7 +65,7 @@
                             @endif
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="pdf"><b>Dijital Dergi</b> <i>PDF olmalı.</i></label>
+                            <label for="pdf"><b>Dijital Dergi</b> <i>PDF olmalı.</i> <a href="{{ route('issues.pdf', $issue->slug) }}" target="_blank">{{ $issue->slug }}.pdf</a></label>
                             <input id="pdf" name="pdf" type="file" class="form-control-file{{ $errors->has('pdf') ? ' is-invalid' : '' }}">
                             @if ($errors->has('pdf'))
                                 <div class="invalid-feedback">

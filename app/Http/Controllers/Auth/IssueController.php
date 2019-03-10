@@ -95,7 +95,7 @@ class IssueController extends Controller
         $purchases_tr = json_decode($user->purchases_tr, true);
         $purchases_en = json_decode($user->purchases_en, true);
 
-        return in_array($issue->id, ${'purchases_' . $issue->language});
+        return $user->role == 'admin' ? true : in_array($issue->id, ${'purchases_' . $issue->language});
     }
 
 }
