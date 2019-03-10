@@ -8,11 +8,30 @@
                     <div class="card-header">{{ __('Contact') }}</div>
 
                     <div class="card-body">
-                        <h3>Contributing</h3>
-                        <p>Thank you for considering contributing to the Arka Kapı Digital Subscription System! See <a href="https://github.com/arkakapi/subscription-system/issues">opened issues</a>.</p>
-                        <h3>Security Vulnerabilities</h3>
-                        <p>If you discover a security vulnerability within Arka Kapı Digital Subscription System, please send an e-mail to Omer Citak via <a href="mailto:omer@arkakapidergi.com">omer@arkakapidergi.com</a>. All security vulnerabilities will be promptly addressed.</p>
-                        <h3>Any Problem</h3>
+                        <h3>{{ __('Contributing') }}</h3>
+                        <p>
+                            @lang(
+                                'Thank you for considering contributing to the :app_name! See <a href=":link" target="_blank">opened issues</a>.',
+                                [
+                                    'app_name' => trans('app.name'),
+                                    'link' => 'https://github.com/arkakapi/subscription-system/issues'
+                                ]
+                            )
+                        </p>
+                        <h3>{{ __('Security Vulnerabilities') }}</h3>
+                        <p>
+                            @lang(
+                                'If you discover a security vulnerability within :app_name, please send an e-mail to <a href=":link" target="_blank">:name</a>, <a href="mailto::email">:email</a>.',
+                                [
+                                    'app_name' => trans('app.name'),
+                                    'link' => 'https://twitter.com/om3rcitak',
+                                    'name' => 'Omer Citak',
+                                    'email' => 'omer@arkakapidergi.com'
+                                ]
+                            )
+                            {{ __('All security vulnerabilities will be promptly addressed.') }}
+                        </p>
+                        <h3>{{ __('Any Problem') }}</h3>
                         <p><a href="mailto:omer@arkakapidergi.com">omer@arkakapidergi.com</a></p>
                     </div>
 

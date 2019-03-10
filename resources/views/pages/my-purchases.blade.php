@@ -34,7 +34,7 @@
                                                     @if(in_array($potential_issue, ${'purchases_'.$subscription['language']}))
                                                         <a href="{{ route('issues.read', $issue->slug) }}" class="btn btn-info">{{ __('Read') }} <span class="fa fa-angle-right"></span></a>
                                                     @else
-                                                        <a href="{{ route('issues.show', $issue->slug) }}" class="btn btn-success">{{ __('View') }} <span class="fa fa-angle-right"></span></a>
+                                                        <a href="{{ route('issues.show', $issue->slug) }}" class="btn btn-success">{{ __('Buy') }} <span class="fa fa-angle-right"></span></a>
                                                     @endif
                                                 </div>
                                             </div>
