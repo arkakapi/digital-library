@@ -87,6 +87,7 @@ class UserController extends AdminController
         $request->validate([
             'email' => ['required', 'email', 'unique:users'],
             'role' => ['required', 'string', 'regex:(admin|subscriber)'],
+            'status' => ['required', 'integer', 'min:0', 'max:1'],
             'language' => ['required', 'string', 'regex:(tr|en)'],
             'country_id' => ['required', 'exists:countries,id'],
         ]);

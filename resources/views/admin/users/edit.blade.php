@@ -82,11 +82,23 @@
                                 </div>
                             @endif
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-2 mb-3">
                             <label for="role"><b>Yetki</b></label>
                             <select id="role" name="role" class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" required>
                                 <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>admin</option>
                                 <option value="subscriber" {{ $user->role == 'subscriber' ? 'selected' : '' }}>subscriber</option>
+                            </select>
+                            @if ($errors->has('role'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('role') }}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="status"><b>Status?</b></label>
+                            <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}" required>
+                                <option value="1" {{ $user->status == true ? 'selected' : '' }}>active</option>
+                                <option value="0" {{ $user->status == false ? 'selected' : '' }}>banned</option>
                             </select>
                             @if ($errors->has('role'))
                                 <div class="invalid-feedback">

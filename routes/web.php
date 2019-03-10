@@ -13,6 +13,7 @@
 
 // Auth routes
 Auth::routes(['verify' => true]);
+Route::get('/banned', 'Auth\UserController@banned')->name('banned');
 
 // Public Pages
 Route::get('/', 'HomeController@index')->name('home');

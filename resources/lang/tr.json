@@ -81,5 +81,8 @@
     "Security Vulnerabilities": "Güvenlik Açıkları",
     "If you discover a security vulnerability within :app_name, please send an e-mail to <a href=\":link\" target=\"_blank\">:name</a>, <a href=\"mailto::email\">:email</a>.": ":app_name'nde nde bir güvenlik açığı bulursanız, lütfen <a href=\":link\" target=\"_blank\">:name</a>'a (<a href=\"mailto::email\">:email</a>) eposta gönderin.",
     "All security vulnerabilities will be promptly addressed.": "Tüm güvenlik açıkları derhal ele alınacaktır.",
-    "Any Problem": "Herhangi Bir Problem'de"
+    "Any Problem": "Herhangi Bir Problem'de",
+    "Account Suspended": "Hesap Askıya Alındı",
+    "Your account has been suspended because it is used by more than one person.": "Hesabınız birden fazla kişi tarafından kullanıldığı için askıya alındı.",
+    "If you think there is a mistake, please contact us.": "Bir yanlışlık olduğunu düşünüyorsanız lütfen bizimle iletişime geçin."
 }

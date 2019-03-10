@@ -15,6 +15,7 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'omer citak 1',
                 'email' => 'mail@omercitak.com',
+                'status' => true,
                 'email_verified_at' => '2019-03-07 00:00:00',
                 'password' => Hash::make('1234'),
                 'country_id' => 220,
@@ -31,6 +32,7 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'omer citak 2',
                 'email' => 'msn@omercitak.net',
+                'status' => false,
                 'email_verified_at' => '2019-03-07 00:00:00',
                 'password' => Hash::make('1234'),
                 'country_id' => 221,

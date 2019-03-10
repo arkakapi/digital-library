@@ -25,6 +25,16 @@ class UserController extends Controller
     }
 
     /**
+     * Ban notice page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function banned()
+    {
+        return view('auth.banned');
+    }
+
+    /**
      * Show the profile.
      *
      * @return \Illuminate\Http\Response
