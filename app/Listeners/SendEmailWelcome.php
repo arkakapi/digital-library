@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\UserAdded;
 use Illuminate\Mail\Message;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Password;
 
 class SendEmailWelcome
@@ -26,6 +27,7 @@ class SendEmailWelcome
      */
     public function handle(UserAdded $event)
     {
+        App::setLocale($event->user->language);
         Password::sendResetLink(['email' => $event->user->email], function (Message $message) {
             $message->subject($this->getEmailSubject());
         });
