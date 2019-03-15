@@ -43,9 +43,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', 'Admin\HomeController@index')->name('dashboard');
 
     // Users
-    Route::resource('/users', 'Admin\UserController');
+    Route::resource('/users', 'Admin\UserController')->except([
+        'show', 'destroy'
+    ]);
 
     // Issues
-    Route::resource('/issues', 'Admin\IssueController');
+    Route::resource('/issues', 'Admin\IssueController')->except([
+        'show', 'destroy'
+    ]);
 
 });

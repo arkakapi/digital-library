@@ -53,14 +53,14 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="">
-                <i class="fas fa-fw fa-list"></i>
-                <span>Satın Almalar</span>
+                <i class="fas fa-fw fa-envelope"></i>
+                <span>Eposta Gönderimi</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="">
-                <i class="fas fa-fw fa-envelope"></i>
-                <span>Eposta Gönderimi</span>
+                <i class="fas fa-fw fa-list"></i>
+                <span>Satın Alma Logları</span>
             </a>
         </li>
         <li class="nav-item">
