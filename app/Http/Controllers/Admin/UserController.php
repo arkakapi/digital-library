@@ -100,7 +100,7 @@ class UserController extends AdminController
         // Create user
         $user = User::create($data);
 
-        // Send Welcome Email
+        // Trigger events
         event(new UserAdded($user));
 
         // Return

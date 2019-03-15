@@ -33,7 +33,15 @@
                                                 <img class="card-img-right" src="{{ Storage::disk('public')->url($issue->slug . '.jpg') }}" alt="{{ $issue->title }}" title="{{ $issue->title }}" data-holder-rendered="true">
                                             </a>
                                             <hr>
-                                            <i class="btn btn-warning">{{ __('Price') }}: {{ $issue->price . ' ' . ($issue->language == 'tr' ? __('TL') : __('USD')) }}</i>
+                                            <i class="btn btn-warning">
+                                                {{ __('Price') }}:
+                                                @if($issue->price > 0)
+                                                    {{ $issue->price }}
+                                                    {{ $issue->language == 'tr' ? __('TL') : __('USD') }}
+                                                @else
+                                                    {{ __('FREE!') }}
+                                                @endif
+                                            </i>
                                             <hr>
                                             <a href="{{ route('issues.show', $issue->slug) }}" class="btn btn-success">{{ __('See Content') }} <span class="fa fa-angle-right"></span></a>
                                             <hr>
