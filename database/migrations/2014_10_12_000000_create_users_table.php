@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->boolean('status')->default(true);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('country_id')->nullable();
+            $table->integer('country_id')->default(1);
             $table->string('job')->nullable();
             $table->string('role');
             $table->string('language', 2);
