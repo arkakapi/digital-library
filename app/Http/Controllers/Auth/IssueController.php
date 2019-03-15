@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Issue;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,6 +42,10 @@ class IssueController extends Controller
     public function buyForm($slug)
     {
         $issue = Issue::where('slug', $slug)->firstOrFail();
+
+        // If issue is free, auto buy.
+        if ($issue->price == 0)
+            $this->assignIssueToUser($issue);
 
         // Is user already bought this issue.
         if ($this->check($issue))
@@ -97,6 +102,25 @@ class IssueController extends Controller
         $purchases_en = json_decode($user->purchases_en, true);
 
         return $user->role == 'admin' ? true : in_array($issue->id, ${'purchases_' . $issue->language});
+    }
+
+    /**
+     * Assign issue to user.
+     *
+     * @param  Issue $issue
+     */
+    private function assignIssueToUser($issue)
+    {
+        $user = Auth::user();
+        $purchases_tr = json_decode($user->purchases_tr, true);
+        $purchases_en = json_decode($user->purchases_en, true);
+
+        if (!$this->check($issue))
+            ${'purchases_' . $issue->language}[] = $issue->id;
+
+        $user->purchases_tr = json_encode($purchases_tr);
+        $user->purchases_en = json_encode($purchases_en);
+        $user->save();
     }
 
 }

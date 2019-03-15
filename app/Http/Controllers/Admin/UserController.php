@@ -149,9 +149,17 @@ class UserController extends AdminController
         if (!$request->input('password'))
             unset($data['password']);
 
-        // Set purchases
-        $data['purchases_tr'] = json_encode($request->input('purchases_tr') ?: []);
-        $data['purchases_en'] = json_encode($request->input('purchases_en') ?: []);
+        // Set and map TR purchases
+        $purchases_tr = array_map(function ($value) {
+            return (int)$value;
+        }, $request->input('purchases_tr') ?: []);
+        $data['purchases_tr'] = json_encode($purchases_tr);
+
+        // Set and map EN purchases
+        $purchases_en = array_map(function ($value) {
+            return (int)$value;
+        }, $request->input('purchases_en') ?: []);
+        $data['purchases_en'] = json_encode($purchases_en);
 
         // Update user
         User::findOrFail($id)->fill($data)->save();
