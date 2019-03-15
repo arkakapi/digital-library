@@ -32,7 +32,13 @@
                             {{ __('All security vulnerabilities will be promptly addressed.') }}
                         </p>
                         <h3>{{ __('Any Problem') }}</h3>
-                        <p><a href="mailto:omer@arkakapidergi.com">omer@arkakapidergi.com</a></p>
+                        <p>
+                            @if(App::getLocale() == 'tr')
+                                <a href="mailto:abone@arkakapidergi.com">abone@arkakapidergi.com</a>
+                            @else
+                                <a href="mailto:subscription@arkakapimag.com">subscription@arkakapimag.com</a>
+                            @endif
+                        </p>
                     </div>
 
                 </div>
