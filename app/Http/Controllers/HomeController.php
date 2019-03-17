@@ -3,10 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Issue;
+use App\Services\IssueService;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+
+    protected $issueService;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(IssueService $issueService)
+    {
+        $this->issueService = $issueService;
+    }
 
     /**
      * Show the application dashboard.
@@ -42,9 +55,6 @@ class HomeController extends Controller
     public function issue($slug)
     {
         $issue = Issue::where('slug', $slug)->firstOrFail();
-
-        if (Auth::check())
-            $issue->is_purchased = app('App\Http\Controllers\Auth\IssueController')->check($issue);
 
         return view('pages.issue', [
             'title' => $issue->title,

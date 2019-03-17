@@ -3,23 +3,27 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Issue;
-use App\Http\Controllers\Controller;
 use App\User;
+use App\Http\Controllers\Controller;
+use App\Services\IssueService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class IssueController extends Controller
 {
 
+    protected $issueService;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(IssueService $issueService)
     {
         $this->middleware('verified');
         $this->middleware('is_banned');
+        $this->issueService = $issueService;
     }
 
     /**
@@ -45,10 +49,10 @@ class IssueController extends Controller
 
         // If issue is free, auto buy.
         if ($issue->price == 0)
-            $this->assignIssueToUser($issue);
+            $this->issueService->assignIssueToUser(Auth::user(), $issue);
 
         // Is user already bought this issue.
-        if ($this->check($issue))
+        if ($issue->is_purchased)
             return redirect()->route('issues.read', $slug);
 
         return view('pages.issue-buy', [
@@ -83,44 +87,10 @@ class IssueController extends Controller
         $issue = Issue::where('slug', $slug)->firstOrFail();
 
         // If user not have access this to issue
-        if (!$this->check($issue))
+        if (!Auth::user()->is_admin && !$issue->is_purchased)
             abort(403);
 
         return response()->file(storage_path('app/' . $slug . '.pdf'));
-    }
-
-    /**
-     * Check user-issue relation.
-     *
-     * @param  Issue $issue
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function check($issue)
-    {
-        $user = Auth::user();
-        $purchases_tr = json_decode($user->purchases_tr, true);
-        $purchases_en = json_decode($user->purchases_en, true);
-
-        return $user->is_admin ?: in_array($issue->id, ${'purchases_' . $issue->language});
-    }
-
-    /**
-     * Assign issue to user.
-     *
-     * @param  Issue $issue
-     */
-    private function assignIssueToUser($issue)
-    {
-        $user = Auth::user();
-        $purchases_tr = json_decode($user->purchases_tr, true);
-        $purchases_en = json_decode($user->purchases_en, true);
-
-        if (!$this->check($issue))
-            ${'purchases_' . $issue->language}[] = $issue->id;
-
-        $user->purchases_tr = json_encode($purchases_tr);
-        $user->purchases_en = json_encode($purchases_en);
-        $user->save();
     }
 
 }
