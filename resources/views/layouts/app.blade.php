@@ -91,7 +91,7 @@
                                 </form>
                             </div>
 
-                        @if(Auth::user()->role == 'admin')
+                        @if(Auth::user()->is_admin)
                             <li class="nav-item">
                                 <a class="nav-link" style="color: #f00;" href="{{ route('admin.dashboard') }}">{{ __('Admin Panel') }}</a>
                             </li>

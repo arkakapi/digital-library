@@ -19,7 +19,7 @@ class IssueController extends Controller
     public function __construct()
     {
         $this->middleware('verified');
-        $this->middleware('banned');
+        $this->middleware('is_banned');
     }
 
     /**
@@ -101,7 +101,7 @@ class IssueController extends Controller
         $purchases_tr = json_decode($user->purchases_tr, true);
         $purchases_en = json_decode($user->purchases_en, true);
 
-        return $user->role == 'admin' ? true : in_array($issue->id, ${'purchases_' . $issue->language});
+        return $user->is_admin ?: in_array($issue->id, ${'purchases_' . $issue->language});
     }
 
     /**

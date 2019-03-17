@@ -83,26 +83,26 @@
                             @endif
                         </div>
                         <div class="col-md-2 mb-3">
-                            <label for="role"><b>Yetki</b></label>
-                            <select id="role" name="role" class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" required>
-                                <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>admin</option>
-                                <option value="subscriber" {{ $user->role == 'subscriber' ? 'selected' : '' }}>subscriber</option>
+                            <label for="is_admin"><b>Admin?</b></label>
+                            <select id="is_admin" name="is_admin" class="form-control{{ $errors->has('is_admin') ? ' is-invalid' : '' }}" required>
+                                <option value="1" {{ $user->is_admin ? 'selected' : '' }}>evet</option>
+                                <option value="0" {{ $user->is_admin ? '' : 'selected' }}>hayır</option>
                             </select>
-                            @if ($errors->has('role'))
+                            @if ($errors->has('is_admin'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('role') }}
+                                    {{ $errors->first('is_admin') }}
                                 </div>
                             @endif
                         </div>
                         <div class="col-md-2 mb-3">
-                            <label for="status"><b>Status?</b></label>
-                            <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}" required>
-                                <option value="1" {{ $user->status == true ? 'selected' : '' }}>active</option>
-                                <option value="0" {{ $user->status == false ? 'selected' : '' }}>banned</option>
+                            <label for="is_banned"><b>Ban Durumu</b></label>
+                            <select id="is_banned" name="is_banned" class="form-control{{ $errors->has('is_banned') ? ' is-invalid' : '' }}" required>
+                                <option value="0" {{ $user->is_banned ? '' : 'selected' }}>temiz</option>
+                                <option value="1" {{ $user->is_banned ? 'selected' : '' }}>banlı</option>
                             </select>
-                            @if ($errors->has('role'))
+                            @if ($errors->has('is_banned'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('role') }}
+                                    {{ $errors->first('is_banned') }}
                                 </div>
                             @endif
                         </div>

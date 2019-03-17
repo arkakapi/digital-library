@@ -17,12 +17,12 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('email')->unique();
-            $table->boolean('status')->default(true);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('country_id')->default(1);
             $table->string('job')->nullable();
-            $table->string('role');
+            $table->boolean('is_banned')->default(false);
+            $table->boolean('is_admin')->default(false);
             $table->string('language', 2);
             $table->longText('purchases_tr')->default('[]');
             $table->longText('purchases_en')->default('[]');

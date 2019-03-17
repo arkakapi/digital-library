@@ -33,15 +33,14 @@
                             @endif
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="role"><b>Yetki</b></label>
-                            <select id="role" name="role" class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" required>
-                                <option value="">-- Seçiniz --</option>
-                                <option value="admin">admin</option>
-                                <option value="subscriber">subscriber</option>
+                            <label for="is_admin"><b>Admin?</b></label>
+                            <select id="is_admin" name="is_admin" class="form-control{{ $errors->has('is_admin') ? ' is-invalid' : '' }}" required>
+                                <option value="0">hayır</option>
+                                <option value="1">evet</option>
                             </select>
-                            @if ($errors->has('role'))
+                            @if ($errors->has('is_admin'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('role') }}
+                                    {{ $errors->first('is_admin') }}
                                 </div>
                             @endif
                         </div>

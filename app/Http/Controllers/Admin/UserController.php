@@ -24,7 +24,7 @@ class UserController extends AdminController
         if (!isset($_GET['json']))
             return view('admin.datatables', [
                 'title' => 'Kullanıcılar',
-                'thead' => ['id', 'Yetki', 'Adı-Soyadı', 'Eposta', 'Ülke', 'Dil', 'Meslek', 'Düzenle'],
+                'thead' => ['id', 'Admin?', 'Ban Durumu', 'Adı - Soyadı', 'Eposta', 'Ülke', 'Dil', 'Meslek', 'Düzenle'],
             ]);
 
         $table = 'users';
@@ -32,28 +32,35 @@ class UserController extends AdminController
         $columns = [
             ['db' => 'id', 'dt' => 0],
             [
-                'db' => 'role',
+                'db' => 'is_admin',
                 'dt' => 1,
                 'formatter' => function ($data) {
-                    return '<span class="btn btn-sm btn-' . ($data == 'admin' ? 'danger' : 'primary') . '">' . $data . '</span>';
+                    return '<span class="btn btn-sm btn-' . ($data ? 'success' : 'danger') . '" > ' . ($data ? 'evet' : 'hayır') . ' </span>';
                 }
             ],
-            ['db' => 'name', 'dt' => 2],
-            ['db' => 'email', 'dt' => 3],
+            [
+                'db' => 'is_banned',
+                'dt' => 2,
+                'formatter' => function ($data) {
+                    return '<span class="btn btn-sm btn-' . ($data ? 'danger' : 'success') . '" > ' . ($data ? 'banlı' : 'temiz') . ' </span>';
+                }
+            ],
+            ['db' => 'name', 'dt' => 3],
+            ['db' => 'email', 'dt' => 4],
             [
                 'db' => 'country_id',
-                'dt' => 4,
+                'dt' => 5,
                 'formatter' => function ($data) {
                     return Country::find($data)->name;
                 }
             ],
-            ['db' => 'language', 'dt' => 5],
-            ['db' => 'job', 'dt' => 6],
+            ['db' => 'language', 'dt' => 6],
+            ['db' => 'job', 'dt' => 7],
             [
                 'db' => 'id',
-                'dt' => 7,
+                'dt' => 8,
                 'formatter' => function ($data) {
-                    return '<a href="' . route('admin.users.edit', $data) . '" class="btn btn-sm btn-primary">Düzenle</a>';
+                    return '<a href = "' . route('admin.users.edit', $data) . '" class="btn btn-sm btn-primary"> Düzenle</a>';
                 }
             ]
         ];
@@ -86,16 +93,23 @@ class UserController extends AdminController
     {
         $request->validate([
             'email' => ['required', 'email', 'unique:users'],
-            'role' => ['required', 'string', 'regex:(admin|subscriber)'],
-            'status' => ['required', 'integer', 'min:0', 'max:1'],
+            'is_admin' => ['required', 'boolean'],
             'language' => ['required', 'string', 'regex:(tr|en)'],
             'country_id' => ['required', 'exists:countries,id'],
         ]);
         $data = $request->all();
 
-        // Set purchases
-        $data['purchases_tr'] = json_encode($request->input('purchases_tr') ?: []);
-        $data['purchases_en'] = json_encode($request->input('purchases_en') ?: []);
+        // Set and map TR purchases
+        $purchases_tr = array_map(function ($value) {
+            return (int)$value;
+        }, $request->input('purchases_tr') ?: []);
+        $data['purchases_tr'] = json_encode($purchases_tr);
+
+        // Set and map EN purchases
+        $purchases_en = array_map(function ($value) {
+            return (int)$value;
+        }, $request->input('purchases_en') ?: []);
+        $data['purchases_en'] = json_encode($purchases_en);
 
         // Create user
         $user = User::create($data);
@@ -138,7 +152,8 @@ class UserController extends AdminController
     public function update(Request $request, $id)
     {
         $request->validate([
-            'role' => ['required', 'string', 'regex:(admin|subscriber)'],
+            'is_admin' => ['required', 'boolean'],
+            'is_banned' => ['required', 'boolean'],
             'language' => ['required', 'string', 'regex:(tr|en)'],
             'country_id' => ['required', 'exists:countries,id'],
         ]);

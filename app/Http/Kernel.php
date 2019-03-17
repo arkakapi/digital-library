@@ -25,8 +25,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'admin' => \App\Http\Middleware\IsAdmin::class,
-        'banned' => \App\Http\Middleware\IsBanned::class,
+        'is_admin' => \App\Http\Middleware\IsAdmin::class,
+        'is_banned' => \App\Http\Middleware\IsBanned::class,
     ];
 
     /**

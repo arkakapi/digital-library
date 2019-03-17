@@ -18,7 +18,8 @@ class AdminController extends BaseController
      */
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('auth');
+        $this->middleware('is_admin');
     }
 
 }
