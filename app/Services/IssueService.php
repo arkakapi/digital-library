@@ -10,6 +10,7 @@ class IssueService
     /**
      * Assign issue to user.
      *
+     * @param  User $user
      * @param  Issue $issue
      */
     public function assignIssueToUser(User $user, Issue $issue)

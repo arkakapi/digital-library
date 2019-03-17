@@ -14,6 +14,8 @@ class HomeController extends Controller
     /**
      * Create a new controller instance.
      *
+     * @param IssueService $issueService
+     *
      * @return void
      */
     public function __construct(IssueService $issueService)

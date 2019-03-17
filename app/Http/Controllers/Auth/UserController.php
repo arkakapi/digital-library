@@ -6,6 +6,7 @@ use App\Country;
 use App\Issue;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Services\IssueService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
@@ -14,14 +15,19 @@ use Illuminate\Support\Facades\Session;
 class UserController extends Controller
 {
 
+    protected $issueService;
+
     /**
      * Create a new controller instance.
      *
+     * @param IssueService $issueService
+     *
      * @return void
      */
-    public function __construct()
+    public function __construct(IssueService $issueService)
     {
         $this->middleware('verified');
+        $this->issueService = $issueService;
     }
 
     /**
