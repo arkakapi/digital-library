@@ -7,7 +7,13 @@
             <img src="{{ asset('images/logo.png') }}" class="img-fluid" alt="">
             <h1 class="jumbotron-heading">@lang('app.name')</h1>
             <p class="lead text-muted">
-                {{ __('You can purchase and download the Turkish or English versions of the Arka Kapı Magazine via the Arka Kapı Magazine Digital Subscription System.') }}
+                {{ __('') }}
+                @lang(
+                    "You can purchase and download the Turkish or English versions of the Arka Kapı Magazine via the :app_name.",
+                    [
+                        'app_name' => trans('app.name')
+                    ]
+                )
                 {{ __('Or you can automatically purchase any number that will be released by starting a subscription.') }}
             </p>
             <p class="lead text-muted">
