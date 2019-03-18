@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Issue;
-use App\User;
 use App\Http\Controllers\Controller;
 use App\Services\IssueService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class IssueController extends Controller
@@ -29,17 +27,6 @@ class IssueController extends Controller
     }
 
     /**
-     * Show payment form for subscription.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function subscribeForm(Request $request)
-    {
-        return 'subscription page';
-    }
-
-    /**
      * Buy issue page.
      *
      * @param  string $slug
@@ -55,9 +42,9 @@ class IssueController extends Controller
 
         // Is user already bought this issue.
         if ($issue->is_purchased)
-            return redirect()->route('issues.read', $slug);
+            return redirect()->route('issue.read', $slug);
 
-        return view('pages.issue-buy', [
+        return view('issue.buy', [
             'title' => $issue->title . ' ' . __('Buy'),
             'issue' => $issue
         ]);
@@ -72,7 +59,7 @@ class IssueController extends Controller
     public function read($slug)
     {
         $issue = Issue::where('slug', $slug)->firstOrFail();
-        return view('pages.issue-read', [
+        return view('issue.read', [
             'title' => $issue->title,
             'issue' => $issue
         ]);

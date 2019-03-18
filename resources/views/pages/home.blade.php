@@ -14,7 +14,7 @@
                         'app_name' => trans('app.name')
                     ]
                 )
-                {{ __('Or you can automatically purchase any number that will be released by starting a subscription.') }}
+                {{ __('Or you can automatically purchase any number that will be released by buying a package.') }}
             </p>
             <p class="lead text-muted">
                 @lang(
@@ -29,8 +29,8 @@
                 <a href="{{ $link }}" target="_blank">{{ $link }}</a>
             </p>
             <p>
-                <a href="{{ route('subscribe') }}" class="btn btn-primary my-2">{{ __('Subscribe') }}</a>
-                <a href="{{ route('issues.index') }}" class="btn btn-secondary my-2">{{ __('Buy a Issue') }}</a>
+                <a href="{{ route('packages.index') }}" class="btn btn-primary my-2">{{ __('See Packages') }}</a>
+                <a href="{{ route('issues.index') }}" class="btn btn-secondary my-2">{{ __('See Issues') }}</a>
             </p>
         </div>
     </section>
