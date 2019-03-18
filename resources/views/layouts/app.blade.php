@@ -105,7 +105,18 @@
     </nav>
 
     <main role="main">
+
+        <div class="container">
+            @if(Session::has('message'))
+                <div class="alert alert-{{ Session::get('class') }}" role="alert">
+                    {{ __(Session::get('message')) }}
+                </div>
+            @endif
+        </div>
+
+
         @yield('content')
+
     </main>
 
     <footer class="footer">
