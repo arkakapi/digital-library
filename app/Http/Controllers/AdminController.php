@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\Admin\IssueService;
+use App\Services\Admin\PackageService;
 use App\Services\Admin\UserService;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -15,22 +16,25 @@ class AdminController extends BaseController
 
     protected $userService;
     protected $issueService;
+    protected $packageService;
 
     /**
      * Create a new controller instance.
      *
      * @param UserService $userService
      * @param IssueService $issueService
+     * @param PackageService $packageService
      *
      * @return void
      */
-    public function __construct(UserService $userService, IssueService $issueService)
+    public function __construct(UserService $userService, IssueService $issueService, PackageService $packageService)
     {
         $this->middleware('auth');
         $this->middleware('is_admin');
 
         $this->userService = $userService;
         $this->issueService = $issueService;
+        $this->packageService = $packageService;
     }
 
 }

@@ -2,19 +2,30 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helper\Datatables;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AdminController;
 
-class PackageController extends Controller
+class PackageController extends AdminController
 {
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
+     *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if (!isset($_GET['json']))
+            return view('admin.datatables', [
+                'title' => 'Paketler',
+                'thead' => ['id', 'Başlık', 'Dil', 'Fiyat', 'Sayılar', 'Düzenle'],
+            ]);
+
+        return response()->json(
+            Datatables::simple($request->all(), 'packages', 'id', $this->packageService->getDatatableColumns())
+        );
     }
 
     /**
@@ -30,7 +41,7 @@ class PackageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +52,7 @@ class PackageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -52,8 +63,8 @@ class PackageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
