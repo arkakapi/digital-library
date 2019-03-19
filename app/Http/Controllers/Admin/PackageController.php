@@ -17,15 +17,15 @@ class PackageController extends AdminController
      */
     public function index(Request $request)
     {
-        if (!isset($_GET['json']))
-            return view('admin.datatables', [
-                'title' => 'Paketler',
-                'thead' => ['id', 'Başlık', 'Dil', 'Fiyat', 'Sayılar', 'Düzenle'],
-            ]);
+        if ($request->get('json'))
+            return response()->json(
+                Datatables::simple($request->all(), 'packages', 'id', $this->packageService->getDatatableColumns())
+            );
 
-        return response()->json(
-            Datatables::simple($request->all(), 'packages', 'id', $this->packageService->getDatatableColumns())
-        );
+        return view('admin.datatables', [
+            'title' => 'Paketler',
+            'thead' => ['id', 'Başlık', 'Dil', 'Fiyat', 'Sayılar', 'Düzenle'],
+        ]);
     }
 
     /**

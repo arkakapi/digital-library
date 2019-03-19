@@ -21,15 +21,15 @@ class IssueController extends AdminController
      */
     public function index(Request $request)
     {
-        if (!isset($_GET['json']))
-            return view('admin.datatables', [
-                'title' => 'Sayılar',
-                'thead' => ['id', 'Başlık', 'Sayı', 'Fiyat', 'Ay/Yıl', 'Dil', 'Kapak', 'Düzenle'],
-            ]);
+        if ($request->get('json'))
+            return response()->json(
+                Datatables::simple($request->all(), 'issues', 'id', $this->issueService->getDatatableColumns())
+            );
 
-        return response()->json(
-            Datatables::simple($request->all(), 'issues', 'id', $this->issueService->getDatatableColumns())
-        );
+        return view('admin.datatables', [
+            'title' => 'Sayılar',
+            'thead' => ['id', 'Başlık', 'Sayı', 'Fiyat', 'Ay/Yıl', 'Dil', 'Kapak', 'Düzenle'],
+        ]);
     }
 
     /**

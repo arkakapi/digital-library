@@ -31,7 +31,7 @@
             $('#datatables').DataTable({
                 "processing": true,
                 "serverSide": true,
-                "ajax": "?json",
+                "ajax": "?json=true",
                 "order": [[0, "desc"]],
                 "language": {
                     "sDecimal": ",",

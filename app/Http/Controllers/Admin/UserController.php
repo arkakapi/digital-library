@@ -23,15 +23,15 @@ class UserController extends AdminController
      */
     public function index(Request $request)
     {
-        if (!isset($_GET['json']))
-            return view('admin.datatables', [
-                'title' => 'Kullanıcılar',
-                'thead' => ['id', 'Admin?', 'Ban Durumu', 'Adı - Soyadı', 'Eposta', 'Ülke', 'Dil', 'Meslek', 'Düzenle'],
-            ]);
+        if ($request->get('json'))
+            return response()->json(
+                Datatables::simple($request->all(), 'users', 'id', $this->userService->getDatatableColumns())
+            );
 
-        return response()->json(
-            Datatables::simple($request->all(), 'users', 'id', $this->userService->getDatatableColumns())
-        );
+        return view('admin.datatables', [
+            'title' => 'Kullanıcılar',
+            'thead' => ['id', 'Admin?', 'Ban Durumu', 'Adı - Soyadı', 'Eposta', 'Ülke', 'Dil', 'Meslek', 'Düzenle'],
+        ]);
     }
 
     /**
