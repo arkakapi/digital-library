@@ -56,7 +56,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Mutator for purchases_tr.
      *
-     * @param  string $value
+     * @param  array $value
      */
     public function setPurchasesTrAttribute($value)
     {
@@ -77,7 +77,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Mutator for purchases_en.
      *
-     * @param  string $value
+     * @param  array $value
      */
     public function setPurchasesEnAttribute($value)
     {

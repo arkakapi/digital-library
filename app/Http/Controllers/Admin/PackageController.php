@@ -38,7 +38,9 @@ class PackageController extends AdminController
      */
     public function create()
     {
-
+        return view('admin.packages.create', [
+            'issues_all_count' => Issue::all('id')->count()
+        ]);
     }
 
     /**
@@ -49,7 +51,26 @@ class PackageController extends AdminController
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => ['required', 'string'],
+            'price' => ['required', 'between:0,99.99'],
+            'language' => ['required', 'string', 'regex:(tr|en)'],
+            'issues' => ['required', 'array'],
+        ]);
+
+        $data = $request->all();
+
+        // Create slug
+        $data['slug'] = str_slug($request->input('title'), '-', 'tr');
+
+        // Create package
+        $package = Package::create($data);
+
+        // Return
+        Session::flash('class', 'success');
+        Session::flash('message', 'Paket başarıyla eklendi!');
+
+        return redirect()->route('admin.packages.edit', $package->id);
     }
 
     /**
@@ -81,7 +102,10 @@ class PackageController extends AdminController
             'language' => ['required', 'string', 'regex:(tr|en)'],
         ]);
 
-        $data = $this->packageService->update($request);
+        $data = $request->all();
+        $data['slug'] = str_slug($request->input('title'), '-', 'tr');
+        if (!$request->input('issues'))
+            $data['issues'] = [];
 
         // Update package
         Package::findOrFail($id)->update($data);

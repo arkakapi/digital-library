@@ -64,10 +64,14 @@ class Package extends Model
     /**
      * Mutator for issues.
      *
-     * @param  string $value
+     * @param  array $value
      */
     public function setIssuesAttribute($value)
     {
+        $value = array_map(function ($val) {
+            return (int)$val;
+        }, $value);
+
         $this->attributes['issues'] = json_encode($value);
     }
 }
