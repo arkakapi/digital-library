@@ -13,7 +13,7 @@ class Issue extends Model
      * @var array
      */
     protected $fillable = [
-        'slug', 'title', 'issue', 'price', 'month', 'language', 'content'
+        'slug', 'title', 'issue', 'price', 'month', 'language', 'preamble', 'content'
     ];
 
     /**

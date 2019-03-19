@@ -53,4 +53,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         'show', 'destroy'
     ]);
 
+    // Packages
+    Route::resource('/packages', 'Admin\PackageController')->except([
+        'show', 'destroy'
+    ]);
+
 });

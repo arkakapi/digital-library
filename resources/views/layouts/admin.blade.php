@@ -51,6 +51,12 @@
                 <span>Sayılar</span>
             </a>
         </li>
+        <li class="nav-item{{ getParentRouteName() == 'admin.packages' ? ' active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.packages.index') }}">
+                <i class="fas fa-fw fa-archive"></i>
+                <span>Paketler</span>
+            </a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="">
                 <i class="fas fa-fw fa-envelope"></i>

@@ -26,4 +26,5 @@ class IssueService
         $user->{'purchases_' . $issue->language} = json_encode($purchases);
         $user->save();
     }
+
 }

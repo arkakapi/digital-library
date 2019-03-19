@@ -5,11 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Helper\Datatables;
 use App\Issue;
 use App\User;
-use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
 use League\Flysystem\FileExistsException;
 
 class IssueController extends AdminController
@@ -19,7 +17,7 @@ class IssueController extends AdminController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if (!isset($_GET['json']))
             return view('admin.datatables', [
@@ -27,47 +25,8 @@ class IssueController extends AdminController
                 'thead' => ['id', 'Başlık', 'Sayı', 'Fiyat', 'Ay/Yıl', 'Dil', 'Kapak', 'Düzenle'],
             ]);
 
-        $table = 'issues';
-        $primaryKey = 'id';
-        $columns = [
-            ['db' => 'id', 'dt' => 0],
-            ['db' => 'title', 'dt' => 1],
-            ['db' => 'issue', 'dt' => 2],
-            [
-                'db' => 'price',
-                'dt' => 3,
-                'formatter' => function ($data, $row) {
-                    return $data . ' ' . ($row['language'] == 'tr' ? 'TL' : 'USD');
-                }
-            ],
-            ['db' => 'month', 'dt' => 4],
-            [
-                'db' => 'language',
-                'dt' => 5,
-                'formatter' => function ($data) {
-                    if ($data == 'tr')
-                        return '<span class="label label-success">Türkçe (Arka Kapı Dergi)</span>';
-                    return '<span class="label label-info">İngilizce (Arka Kapı Magazine)</span>';
-                }
-            ],
-            [
-                'db' => 'slug',
-                'dt' => 6,
-                'formatter' => function ($data) {
-                    return '<a href="' . config('app.url') . '/storage/' . $data . '.jpg" target="_blank">' . $data . '.jpg</a>';
-                }
-            ],
-            [
-                'db' => 'id',
-                'dt' => 7,
-                'formatter' => function ($data) {
-                    return '<a href="' . route('admin.issues.edit', $data) . '" class="btn btn-sm btn-primary">Düzenle</a>';
-                }
-            ]
-        ];
-
         return response()->json(
-            Datatables::simple($_GET, $table, $primaryKey, $columns)
+            Datatables::simple($request->all(), 'issues', 'id', $this->issueService->getDatatableColumns())
         );
     }
 
@@ -103,26 +62,7 @@ class IssueController extends AdminController
             'preamble' => ['required', 'string'],
         ]);
 
-        // Create title
-        $title = 'Arka Kapı Dergi Sayı ' . $request->input('issue');
-        if ($request->input('language') == 'en')
-            $title = 'Arka Kapı Magazine Issue ' . $request->input('issue');
-
-        // Create slug
-        $slug = str_slug($title, '-', 'tr');
-
-        // Upload Cover
-        $cover = $request->file('cover');
-        Storage::disk('public')->put($slug . '.jpg', file_get_contents($cover));
-
-        // Upload PDF
-        $pdf = $request->file('pdf');
-        Storage::disk('local')->put($slug . '.pdf', file_get_contents($pdf));
-
-        // Create issue
-        $data = $request->all();
-        $data['slug'] = $slug;
-        $data['title'] = $title;
+        $data = $this->issueService->store($request);
         Issue::create($data);
 
         // Redirect Issues page
@@ -187,27 +127,8 @@ class IssueController extends AdminController
         $slug = str_slug($title, '-', 'tr');
 
         try {
-
-            // Upload new Cover
-            if ($request->file('cover')) {
-                $cover = $request->file('cover');
-                Storage::disk('public')->put($slug . '.jpg', file_get_contents($cover));
-                Storage::disk('public')->delete($issue->slug . '.jpg');
-            } else if ($issue->slug != $slug) {
-                // If changed title and not selected any cover, change cover file name
-                Storage::disk('public')->move($issue->slug . '.jpg', $slug . '.jpg');
-            }
-
-            // Upload new PDF
-            if ($request->file('pdf')) {
-                $pdf = $request->file('pdf');
-                Storage::disk('local')->put($slug . '.pdf', file_get_contents($pdf));
-                Storage::disk('local')->delete($issue->slug . '.pdf');
-            } else if ($issue->slug != $slug) {
-                // If changed title and not selected any pdf, change pdf file name
-                Storage::disk('local')->move($issue->slug . '.pdf', $slug . '.pdf');
-            }
-
+            $this->issueService->updateCover($request, $issue, $slug);
+            $this->issueService->updatePdf($request, $issue, $slug);
         } catch (FileExistsException $e) {
             Session::flash('class', 'danger');
             Session::flash('message', 'Seçtiğiniz Sayı ve Dile ait bir sayı zaten var! Üzerine yazamazsınız!');
@@ -218,8 +139,7 @@ class IssueController extends AdminController
         $data = $request->all();
         $data['slug'] = $slug;
         $data['title'] = $title;
-        $issue->fill($data);
-        $issue->save();
+        $issue->update($data);
 
         // Redirect Issues page
         Session::flash('class', 'success');
