@@ -25,20 +25,13 @@ class Issue extends Model
         'is_purchased'
     ];
 
-    /**
-     * Check user-issue relation.
-     *
-     * @return boolean
-     */
     public function getIsPurchasedAttribute()
     {
         if (!Auth::check())
             return false;
 
-        $user = Auth::user();
-        $purchases_tr = json_decode($user->purchases_tr, true);
-        $purchases_en = json_decode($user->purchases_en, true);
+        $purchases = json_decode(Auth::user()->{'purchases_' . $this->language}, true);
 
-        return in_array($this->id, ${'purchases_' . $this->language});
+        return in_array($this->id, $purchases);
     }
 }

@@ -13,7 +13,7 @@
                                 {{ $subscription['language'] == 'tr' ? 'Arka Kapı Dergi' : "Arka Kapı Magazine" }} {{ $subscription['year'] }}
                                 @php $intersect_count = count(array_intersect($subscription['potential_issues'], ${'purchases_'.$subscription['language']})) @endphp
                                 @if($intersect_count == 0)
-                                    <a href="{{ route('subscribe') }}" class="btn btn-success btn-sm">{{ __('Subscribe') }} <span class="fa fa-angle-right"></span></a>
+                                    <a href="" class="btn btn-success btn-sm">{{ __('Subscribe') }} <span class="fa fa-angle-right"></span></a>
                                 @elseif($intersect_count == 6)
                                     <button class="btn btn-success btn-sm" disabled>{{ __('You have Bought All') }} <span class="fa fa-check"></span></button>
                                 @else

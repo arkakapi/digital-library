@@ -21,6 +21,7 @@ class IssueService
             $purchases[] = $issue->id;
 
         asort($purchases);
+        $purchases = array_values($purchases);
 
         $user->{'purchases_' . $issue->language} = json_encode($purchases);
         $user->save();

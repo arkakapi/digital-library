@@ -40,7 +40,7 @@ class IssueController extends Controller
         if ($issue->price == 0)
             $this->issueService->assignIssueToUser(Auth::user(), $issue);
 
-        // Is user already bought this issue.
+        // If user already bought this issue, redirect my purchases page.
         if ($issue->is_purchased)
             return redirect()->route('issue.read', $slug);
 

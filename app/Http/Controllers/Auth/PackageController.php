@@ -39,9 +39,11 @@ class PackageController extends Controller
         $package = Package::where('slug', $slug)->firstOrFail();
 
         // If package is free, auto buy.
-        if ($package->price == 0) {
+        if ($package->price == 0)
             $this->packageService->assignPackageToUser(Auth::user(), $package);
 
+        // If user already bought this package, redirect my purchases page.
+        if ($package->is_purchased) {
             Session::flash('class', 'success');
             Session::flash('message', __('The package has been successfully added to your account.'));
 
