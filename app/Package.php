@@ -42,7 +42,7 @@ class Package extends Model
 
         $purchases = Auth::user()->{'purchases_' . $this->language};
 
-        return array_intersect($this->issues, $purchases);
+        return array_values(array_intersect($this->issues, $purchases));
     }
 
     public function getExistIssuesAttribute()
