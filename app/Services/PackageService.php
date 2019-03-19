@@ -33,17 +33,16 @@ class PackageService
     {
         if (!$package->is_purchased) {
 
-            $purchases = json_decode($user->{'purchases_' . $package->language}, true);
+            $purchases = $user->{'purchases_' . $package->language};
 
             $purchases = array_unique(array_merge(
                 $purchases,
-                json_decode($package->issues, true)
+                $package->issues
             ), SORT_NUMERIC);
 
             asort($purchases);
-            $purchases = array_values($purchases);
 
-            $user->{'purchases_' . $package->language} = json_encode($purchases);
+            $user->{'purchases_' . $package->language} = array_values($purchases);
             $user->save();
         }
     }

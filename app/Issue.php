@@ -30,7 +30,7 @@ class Issue extends Model
         if (!Auth::check())
             return false;
 
-        $purchases = json_decode(Auth::user()->{'purchases_' . $this->language}, true);
+        $purchases = Auth::user()->{'purchases_' . $this->language};
 
         return in_array($this->id, $purchases);
     }

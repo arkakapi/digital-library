@@ -90,8 +90,8 @@ class UserController extends AdminController
             'user' => $user,
             'countries' => Country::all(),
             'issues_all_count' => Issue::all('id')->count(),
-            'purchases_tr' => json_decode($user->purchases_tr, true),
-            'purchases_en' => json_decode($user->purchases_en, true)
+            'purchases_tr' => $user->purchases_tr,
+            'purchases_en' => $user->purchases_en
         ]);
     }
 

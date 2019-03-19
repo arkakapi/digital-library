@@ -15,15 +15,14 @@ class IssueService
      */
     public function assignIssueToUser(User $user, Issue $issue)
     {
-        $purchases = json_decode($user->{'purchases_' . $issue->language}, true);
+        $purchases = $user->{'purchases_' . $issue->language};
 
         if (!$issue->is_purchased)
             $purchases[] = $issue->id;
 
         asort($purchases);
-        $purchases = array_values($purchases);
 
-        $user->{'purchases_' . $issue->language} = json_encode($purchases);
+        $user->{'purchases_' . $issue->language} = array_values($purchases);
         $user->save();
     }
 

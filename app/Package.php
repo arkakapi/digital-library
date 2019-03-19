@@ -30,10 +30,9 @@ class Package extends Model
         if (!Auth::check())
             return false;
 
-        $purchases = json_decode(Auth::user()->{'purchases_' . $this->language}, true);
-        $package_issues = json_decode($this->issues, true);
+        $purchases = Auth::user()->{'purchases_' . $this->language};
 
-        return count(array_intersect($package_issues, $purchases)) == count($package_issues);
+        return count(array_intersect($this->issues, $purchases)) == count($this->issues);
     }
 
     public function getPurchasedIssuesAttribute()
@@ -41,15 +40,34 @@ class Package extends Model
         if (!Auth::check())
             return null;
 
-        $purchases = json_decode(Auth::user()->{'purchases_' . $this->language}, true);
-        $package_issues = json_decode($this->issues, true);
+        $purchases = Auth::user()->{'purchases_' . $this->language};
 
-        return array_intersect($package_issues, $purchases);
+        return array_intersect($this->issues, $purchases);
     }
 
     public function getExistIssuesAttribute()
     {
-        $issue_numbers = json_decode($this->issues);
-        return Issue::where('language', $this->language)->whereIn('issue', $issue_numbers)->get();
+        return Issue::where('language', $this->language)->whereIn('issue', $this->issues)->get();
+    }
+
+    /**
+     * Accessor for issues.
+     *
+     * @param  string $value
+     * @return array
+     */
+    public function getIssuesAttribute($value)
+    {
+        return json_decode($value, true);
+    }
+
+    /**
+     * Mutator for issues.
+     *
+     * @param  string $value
+     */
+    public function setIssuesAttribute($value)
+    {
+        $this->attributes['issues'] = json_encode($value);
     }
 }

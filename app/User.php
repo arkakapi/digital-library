@@ -41,4 +41,46 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo('App\Country', 'country_id');
     }
+
+    /**
+     * Accessor for purchases_tr.
+     *
+     * @param  string $value
+     * @return array
+     */
+    public function getPurchasesTrAttribute($value)
+    {
+        return json_decode($value, true);
+    }
+
+    /**
+     * Mutator for purchases_tr.
+     *
+     * @param  string $value
+     */
+    public function setPurchasesTrAttribute($value)
+    {
+        $this->attributes['purchases_tr'] = json_encode($value);
+    }
+
+    /**
+     * Accessor for purchases_en.
+     *
+     * @param  string $value
+     * @return array
+     */
+    public function getPurchasesEnAttribute($value)
+    {
+        return json_decode($value, true);
+    }
+
+    /**
+     * Mutator for purchases_en.
+     *
+     * @param  string $value
+     */
+    public function setPurchasesEnAttribute($value)
+    {
+        $this->attributes['purchases_en'] = json_encode($value);
+    }
 }

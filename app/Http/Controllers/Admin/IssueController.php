@@ -85,8 +85,7 @@ class IssueController extends AdminController
         $issue = $issues->find($id);
         $users = User::all();
         $bought_users = $users->filter(function ($user) use ($issue) {
-            $purchases = $issue->language == 'tr' ? json_decode($user->purchases_tr, true) : json_decode($user->purchases_en, true);
-            return in_array($issue->issue, $purchases);
+            return in_array($issue->issue, $user->{'purchases_' . $issue->language});
         });
 
         return view('admin.issues.edit', [

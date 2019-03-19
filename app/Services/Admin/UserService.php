@@ -64,16 +64,14 @@ class UserService
         $data = $request->all();
 
         // Set and map TR purchases
-        $purchases_tr = array_map(function ($value) {
+        $data['purchases_tr'] = array_map(function ($value) {
             return (int)$value;
         }, $request->input('purchases_tr') ?: []);
-        $data['purchases_tr'] = json_encode($purchases_tr);
 
         // Set and map EN purchases
-        $purchases_en = array_map(function ($value) {
+        $data['purchases_en'] = array_map(function ($value) {
             return (int)$value;
         }, $request->input('purchases_en') ?: []);
-        $data['purchases_en'] = json_encode($purchases_en);
 
         return $data;
     }
@@ -94,16 +92,14 @@ class UserService
             unset($data['password']);
 
         // Set and map TR purchases
-        $purchases_tr = array_map(function ($value) {
+        $data['purchases_tr'] = array_map(function ($value) {
             return (int)$value;
         }, $request->input('purchases_tr') ?: []);
-        $data['purchases_tr'] = json_encode($purchases_tr);
 
         // Set and map EN purchases
-        $purchases_en = array_map(function ($value) {
+        $data['purchases_en'] = array_map(function ($value) {
             return (int)$value;
         }, $request->input('purchases_en') ?: []);
-        $data['purchases_en'] = json_encode($purchases_en);
 
         return $data;
     }

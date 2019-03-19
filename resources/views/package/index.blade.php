@@ -31,7 +31,7 @@
                                 <a href="{{ route('packages.buy', $package->slug) }}" class="btn btn-success btn-sm">{{ __('Buy') }} <span class="fa fa-angle-right"></span></a>
                             </h3>
                             <div class="row">
-                                @foreach(json_decode($package->issues, true) as $issue)
+                                @foreach($package->issues as $issue)
                                     <div class="col-sm-12 col-md-4 col-lg-2 issue">
                                         @php $issue = $package->exist_issues->where('issue', $issue)->first(); @endphp
                                         @if($issue)

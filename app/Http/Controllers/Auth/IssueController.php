@@ -42,7 +42,7 @@ class IssueController extends Controller
 
         // If user already bought this issue, redirect my purchases page.
         if ($issue->is_purchased)
-            return redirect()->route('issue.read', $slug);
+            return redirect()->route('issues.read', $slug);
 
         return view('issue.buy', [
             'title' => $issue->title . ' ' . __('Buy'),
