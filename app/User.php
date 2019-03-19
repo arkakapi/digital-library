@@ -60,6 +60,10 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function setPurchasesTrAttribute($value)
     {
+        $value = array_map(function ($val) {
+            return (int)$val;
+        }, $value);
+
         $this->attributes['purchases_tr'] = json_encode($value);
     }
 
@@ -81,6 +85,10 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function setPurchasesEnAttribute($value)
     {
+        $value = array_map(function ($val) {
+            return (int)$val;
+        }, $value);
+
         $this->attributes['purchases_en'] = json_encode($value);
     }
 }

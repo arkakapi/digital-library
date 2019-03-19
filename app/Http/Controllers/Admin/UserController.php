@@ -62,7 +62,7 @@ class UserController extends AdminController
             'country_id' => ['required', 'exists:countries,id'],
         ]);
 
-        $data = $this->userService->store($request);
+        $data = $request->all();
 
         // Create user
         $user = User::create($data);
@@ -111,7 +111,19 @@ class UserController extends AdminController
             'country_id' => ['required', 'exists:countries,id'],
         ]);
 
-        $data = $this->userService->update($request);
+        $data = $request->all();
+
+        // Set password (if sent)
+        $data['password'] = Hash::make($request->input('password'));
+
+        if (!$request->input('purchases_tr'))
+            $data['purchases_tr'] = [];
+
+        if (!$request->input('purchases_en'))
+            $data['purchases_en'] = [];
+
+        if (!$request->input('password'))
+            unset($data['password']);
 
         // Update user
         User::findOrFail($id)->update($data);

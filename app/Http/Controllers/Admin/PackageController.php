@@ -100,12 +100,11 @@ class PackageController extends AdminController
             'title' => ['required', 'string'],
             'price' => ['required', 'between:0,99.99'],
             'language' => ['required', 'string', 'regex:(tr|en)'],
+            'issues' => ['required', 'array'],
         ]);
 
         $data = $request->all();
         $data['slug'] = str_slug($request->input('title'), '-', 'tr');
-        if (!$request->input('issues'))
-            $data['issues'] = [];
 
         // Update package
         Package::findOrFail($id)->update($data);

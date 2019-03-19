@@ -54,7 +54,7 @@
                             <div class="form-row">
                                 <div class="col-md-12 mb-3">
                                     <label for="issues"><b>Sayılar</b></label>
-                                    <select id="issues" name="issues[]" multiple size="10" class="form-control{{ $errors->has('issues') ? ' is-invalid' : '' }}">
+                                    <select id="issues" name="issues[]" multiple size="10" class="form-control{{ $errors->has('issues') ? ' is-invalid' : '' }}" required>
                                         @for($i = 1; $i <= $issues_all_count + 6; $i++)
                                             <option value="{{ $i }}" {{ in_array($i, $package->issues) ? 'selected' : '' }}>Sayı {{ $i }}</option>
                                         @endfor
