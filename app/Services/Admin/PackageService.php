@@ -2,6 +2,8 @@
 
 namespace App\Services\Admin;
 
+use Illuminate\Http\Request;
+
 class PackageService
 {
 
@@ -32,6 +34,24 @@ class PackageService
                 }
             ]
         ];
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return array
+     */
+    public function update(Request $request)
+    {
+        $data = $request->all();
+
+        // Set and map issues
+        $data['issues'] = array_map(function ($value) {
+            return (int)$value;
+        }, $request->input('issues') ?: []);
+
+        return $data;
     }
 
 }
