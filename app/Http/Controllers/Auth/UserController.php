@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use App\Services\IssueService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -65,22 +64,20 @@ class UserController extends Controller
         $request->validate([
             'language' => ['required', 'string', 'regex:(tr|en)'],
             'country_id' => ['required', 'exists:countries,id'],
+            'password' => ['nullable', 'string', 'min:6', 'confirmed'],
         ]);
 
-        $user = Auth::user();
-        $user->name = Input::get('name');
-        $user->job = Input::get('job');
-        $user->language = Input::get('language');
-        $user->country_id = Input::get('country_id');
+        $data = [
+            'name' => $request->input('name'),
+            'job' => $request->input('job'),
+            'language' => $request->input('language'),
+            'country_id' => $request->input('country_id')
+        ];
 
-        if (Input::get('password')) {
-            $request->validate([
-                'password' => ['string', 'min:8', 'confirmed'],
-            ]);
-            $user->password = Hash::make(Input::get('password'));
-        }
+        if ($request->input('password'))
+            $data['password'] = Hash::make($request->input('password'));
 
-        $user->save();
+        Auth::user()->update($data);
 
         Session::flash('class', 'success');
         Session::flash('message', 'Your profile has been successfully updated.');
