@@ -17,9 +17,11 @@ class UserController extends AdminController
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
+     *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if (!isset($_GET['json']))
             return view('admin.datatables', [
@@ -27,46 +29,8 @@ class UserController extends AdminController
                 'thead' => ['id', 'Admin?', 'Ban Durumu', 'Adı - Soyadı', 'Eposta', 'Ülke', 'Dil', 'Meslek', 'Düzenle'],
             ]);
 
-        $table = 'users';
-        $primaryKey = 'id';
-        $columns = [
-            ['db' => 'id', 'dt' => 0],
-            [
-                'db' => 'is_admin',
-                'dt' => 1,
-                'formatter' => function ($data) {
-                    return '<span class="btn btn-sm btn-' . ($data ? 'success' : 'danger') . '" > ' . ($data ? 'evet' : 'hayır') . ' </span>';
-                }
-            ],
-            [
-                'db' => 'is_banned',
-                'dt' => 2,
-                'formatter' => function ($data) {
-                    return '<span class="btn btn-sm btn-' . ($data ? 'danger' : 'success') . '" > ' . ($data ? 'banlı' : 'temiz') . ' </span>';
-                }
-            ],
-            ['db' => 'name', 'dt' => 3],
-            ['db' => 'email', 'dt' => 4],
-            [
-                'db' => 'country_id',
-                'dt' => 5,
-                'formatter' => function ($data) {
-                    return Country::find($data)->name;
-                }
-            ],
-            ['db' => 'language', 'dt' => 6],
-            ['db' => 'job', 'dt' => 7],
-            [
-                'db' => 'id',
-                'dt' => 8,
-                'formatter' => function ($data) {
-                    return '<a href = "' . route('admin.users.edit', $data) . '" class="btn btn-sm btn-primary"> Düzenle</a>';
-                }
-            ]
-        ];
-
         return response()->json(
-            Datatables::simple($_GET, $table, $primaryKey, $columns)
+            Datatables::simple($request->all(), 'users', 'id', $this->userService->getDatatableColumns())
         );
     }
 
@@ -97,19 +61,8 @@ class UserController extends AdminController
             'language' => ['required', 'string', 'regex:(tr|en)'],
             'country_id' => ['required', 'exists:countries,id'],
         ]);
-        $data = $request->all();
 
-        // Set and map TR purchases
-        $purchases_tr = array_map(function ($value) {
-            return (int)$value;
-        }, $request->input('purchases_tr') ?: []);
-        $data['purchases_tr'] = json_encode($purchases_tr);
-
-        // Set and map EN purchases
-        $purchases_en = array_map(function ($value) {
-            return (int)$value;
-        }, $request->input('purchases_en') ?: []);
-        $data['purchases_en'] = json_encode($purchases_en);
+        $data = $this->userService->store($request);
 
         // Create user
         $user = User::create($data);
@@ -157,27 +110,11 @@ class UserController extends AdminController
             'language' => ['required', 'string', 'regex:(tr|en)'],
             'country_id' => ['required', 'exists:countries,id'],
         ]);
-        $data = $request->all();
 
-        // Set password (if sent)
-        $data['password'] = Hash::make($request->input('password'));
-        if (!$request->input('password'))
-            unset($data['password']);
-
-        // Set and map TR purchases
-        $purchases_tr = array_map(function ($value) {
-            return (int)$value;
-        }, $request->input('purchases_tr') ?: []);
-        $data['purchases_tr'] = json_encode($purchases_tr);
-
-        // Set and map EN purchases
-        $purchases_en = array_map(function ($value) {
-            return (int)$value;
-        }, $request->input('purchases_en') ?: []);
-        $data['purchases_en'] = json_encode($purchases_en);
+        $data = $this->userService->update($request);
 
         // Update user
-        User::findOrFail($id)->fill($data)->save();
+        User::findOrFail($id)->update($data);
 
         // Return
         Session::flash('class', 'success');
