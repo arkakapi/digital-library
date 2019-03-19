@@ -8,6 +8,14 @@
                     <div class="card-header">{{ __('Packages') }}</div>
 
                     <div id="my-purchases" class="card-body">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="sharethis-inline-share-buttons"></div>
+                            </div>
+                        </div>
+                        <hr>
+
                         @foreach($packages as $package)
                             <h3>
                                 {{ $package->title }}

@@ -25,7 +25,9 @@ class IssueController extends Controller
     {
         return view('issue.index', [
             'title' => __('All Issues'),
-            'issues' => Issue::all()
+            'issues' => Issue::orderBy('language', app()->getLocale() == 'tr' ? 'desc' : 'asc')
+                ->orderBy('issue', 'desc')
+                ->get()
         ]);
     }
 

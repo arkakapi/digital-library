@@ -22,14 +22,8 @@ class Package extends Model
      * @var array
      */
     protected $appends = [
-        'exist_issues', 'is_purchased'
+        'is_purchased', 'purchased_issues', 'exist_issues'
     ];
-
-    public function getExistIssuesAttribute()
-    {
-        $issue_numbers = json_decode($this->issues);
-        return Issue::where('language', $this->language)->whereIn('issue', $issue_numbers)->get();
-    }
 
     public function getIsPurchasedAttribute()
     {
@@ -40,5 +34,22 @@ class Package extends Model
         $package_issues = json_decode($this->issues, true);
 
         return count(array_intersect($package_issues, $purchases)) == count($package_issues);
+    }
+
+    public function getPurchasedIssuesAttribute()
+    {
+        if (!Auth::check())
+            return null;
+
+        $purchases = json_decode(Auth::user()->{'purchases_' . $this->language}, true);
+        $package_issues = json_decode($this->issues, true);
+
+        return array_intersect($package_issues, $purchases);
+    }
+
+    public function getExistIssuesAttribute()
+    {
+        $issue_numbers = json_decode($this->issues);
+        return Issue::where('language', $this->language)->whereIn('issue', $issue_numbers)->get();
     }
 }

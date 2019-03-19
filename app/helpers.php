@@ -19,13 +19,3 @@ function getParentRouteName()
     $routes = explode('.', Route::currentRouteName());
     return $routes[0] . '.' . $routes[1];
 }
-
-// Get published issues by year
-function getPublishedIssuesByYear($issues, $language, $start, $limit)
-{
-    return $issues->filter(function ($issue) use ($start, $limit, $language) {
-        return $issue->issue >= $start && $issue->issue < $limit && $issue->language == $language;
-    })->map(function ($issue) {
-        return $issue->issue;
-    })->toArray();
-}
