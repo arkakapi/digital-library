@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'country_id', 'job', 'is_banned', 'is_admin', 'language', 'purchases_tr', 'purchases_en', 'total_tl', 'total_usd'
+        'name', 'email', 'password', 'country_id', 'job', 'is_banned', 'is_admin', 'language', 'purchases_tr', 'purchases_en'
     ];
 
     /**
@@ -37,9 +37,23 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Attributes.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'total_tl', 'total_usd'
+    ];
+
     public function country()
     {
         return $this->belongsTo('App\Country', 'country_id');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
     }
 
     /**
@@ -90,5 +104,15 @@ class User extends Authenticatable implements MustVerifyEmail
         }, $value);
 
         $this->attributes['purchases_en'] = json_encode($value);
+    }
+
+    public function getTotalTlAttribute()
+    {
+        return $this->orders()->where('language', 'tr')->sum('total');
+    }
+
+    public function getTotalUsdAttribute()
+    {
+        return $this->orders()->where('language', 'en')->sum('total');
     }
 }

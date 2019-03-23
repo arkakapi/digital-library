@@ -201,6 +201,40 @@
 
         </form>
 
+        <div class="card mb-3">
+            <div class="card-header">
+                Sipariş Geçmişi
+            </div>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="col-md-12 mb-3">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">@lang('Product')</th>
+                                <th scope="col">@lang('Issues')</th>
+                                <th scope="col">@lang('Total')</th>
+                                <th scope="col">@lang('Date')</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($user->orders as $order)
+                                <tr>
+                                    <th scope="row">{{ $order->id }}</th>
+                                    <td>{{ $order->product }}</td>
+                                    <td>{{ implode(', ', $order->issues) }}</td>
+                                    <td>{{ $order->total }} {{ $order->language == 'tr' ? 'TL' : 'USD' }}</td>
+                                    <td>{{ $order->created_at }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 @stop
 

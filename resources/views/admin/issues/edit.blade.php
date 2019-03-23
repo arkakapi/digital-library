@@ -3,33 +3,6 @@
 @section('content')
     <div class="container-fluid">
 
-        <!-- Icon Cards-->
-        <div class="row">
-
-            <div class="col-xl-6 col-sm-6 mb-3">
-                <div class="card text-white bg-primary o-hidden">
-                    <div class="card-body">
-                        <div class="card-body-icon">
-                            <i class="fas fa-fw fa-users"></i>
-                        </div>
-                        <div class="mr-5">Bu sayıyı satın alan toplam üye sayısı: <b>{{ $total_users_count }}</b></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-6 col-sm-6 mb-3">
-                <div class="card text-white bg-success o-hidden">
-                    <div class="card-body">
-                        <div class="card-body-icon">
-                            <i class="fas fa-fw fa-shopping-cart"></i>
-                        </div>
-                        <div class="mr-5">Bu sayının elde edilen toplam gelir: <b>{{ $total_price . ($issue->language == 'tr' ? ' TL': ' USD') }}</b></div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
         <div class="card mb-3">
             <div class="card-header">
                 Düzenle: {{ $issue->title }}

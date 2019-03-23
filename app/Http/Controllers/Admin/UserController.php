@@ -6,6 +6,7 @@ use App\Country;
 use App\Events\UserAdded;
 use App\Helper\Datatables;
 use App\Issue;
+use App\Order;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdminController;

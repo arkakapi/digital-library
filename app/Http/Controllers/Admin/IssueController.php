@@ -83,16 +83,10 @@ class IssueController extends AdminController
     {
         $issues = Issue::all();
         $issue = $issues->find($id);
-        $users = User::all();
-        $bought_users = $users->filter(function ($user) use ($issue) {
-            return in_array($issue->issue, $user->{'purchases_' . $issue->language});
-        });
 
         return view('admin.issues.edit', [
             'issue' => $issue,
-            'issues_all_count' => $issues->count(),
-            'total_users_count' => $bought_users->count(),
-            'total_price' => $bought_users->count() * $issue->price
+            'issues_all_count' => $issues->count()
         ]);
     }
 
