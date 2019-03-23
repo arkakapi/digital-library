@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\PackageAssigned;
+use App\Events\OrderAdded;
 use App\Order;
 
 class AddPurchasedPackageToOrders
@@ -25,11 +26,14 @@ class AddPurchasedPackageToOrders
      */
     public function handle(PackageAssigned $event)
     {
-        Order::create([
+        $order = Order::create([
             'user_id' => $event->user->id,
             'language' => $event->package->language,
             'issues' => $event->package->issues,
             'total' => $event->package->price
         ]);
+
+        // Trigger events
+        event(new OrderAdded($event->user, $order));
     }
 }

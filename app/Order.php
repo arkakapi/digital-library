@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\OrderAdded;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model

@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use App\Events\IssueAssigned;
+use App\Events\OrderAdded;
 use App\Events\PackageAssigned;
 use App\Events\UserAdded;
 use App\Listeners\AddPurchasedIssueToOrders;
 use App\Listeners\AddPurchasedPackageToOrders;
+use App\Listeners\SendPurchasedEmail;
 use App\Listeners\SendWelcomeEmail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -31,6 +33,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         PackageAssigned::class => [
             AddPurchasedPackageToOrders::class
+        ],
+        OrderAdded::class => [
+            SendPurchasedEmail::class
         ]
     ];
 

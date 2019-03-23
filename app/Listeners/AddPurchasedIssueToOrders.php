@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\IssueAssigned;
+use App\Events\OrderAdded;
 use App\Order;
 
 class AddPurchasedIssueToOrders
@@ -25,11 +26,14 @@ class AddPurchasedIssueToOrders
      */
     public function handle(IssueAssigned $event)
     {
-        Order::create([
+        $order = Order::create([
             'user_id' => $event->user->id,
             'language' => $event->issue->language,
             'issues' => [$event->issue->issue],
             'total' => $event->issue->price
         ]);
+
+        // Trigger events
+        event(new OrderAdded($event->user, $order));
     }
 }

@@ -23,7 +23,7 @@
     "Page Not Found": "Sayfa Bulunamadı",
     "Password": "Parola",
     "Please click the button below to verify your email address.": "Lütfen e-posta adresinizi doğrulamak için aşağıdaki düğmeyi tıklayın.",
-    "Regards": "Saygılarımla",
+    "Regards": "Saygılarımızla",
     "Register": "Kayıt Ol",
     "Remember Me": "Beni hatırla",
     "Reset Password": "Parolayı Sıfırla",
@@ -91,5 +91,11 @@
     "Account Suspended": "Hesap Askıya Alındı",
     "Your account has been suspended because it is used by more than one person.": "Hesabınız birden fazla kişi tarafından kullanıldığı için askıya alındı.",
     "If you think there is a mistake, please contact us.": "Bir yanlışlık olduğunu düşünüyorsanız lütfen bizimle iletişime geçin.",
-    "The package has been successfully added to your account.": "Paket, hesabınıza başarıyla eklendi."
+    "The package has been successfully added to your account.": "Paket, hesabınıza başarıyla eklendi.",
+    "Order": "Sipariş",
+    "You are receiving this email because you are purchased new issue(s).": "Yeni sayı(lar) satın aldığınız için bu epostayı alıyorsunuz.",
+    "Product": "Ürün",
+    "Total": "Toplam",
+    "Date": "Tarih",
+    "See My Purchased": "Satın Almalarımı Görüntüle"
 }
