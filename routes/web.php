@@ -37,6 +37,9 @@ Route::get('/packages/{package}/buy', 'Auth\PackageController@buyForm')->name('p
 // My Purchases
 Route::get('/my-purchases', 'Auth\UserController@myPurchases')->name('my-purchases');
 
+// Order History
+Route::get('/order-history', 'Auth\UserController@orderHistory')->name('order-history');
+
 // Admin Routes
 Route::prefix('admin')->name('admin.')->group(function () {
 

@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Country;
 use App\Issue;
+use App\Order;
 use App\Package;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\IssueService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -58,7 +60,7 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return Redirect
      */
     public function update(Request $request)
     {
@@ -89,7 +91,7 @@ class UserController extends Controller
     /**
      * My purchases page.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function myPurchases()
     {
@@ -97,6 +99,19 @@ class UserController extends Controller
             'title' => __('My Purchases'),
             'user' => Auth::user(),
             'packages' => Package::all()
+        ]);
+    }
+
+    /**
+     * Order history.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function orderHistory()
+    {
+        return view('auth.order-history', [
+            'title' => __('Order History'),
+            'orders' => Order::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get()
         ]);
     }
 
