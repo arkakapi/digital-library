@@ -1,6 +1,6 @@
 ![](public/images/logo.png)
 
-## Arka Kapı Digital Subscription System
+## Arka Kapi Digital Library
 
 ## Requirements
 
@@ -23,8 +23,8 @@ $ sudo apt install git
 ## Installation
 
 ```sh
-$ git clone https://github.com/arkakapi/subscription-system
-$ cd subscription-system
+$ git clone https://github.com/arkakapi/digital-library
+$ cd digital-library
 $ composer install
 $ npm install
 $ cp .env.example .env
@@ -47,11 +47,11 @@ See this document: [https://laravel.com/docs/5.8/deployment]()
 
 ## Contributing
 
-Thank you for considering contributing to the Arka Kapı Digital Subscription System! See [opened issues](https://github.com/arkakapi/subscription-system/issues).
+Thank you for considering contributing to the Arka Kapı Digital Library! See [opened issues](https://github.com/arkakapi/digital-library/issues).
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Arka Kapı Digital Subscription System, please send an e-mail to Omer Citak via [omer@arkakapidergi.com](mailto:omer@arkakapidergi.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Arka Kapı Digital Library, please send an e-mail to Omer Citak via [omer@arkakapidergi.com](mailto:omer@arkakapidergi.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
