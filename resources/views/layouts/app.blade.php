@@ -7,10 +7,21 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>
-        @if(isset($title)) {{ $title }} | @endif
-        {{ trans('app.name') }}
-    </title>
+    <title>@if(isset($title)){{ $title }} | @endif{{ trans('app.name') }}</title>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:locale" content="{{ app()->getLocale() }}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="@if(isset($title)){{ $title }} |@endif {{ trans('app.name') }}"/>
+    <meta property="og:url" content="{{ url()->full() }}"/>
+    <meta property="og:site_name" content="{{ trans('app.name') }}"/>
+    <meta property="og:image" content="{{ asset('images/open_graph.jpg') }}"/>
+    <meta property="og:image:secure_url" content="{{ asset('images/open_graph.jpg') }}"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
