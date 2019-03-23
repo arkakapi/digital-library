@@ -63,8 +63,8 @@
                 <span>Eposta Gönderimi</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="">
+        <li class="nav-item {{ getParentRouteName() == 'admin.orders' ? ' active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.orders.index') }}">
                 <i class="fas fa-fw fa-list"></i>
                 <span>Satın Alma Logları</span>
             </a>

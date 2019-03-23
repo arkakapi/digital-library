@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use App\Services\Admin\HomeService;
 use App\Services\Admin\IssueService;
+use App\Services\Admin\OrderService;
 use App\Services\Admin\PackageService;
 use App\Services\Admin\UserService;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -19,6 +21,7 @@ class AdminController extends BaseController
     protected $issueService;
     protected $packageService;
     protected $homeService;
+    protected $orderService;
 
     /**
      * Create a new controller instance.
@@ -27,10 +30,11 @@ class AdminController extends BaseController
      * @param IssueService $issueService
      * @param PackageService $packageService
      * @param HomeService $homeService
+     * @param OrderService $orderService
      *
      * @return void
      */
-    public function __construct(UserService $userService, IssueService $issueService, PackageService $packageService, HomeService $homeService)
+    public function __construct(UserService $userService, IssueService $issueService, PackageService $packageService, HomeService $homeService, OrderService $orderService)
     {
         $this->middleware('auth');
         $this->middleware('is_admin');
@@ -39,6 +43,7 @@ class AdminController extends BaseController
         $this->issueService = $issueService;
         $this->packageService = $packageService;
         $this->homeService = $homeService;
+        $this->orderService = $orderService;
     }
 
 }

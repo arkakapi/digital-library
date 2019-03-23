@@ -5,10 +5,12 @@
         <div class="card mb-3">
             <div class="card-header">
                 {{ $title }}
-                <a href="{{ route(getRouteName('create')) }}" class="btn btn-success btn-sm">
-                    <i class="fas fa-fw fa-plus"></i>
-                    <span>Yeni Ekle</span>
-                </a>
+                @if(Route::has(getRouteName('create')))
+                    <a href="{{ route(getRouteName('create')) }}" class="btn btn-success btn-sm">
+                        <i class="fas fa-fw fa-plus"></i>
+                        <span>Yeni Ekle</span>
+                    </a>
+                @endif
             </div>
             <div class="card-body">
                 <table id="datatables" class="display" cellspacing="0" width="100%">

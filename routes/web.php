@@ -61,4 +61,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         'show', 'destroy'
     ]);
 
+    // Order History
+    Route::resource('/orders', 'Admin\OrderController')->only([
+        'index'
+    ]);
+
 });
