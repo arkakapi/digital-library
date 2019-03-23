@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Admin\HomeService;
 use App\Services\Admin\IssueService;
 use App\Services\Admin\PackageService;
 use App\Services\Admin\UserService;
@@ -17,6 +18,7 @@ class AdminController extends BaseController
     protected $userService;
     protected $issueService;
     protected $packageService;
+    protected $homeService;
 
     /**
      * Create a new controller instance.
@@ -24,10 +26,11 @@ class AdminController extends BaseController
      * @param UserService $userService
      * @param IssueService $issueService
      * @param PackageService $packageService
+     * @param HomeService $homeService
      *
      * @return void
      */
-    public function __construct(UserService $userService, IssueService $issueService, PackageService $packageService)
+    public function __construct(UserService $userService, IssueService $issueService, PackageService $packageService, HomeService $homeService)
     {
         $this->middleware('auth');
         $this->middleware('is_admin');
@@ -35,6 +38,7 @@ class AdminController extends BaseController
         $this->userService = $userService;
         $this->issueService = $issueService;
         $this->packageService = $packageService;
+        $this->homeService = $homeService;
     }
 
 }

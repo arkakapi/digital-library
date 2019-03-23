@@ -56,10 +56,21 @@
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-chart-area"></i>
-                İstatistik Grafiği
+                Üye Kayıt Grafiği
             </div>
             <div class="card-body">
-                <canvas id="statistics" width="100%" height="30"></canvas>
+                <canvas id="user-register" width="100%" height="30"></canvas>
+            </div>
+        </div>
+
+        <!-- Area Chart Example-->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-chart-area"></i>
+                Satın Alma Grafiği
+            </div>
+            <div class="card-body">
+                <canvas id="purchases" width="100%" height="30"></canvas>
             </div>
         </div>
 
@@ -72,26 +83,11 @@
         Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
         Chart.defaults.global.defaultFontColor = '#292b2c';
 
-        // Statistics Chart
-        new Chart(document.getElementById("statistics"), {
+        new Chart(document.getElementById("user-register"), {
             type: 'line',
             data: {
-                labels: [{!! '"' . implode('", "', $months) . '"'  !!}],
+                labels: [{!! '"' . implode('", "', $user_register_months) . '"'  !!}],
                 datasets: [
-                    /*{
-                        label: "Satın Alınan Dergi Sayısı",
-                        lineTension: 0.3,
-                        backgroundColor: "rgba(2,117,216,0.2)",
-                        borderColor: "rgba(2,117,216,1)",
-                        pointRadius: 5,
-                        pointBackgroundColor: "rgba(2,117,216,1)",
-                        pointBorderColor: "rgba(255,255,255,0.8)",
-                        pointHoverRadius: 5,
-                        pointHoverBackgroundColor: "rgba(2,117,216,1)",
-                        pointHitRadius: 50,
-                        pointBorderWidth: 2,
-                        data: [10000, 30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984],
-                    },*/
                     {
                         label: "Kayıt Olan Üyeler",
                         lineTension: 0.3,
@@ -105,6 +101,43 @@
                         pointHitRadius: 50,
                         pointBorderWidth: 2,
                         data: [{!! '"' . implode('", "', $bought_users_graphic) . '"'  !!}],
+                    }
+                ],
+            }
+        });
+
+        new Chart(document.getElementById("purchases"), {
+            type: 'line',
+            data: {
+                labels: [{!! '"' . implode('", "', $purchases_register_months) . '"'  !!}],
+                datasets: [
+                    {
+                        label: "TL",
+                        lineTension: 0.3,
+                        backgroundColor: "rgba(2,134,49,0.2)",
+                        borderColor: "rgba(2,134,49,1)",
+                        pointRadius: 5,
+                        pointBackgroundColor: "rgba(2,134,49,1)",
+                        pointBorderColor: "rgba(2,134,49,0.8)",
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: "rgba(2,134,49,1)",
+                        pointHitRadius: 50,
+                        pointBorderWidth: 2,
+                        data: [{!! '"' . implode('", "', $purchases_tr) . '"'  !!}],
+                    },
+                    {
+                        label: "USD",
+                        lineTension: 0.3,
+                        backgroundColor: "rgba(2,117,216,0.2)",
+                        borderColor: "rgba(2,117,216,1)",
+                        pointRadius: 5,
+                        pointBackgroundColor: "rgba(2,117,216,1)",
+                        pointBorderColor: "rgba(255,255,255,0.8)",
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                        pointHitRadius: 50,
+                        pointBorderWidth: 2,
+                        data: [{!! '"' . implode('", "', $purchases_en) . '"'  !!}],
                     }
                 ],
             }
