@@ -20,7 +20,7 @@ class CreateIssuesTable extends Migration
             $table->integer('issue');
             $table->float('price');
             $table->string('month');
-            $table->string('language');
+            $table->string('language', 2);
             $table->longText('preamble');
             $table->longText('content');
             $table->timestamps();
