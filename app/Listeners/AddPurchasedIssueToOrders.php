@@ -4,9 +4,8 @@ namespace App\Listeners;
 
 use App\Events\IssueAssigned;
 use App\Order;
-use Illuminate\Support\Facades\Auth;
 
-class AddPurchaseToOrders
+class AddPurchasedIssueToOrders
 {
     /**
      * Create the event listener.

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Events\PackageAssigned;
 use App\Package;
 use App\User;
 
@@ -28,6 +29,9 @@ class PackageService
 
             $user->{'purchases_' . $package->language} = array_values($purchases);
             $user->save();
+
+            // Trigger events
+            event(new PackageAssigned($user, $package));
         }
     }
 }
