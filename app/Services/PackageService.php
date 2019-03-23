@@ -4,25 +4,9 @@ namespace App\Services;
 
 use App\Package;
 use App\User;
-use Illuminate\Support\Facades\Auth;
 
 class PackageService
 {
-
-    protected $issueService;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @param IssueService $issueService
-     *
-     * @return void
-     */
-    public function __construct(IssueService $issueService)
-    {
-        $this->issueService = $issueService;
-    }
-
     /**
      * Assign package to user.
      *

@@ -2,11 +2,12 @@
 
 namespace App\Events;
 
+use App\Issue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 
-class UserAdded
+class IssueAssigned
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -18,15 +19,24 @@ class UserAdded
     public $user;
 
     /**
+     * Assigned Issue.
+     *
+     * @var Issue
+     */
+    public $issue;
+
+    /**
      * Create a new event instance.
      *
      * @param $user
+     * @param $issue
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($user, $issue)
     {
         $this->user = $user;
+        $this->issue = $issue;
     }
 
 }

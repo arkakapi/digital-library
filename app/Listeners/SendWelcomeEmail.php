@@ -7,7 +7,7 @@ use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Password;
 
-class SendEmailWelcome
+class SendWelcomeEmail
 {
     /**
      * Create the event listener.

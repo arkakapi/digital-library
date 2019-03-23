@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\IssueAssigned;
 use App\Events\UserAdded;
-use App\Listeners\SendEmailWelcome;
+use App\Listeners\AddPurchaseToOrders;
+use App\Listeners\SendWelcomeEmail;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -21,7 +23,10 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class
         ],
         UserAdded::class => [
-            SendEmailWelcome::class
+            SendWelcomeEmail::class
+        ],
+        IssueAssigned::class => [
+            AddPurchaseToOrders::class
         ],
     ];
 

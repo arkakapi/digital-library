@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Events\IssueAssigned;
 use App\Issue;
 use App\User;
 
@@ -15,15 +16,20 @@ class IssueService
      */
     public function assignIssueToUser(User $user, Issue $issue)
     {
-        $purchases = $user->{'purchases_' . $issue->language};
+        if (!$issue->is_purchased) {
 
-        if (!$issue->is_purchased)
+            $purchases = $user->{'purchases_' . $issue->language};
+
             $purchases[] = $issue->id;
 
-        asort($purchases);
+            asort($purchases);
 
-        $user->{'purchases_' . $issue->language} = array_values($purchases);
-        $user->save();
+            $user->{'purchases_' . $issue->language} = array_values($purchases);
+            $user->save();
+
+            // Trigger events
+            event(new IssueAssigned($user, $issue));
+        }
     }
 
 }
