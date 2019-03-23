@@ -35,6 +35,18 @@
                 "serverSide": true,
                 "ajax": "?json=true",
                 "order": [[0, "desc"]],
+                @if(isset($columnDefs))
+                "columnDefs": [
+                    @foreach($columnDefs as $target)
+                    {
+                        "render": function (data, type, row) {
+                            return $.fn.dataTable.render.text().display(data, type, row);
+                        },
+                        "targets": {{ $target }}
+                    },
+                    @endforeach
+                ],
+                @endif
                 "language": {
                     "sDecimal": ",",
                     "sEmptyTable": "Tabloda herhangi bir veri mevcut değil",

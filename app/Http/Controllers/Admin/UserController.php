@@ -32,6 +32,7 @@ class UserController extends AdminController
         return view('admin.datatables', [
             'title' => 'Kullanıcılar',
             'thead' => ['id', 'Admin?', 'Ban Durumu', 'Adı - Soyadı', 'Eposta', 'Ülke', 'Dil', 'Meslek', 'Düzenle'],
+            'columnDefs' => [3,4,7]
         ]);
     }
 

@@ -26,6 +26,7 @@ class OrderController extends AdminController
         return view('admin.datatables', [
             'title' => 'Sipariş Geçmişi',
             'thead' => ['id', 'Eposta', 'Ürün', 'Sayılar', 'Toplam', 'Tarih'],
+            'columnDefs' => [1]
         ]);
     }
 
