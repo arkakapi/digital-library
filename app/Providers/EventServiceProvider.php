@@ -8,6 +8,7 @@ use App\Events\PackageAssigned;
 use App\Events\UserAdded;
 use App\Listeners\AddPurchasedIssueToOrders;
 use App\Listeners\AddPurchasedPackageToOrders;
+use App\Listeners\CreateUserLoginLog;
 use App\Listeners\SendPurchasedEmail;
 use App\Listeners\SendWelcomeEmail;
 use Illuminate\Auth\Events\Registered;
@@ -36,7 +37,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         OrderAdded::class => [
             SendPurchasedEmail::class
-        ]
+        ],
+        'Illuminate\Auth\Events\Login' => [
+            CreateUserLoginLog::class,
+        ],
     ];
 
     /**

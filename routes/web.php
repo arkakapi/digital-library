@@ -66,4 +66,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         'index'
     ]);
 
+    // User Logs
+    Route::resource('/logs', 'Admin\LogController')->only([
+        'index'
+    ]);
+
 });

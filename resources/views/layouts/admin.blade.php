@@ -26,7 +26,7 @@
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
     </button>
-    <a class="navbar-brand mr-1" href="{{ route('admin.dashboard') }}">{{ config('app.name') }}</a>
+    <a class="navbar-brand mr-1" href="{{ route('admin.dashboard') }}">{{ trans('app.name') }}</a>
 </nav>
 
 <div id="wrapper">
@@ -69,10 +69,10 @@
                 <span>Satın Alma Logları</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="">
+        <li class="nav-item {{ getParentRouteName() == 'admin.logs' ? ' active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.logs.index') }}">
                 <i class="fas fa-fw fa-sliders-h"></i>
-                <span>Giriş Logları</span>
+                <span>Kullanıcı Logları</span>
             </a>
         </li>
         <li class="nav-item">
@@ -99,7 +99,7 @@
         <footer class="sticky-footer">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>{{ config('app.name') }}</span>
+                    <span>{{ trans('app.name') }}</span>
                 </div>
             </div>
         </footer>
