@@ -6,16 +6,6 @@ use App\Package;
 
 class PackageController extends Controller
 {
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-    }
-
     /**
      * Show the all packages page.
      *

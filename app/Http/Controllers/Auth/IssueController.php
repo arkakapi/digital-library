@@ -23,6 +23,7 @@ class IssueController extends Controller
     {
         $this->middleware('verified');
         $this->middleware('is_banned');
+
         $this->issueService = $issueService;
     }
 

@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Country;
-use App\Issue;
 use App\Order;
 use App\Package;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\IssueService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
@@ -16,20 +14,14 @@ use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
-
-    protected $issueService;
-
     /**
      * Create a new controller instance.
      *
-     * @param IssueService $issueService
-     *
      * @return void
      */
-    public function __construct(IssueService $issueService)
+    public function __construct()
     {
         $this->middleware('verified');
-        $this->issueService = $issueService;
     }
 
     /**

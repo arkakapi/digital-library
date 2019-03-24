@@ -6,16 +6,6 @@ use App\Issue;
 
 class IssueController extends Controller
 {
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-    }
-
     /**
      * Show the all issues page.
      *
