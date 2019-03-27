@@ -24,8 +24,8 @@ class CreateUsersTable extends Migration
             $table->boolean('is_banned')->default(false);
             $table->boolean('is_admin')->default(false);
             $table->string('language', 2);
-            $table->longText('purchases_tr')->default('[]');
-            $table->longText('purchases_en')->default('[]');
+            $table->longText('purchases_tr');
+            $table->longText('purchases_en');
             $table->rememberToken();
             $table->timestamps();
         });

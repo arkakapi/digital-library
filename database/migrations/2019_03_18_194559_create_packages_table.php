@@ -19,7 +19,7 @@ class CreatePackagesTable extends Migration
             $table->string('title');
             $table->string('language', 2);
             $table->float('price');
-            $table->longText('issues')->default('[]');
+            $table->longText('issues');
             $table->timestamps();
         });
     }

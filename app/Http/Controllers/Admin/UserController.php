@@ -66,6 +66,12 @@ class UserController extends AdminController
 
         $data = $request->all();
 
+        if (!$request->input('purchases_tr'))
+            $data['purchases_tr'] = [];
+
+        if (!$request->input('purchases_en'))
+            $data['purchases_en'] = [];
+
         // Create user
         $user = User::create($data);
 
