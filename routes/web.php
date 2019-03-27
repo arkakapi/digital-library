@@ -62,13 +62,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
     ]);
 
     // Order History
-    Route::resource('/orders', 'Admin\OrderController')->only([
-        'index'
-    ]);
+    Route::get('/orders', 'Admin\OrderController@index')->name('orders.index');
 
     // User Logs
-    Route::resource('/logs', 'Admin\LogController')->only([
-        'index'
-    ]);
+    Route::get('/logs', 'Admin\LogController@index')->name('logs.index');
+
+    // Send email
+    Route::get('/email', 'Admin\EmailController@form')->name('email.form');
+    Route::post('/email/send', 'Admin\EmailController@send')->name('email.send');
 
 });
