@@ -69,6 +69,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     // Send email
     Route::get('/email', 'Admin\EmailController@form')->name('email.form');
-    Route::post('/email/send', 'Admin\EmailController@send')->name('email.send');
+    Route::get('/email/send/{user_id}/{issue_id}', 'Admin\EmailController@send')->name('email.send');
 
 });
