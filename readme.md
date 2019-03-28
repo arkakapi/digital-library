@@ -1,9 +1,5 @@
-<p = align="center"> 
-  <img  src="public/images/logo.png"> 
-  </p>
-
-  <p align="center"> <b> Arka Kapi Digital Library <b> 
-    </p>
+<p align="center"><img src="public/images/logo.png" /></p>
+<p align="center"><b>Arka Kapi Digital Library</b></p>
 
 ## Requirements
 
