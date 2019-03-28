@@ -1,6 +1,9 @@
-![](public/images/logo.png)
+<p = align="center"> 
+  <img  src="public/images/logo.png"> 
+  </p>
 
-## Arka Kapi Digital Library
+  <p align="center"> <b> Arka Kapi Digital Library <b> 
+    </p>
 
 ## Requirements
 
