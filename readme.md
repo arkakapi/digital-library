@@ -28,6 +28,7 @@ $ composer install
 $ npm install
 $ cp .env.example .env
 $ php artisan key:generate
+$ php artisan storage:link
 ```
 and fill required env variables in the **.env** file and run following command for filling database.
 
