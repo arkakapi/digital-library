@@ -31,8 +31,19 @@ class OrderService
                 }
             ],
             ['db' => 'issues', 'dt' => 3],
-            ['db' => 'total', 'dt' => 4],
-            ['db' => 'created_at', 'dt' => 5],
+            [
+                'db' => 'status',
+                'dt' => 4,
+                'formatter' => function ($data, $row) {
+                    $class = '';
+                    $class = $data == 'successful' ? 'success' : $class;
+                    $class = $data == 'unsuccessful' ? 'danger' : $class;
+                    $class = $data == 'pending' ? 'warning' : $class;
+                    return '<span class="btn btn-sm btn-' . $class . '" > ' . $data . ' </span>';
+                }
+            ],
+            ['db' => 'total', 'dt' => 5],
+            ['db' => 'created_at', 'dt' => 6],
         ];
     }
 

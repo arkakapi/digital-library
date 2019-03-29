@@ -64,7 +64,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Accessor for purchases_tr.
      *
-     * @param  string $value
+     * @param string $value
      * @return array
      */
     public function getPurchasesTrAttribute($value)
@@ -75,7 +75,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Mutator for purchases_tr.
      *
-     * @param  array $value
+     * @param array $value
      */
     public function setPurchasesTrAttribute($value)
     {
@@ -89,7 +89,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Accessor for purchases_en.
      *
-     * @param  string $value
+     * @param string $value
      * @return array
      */
     public function getPurchasesEnAttribute($value)
@@ -100,7 +100,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Mutator for purchases_en.
      *
-     * @param  array $value
+     * @param array $value
      */
     public function setPurchasesEnAttribute($value)
     {
@@ -113,11 +113,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getTotalTlAttribute()
     {
-        return $this->orders()->where('language', 'tr')->sum('total');
+        return $this->orders()->where('status', 'success')->where('language', 'tr')->sum('total');
     }
 
     public function getTotalUsdAttribute()
     {
-        return $this->orders()->where('language', 'en')->sum('total');
+        return $this->orders()->where('status', 'success')->where('language', 'en')->sum('total');
     }
 }
