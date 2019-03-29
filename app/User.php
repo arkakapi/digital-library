@@ -56,6 +56,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\Order');
     }
 
+    public function logs()
+    {
+        return $this->hasMany('App\Log');
+    }
+
     /**
      * Accessor for purchases_tr.
      *
