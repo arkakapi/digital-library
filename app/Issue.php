@@ -32,6 +32,6 @@ class Issue extends Model
 
         $purchases = Auth::user()->{'purchases_' . $this->language};
 
-        return in_array($this->id, $purchases);
+        return in_array($this->issue, $purchases);
     }
 }

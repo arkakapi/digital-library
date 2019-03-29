@@ -20,7 +20,7 @@ class IssueService
 
             $purchases = $user->{'purchases_' . $issue->language};
 
-            $purchases[] = $issue->id;
+            $purchases[] = $issue->issue;
 
             asort($purchases);
 
