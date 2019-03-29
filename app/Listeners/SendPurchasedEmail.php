@@ -20,11 +20,11 @@ class SendPurchasedEmail
     /**
      * Handle the event.
      *
-     * @param  OrderAdded $event
+     * @param OrderAdded $event
      * @return void
      */
     public function handle(OrderAdded $event)
     {
-        $event->user->notify(new Purchased($event->user, $event->order));
+        $event->user->notify((new Purchased($event->user, $event->order))->locale($event->user->language));
     }
 }
