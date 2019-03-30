@@ -2,11 +2,9 @@
 
 namespace App\Providers;
 
-use App\Events\IssueAssigned;
 use App\Events\OrderAdded;
 use App\Events\PackageAssigned;
 use App\Events\UserAdded;
-use App\Listeners\AddPurchasedIssueToOrders;
 use App\Listeners\AddPurchasedPackageToOrders;
 use App\Listeners\CreateUserLoginLog;
 use App\Listeners\SendPurchasedEmail;
@@ -28,9 +26,6 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserAdded::class => [
             SendWelcomeEmail::class
-        ],
-        IssueAssigned::class => [
-            AddPurchasedIssueToOrders::class
         ],
         PackageAssigned::class => [
             AddPurchasedPackageToOrders::class

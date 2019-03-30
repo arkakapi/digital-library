@@ -156,20 +156,14 @@ class PayTR
 
         $order = Order::where('id', $merchant_oid)->first();
         $issue = Issue::where('language', $order->language)->where('issue', $order->issues[0])->first();
-        $purchases = $order->user->{'purchases_' . $order->language};
 
-        if (!in_array($issue->issue, $purchases)) {
-            if ($status == 'success') {
-                $order->update([
-                    'status' => 'successful'
-                ]);
-                $this->issueService->assignIssueToUser($order->user, $issue);
-            } else {
-                $order->update([
-                    'status' => 'unsuccessful'
-                ]);
-            }
+        if ($status == 'success') {
+            $order->status = 'successful';
+            $this->issueService->assignIssueToUser($order->user, $issue, $order);
+        } else {
+            $order->status = 'unsuccessful';
         }
+        $order->save();
     }
 
 }

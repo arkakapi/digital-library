@@ -2,11 +2,12 @@
 
 namespace App\Services;
 
-use App\Events\IssueAssigned;
+use App\Events\OrderAdded;
 use App\Helper\PayTR;
 use App\Issue;
 use App\Order;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class IssueService
 {
@@ -15,11 +16,13 @@ class IssueService
      *
      * @param Authenticatable $user
      * @param Issue $issue
+     * @param Order $order
      */
-    public function assignIssueToUser(Authenticatable $user, Issue $issue)
+    public function assignIssueToUser(Authenticatable $user, Issue $issue, Order $order)
     {
         if (!$issue->is_purchased) {
 
+            // assign issue
             $purchases = $user->{'purchases_' . $issue->language};
 
             $purchases[] = $issue->issue;
@@ -30,20 +33,13 @@ class IssueService
             $user->save();
 
             // Trigger events
-            event(new IssueAssigned($user, $issue));
+            event(new OrderAdded($user, $order));
         }
     }
 
-    /**
-     * Get PayTR token for payment form.
-     *
-     * @param Authenticatable $user
-     * @param Issue $issue
-     *
-     * @return string
-     */
-    public function getToken(Authenticatable $user, Issue $issue)
+    public function buy(Authenticatable $user, Issue $issue)
     {
+        // create order
         $order = Order::create([
             'user_id' => $user->id,
             'language' => $issue->language,
@@ -52,6 +48,28 @@ class IssueService
             'total' => $issue->price
         ]);
 
+        // If issue is free, auto buy.
+        if ($issue->price == 0) {
+            $this->assignIssueToUser(Auth::user(), $issue, $order);
+            $order->update([
+                'status' => 'successful'
+            ]);
+        }
+
+        return $order;
+    }
+
+    /**
+     * Get PayTR token for payment form.
+     *
+     * @param Authenticatable $user
+     * @param Issue $issue
+     * @param Order $order
+     *
+     * @return string
+     */
+    public function getToken(Authenticatable $user, Issue $issue, Order $order)
+    {
         return (new PayTR($this))->getToken(
             $order,
             $issue->price * 100,

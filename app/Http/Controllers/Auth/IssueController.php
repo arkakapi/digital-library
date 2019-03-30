@@ -37,9 +37,7 @@ class IssueController extends Controller
     {
         $issue = Issue::where('slug', $slug)->firstOrFail();
 
-        // If issue is free, auto buy.
-        if ($issue->price == 0)
-            $this->issueService->assignIssueToUser(Auth::user(), $issue);
+        $order = $this->issueService->buy(Auth::user(), $issue);
 
         // If user already bought this issue, redirect my purchases page.
         if ($issue->is_purchased)
@@ -48,7 +46,7 @@ class IssueController extends Controller
         return view('issue.buy', [
             'title' => $issue->title . ' ' . __('Buy'),
             'issue' => $issue,
-            'token' => $this->issueService->getToken(Auth::user(), $issue)
+            'token' => $this->issueService->getToken(Auth::user(), $issue, $order)
         ]);
     }
 

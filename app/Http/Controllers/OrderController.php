@@ -28,7 +28,7 @@ class OrderController extends Controller
      *
      * @param Request $request
      *
-     * @return void
+     * @return string
      */
     public function paytrCallback(Request $request)
     {
@@ -38,6 +38,8 @@ class OrderController extends Controller
             $request->get('total_amount'),
             $request->get('hash')
         );
+
+        return 'OK';
     }
 
 }
