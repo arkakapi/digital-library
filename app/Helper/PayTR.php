@@ -17,6 +17,7 @@
 
 namespace App\Helper;
 
+use App\Issue;
 use App\Order;
 use App\Services\IssueService;
 use GuzzleHttp\Client;
@@ -154,12 +155,13 @@ class PayTR
             dd('PAYTR notification failed: bad hash');
 
         $order = Order::find($merchant_oid);
-        // BURADA KALDIM
+        $issue = Issue::where('language', $order->language)->where('issue', $order->issues[0])->first();
+
         if ($status == 'success') {
             $order->update([
                 'status' => 'successful'
             ]);
-            //$this->issueService->assignIssueToUser($order->user, $issue);
+            $this->issueService->assignIssueToUser($order->user, $issue);
         } else {
             $order->update([
                 'status' => 'unsuccessful'
