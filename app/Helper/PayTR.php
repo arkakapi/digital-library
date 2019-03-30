@@ -21,6 +21,7 @@ use App\Order;
 use App\Services\IssueService;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Request;
+use Molayli\CloudflareRealIpServiceProvider;
 
 class PayTR
 {
@@ -93,7 +94,7 @@ class PayTR
      */
     public function getToken($order, $payment_amount, $currency, $user_email, $user_name, $user_address, $user_phone, $user_basket)
     {
-        $user_ip = Request::ip();
+        $user_ip = CloudflareRealIpServiceProvider::ip();
         $user_basket = base64_encode(json_encode($user_basket));
 
         $hash_str = $this->merchant_id . $user_ip . $order->id . $user_email . $payment_amount . $user_basket . $this->no_installment . $this->max_installment . $currency . $this->test_mode;

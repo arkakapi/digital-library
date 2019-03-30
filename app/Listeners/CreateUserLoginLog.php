@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Log;
 use Illuminate\Auth\Events\Login;
+use Molayli\CloudflareRealIpServiceProvider;
 
 class CreateUserLoginLog
 {
@@ -20,7 +21,7 @@ class CreateUserLoginLog
     /**
      * Handle the event.
      *
-     * @param  Login $event
+     * @param Login $event
      * @return void
      */
     public function handle(Login $event)
@@ -28,7 +29,7 @@ class CreateUserLoginLog
         Log::create([
             'user_id' => $event->user->id,
             'action' => 'login',
-            'ip_address' => \Request::ip()
+            'ip_address' => CloudflareRealIpServiceProvider::ip()
         ]);
     }
 }
