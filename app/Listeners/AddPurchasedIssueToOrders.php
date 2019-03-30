@@ -21,7 +21,7 @@ class AddPurchasedIssueToOrders
     /**
      * Handle the event.
      *
-     * @param  IssueAssigned $event
+     * @param IssueAssigned $event
      * @return void
      */
     public function handle(IssueAssigned $event)
@@ -30,6 +30,7 @@ class AddPurchasedIssueToOrders
             'user_id' => $event->user->id,
             'language' => $event->issue->language,
             'issues' => [$event->issue->issue],
+            'status' => 'successful',
             'total' => $event->issue->price
         ]);
 

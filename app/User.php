@@ -113,11 +113,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getTotalTlAttribute()
     {
-        return $this->orders()->where('status', 'success')->where('language', 'tr')->sum('total');
+        return $this->orders()->where('status', 'successful')->where('language', 'tr')->sum('total');
     }
 
     public function getTotalUsdAttribute()
     {
-        return $this->orders()->where('status', 'success')->where('language', 'en')->sum('total');
+        return $this->orders()->where('status', 'successful')->where('language', 'en')->sum('total');
     }
 }

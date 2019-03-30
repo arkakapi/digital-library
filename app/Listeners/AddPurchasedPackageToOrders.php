@@ -21,7 +21,7 @@ class AddPurchasedPackageToOrders
     /**
      * Handle the event.
      *
-     * @param  PackageAssigned $event
+     * @param PackageAssigned $event
      * @return void
      */
     public function handle(PackageAssigned $event)
@@ -30,6 +30,7 @@ class AddPurchasedPackageToOrders
             'user_id' => $event->user->id,
             'language' => $event->package->language,
             'issues' => $event->package->issues,
+            'status' => 'successful',
             'total' => $event->package->price
         ]);
 

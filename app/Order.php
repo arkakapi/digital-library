@@ -12,7 +12,7 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'language', 'issues', 'total'
+        'user_id', 'language', 'issues', 'status', 'total'
     ];
 
     /**
@@ -39,7 +39,7 @@ class Order extends Model
     /**
      * Accessor for issues.
      *
-     * @param  string $value
+     * @param string $value
      * @return array
      */
     public function getIssuesAttribute($value)
@@ -50,7 +50,7 @@ class Order extends Model
     /**
      * Mutator for issues.
      *
-     * @param  array $value
+     * @param array $value
      */
     public function setIssuesAttribute($value)
     {

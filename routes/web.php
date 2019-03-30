@@ -40,6 +40,10 @@ Route::get('/my-purchases', 'Auth\UserController@myPurchases')->name('my-purchas
 // Order History
 Route::get('/order-history', 'Auth\UserController@orderHistory')->name('order-history');
 
+// Payment pages
+Route::post('/paytr/callback', 'OrderController@paytrCallback')->name('paytr.callback');
+Route::get('/paytr/error', 'OrderController@paytrErrorPage')->name('paytr.error_page');
+
 // Admin Routes
 Route::prefix('admin')->name('admin.')->group(function () {
 

@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('language', 2);
             $table->string('issues');
-            $table->string('status'); // success, pending
+            $table->string('status'); // successful, unsuccessful, pending
             $table->float('total');
             $table->timestamps();
         });

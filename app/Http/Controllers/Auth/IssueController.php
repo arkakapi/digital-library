@@ -30,7 +30,7 @@ class IssueController extends Controller
     /**
      * Buy issue page.
      *
-     * @param  string $slug
+     * @param string $slug
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function buyForm($slug)
@@ -47,14 +47,15 @@ class IssueController extends Controller
 
         return view('issue.buy', [
             'title' => $issue->title . ' ' . __('Buy'),
-            'issue' => $issue
+            'issue' => $issue,
+            'token' => $this->issueService->getToken(Auth::user(), $issue)
         ]);
     }
 
     /**
      * Read issue page.
      *
-     * @param  string $slug
+     * @param string $slug
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function read($slug)
@@ -69,7 +70,7 @@ class IssueController extends Controller
     /**
      * Get issue PDF.
      *
-     * @param  string $slug
+     * @param string $slug
      * @return \Illuminate\Http\Response
      */
     public function pdf($slug)

@@ -8,7 +8,7 @@
                     <div class="card-header">{{ $issue->title . ' ' . __('Buy') }}</div>
 
                     <div class="card-body">
-                        ISSUE PAYMENT FORM
+                        <iframe src="https://www.paytr.com/odeme/guvenli/{{ $token }}" id="paytriframe" frameborder="0" scrolling="no" style="width: 100%;height: 680px;"></iframe>
                     </div>
 
                 </div>

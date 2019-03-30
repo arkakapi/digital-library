@@ -39,7 +39,7 @@ class HomeService
         $purchases_tr = [];
         $purchases_en = [];
         $purchases_register_months = [];
-        $orders = Order::where('status', 'success')->orderBy('created_at', 'asc')->get();
+        $orders = Order::where('status', 'successful')->orderBy('created_at', 'asc')->get();
         foreach ($orders as $order) {
             $date = date('m/Y', strtotime($order->created_at));
             $purchases_register_months[] = $date;
