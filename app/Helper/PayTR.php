@@ -154,18 +154,21 @@ class PayTR
         if ($hash != $request_hash)
             dd('PAYTR notification failed: bad hash');
 
-        $order = Order::find($merchant_oid);
+        $order = Order::where('id', $merchant_oid)->first();
         $issue = Issue::where('language', $order->language)->where('issue', $order->issues[0])->first();
+        $purchases = $order->user->{'purchases_' . $order->language};
 
-        if ($status == 'success') {
-            $order->update([
-                'status' => 'successful'
-            ]);
-            $this->issueService->assignIssueToUser($order->user, $issue);
-        } else {
-            $order->update([
-                'status' => 'unsuccessful'
-            ]);
+        if (!in_array($issue->issue, $purchases)) {
+            if ($status == 'success') {
+                $order->update([
+                    'status' => 'successful'
+                ]);
+                $this->issueService->assignIssueToUser($order->user, $issue);
+            } else {
+                $order->update([
+                    'status' => 'unsuccessful'
+                ]);
+            }
         }
     }
 
