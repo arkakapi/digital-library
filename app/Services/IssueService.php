@@ -20,24 +20,29 @@ class IssueService
      */
     public function assignIssueToUser(Authenticatable $user, Issue $issue, Order $order)
     {
-        if (!$issue->is_purchased) {
+        // assign issue
+        $purchases = $user->{'purchases_' . $issue->language};
 
-            // assign issue
-            $purchases = $user->{'purchases_' . $issue->language};
+        $purchases[] = $issue->issue;
 
-            $purchases[] = $issue->issue;
+        asort($purchases);
 
-            asort($purchases);
+        $user->{'purchases_' . $issue->language} = array_values($purchases);
+        $user->save();
 
-            $user->{'purchases_' . $issue->language} = array_values($purchases);
-            $user->save();
-
-            // Trigger events
-            event(new OrderAdded($user, $order));
-        }
+        // Trigger events
+        event(new OrderAdded($user, $order));
     }
 
-    public function buy(Authenticatable $user, Issue $issue)
+    /**
+     * Create order and assign issue if issue is free.
+     *
+     * @param Authenticatable $user
+     * @param Issue $issue
+     *
+     * @return Order $order
+     */
+    public function createOrder(Authenticatable $user, Issue $issue)
     {
         // create order
         $order = Order::create([
@@ -70,7 +75,7 @@ class IssueService
      */
     public function getToken(Authenticatable $user, Issue $issue, Order $order)
     {
-        return (new PayTR($this))->getToken(
+        return (new PayTR())->getToken(
             $order,
             $issue->price * 100,
             $issue->language == 'tr' ? 'TL' : 'USD',

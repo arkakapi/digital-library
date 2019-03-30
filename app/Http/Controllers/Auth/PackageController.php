@@ -31,16 +31,15 @@ class PackageController extends Controller
     /**
      * Buy package page.
      *
-     * @param  string $slug
+     * @param string $slug
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function buyForm($slug)
     {
         $package = Package::where('slug', $slug)->firstOrFail();
 
-        // If package is free, auto buy.
-        if ($package->price == 0)
-            $this->packageService->assignPackageToUser(Auth::user(), $package);
+        if (!$package->is_purchased)
+            $order = $this->packageService->createOrder(Auth::user(), $package);
 
         // If user already bought this package, redirect my purchases page.
         if ($package->is_purchased) {
@@ -50,9 +49,9 @@ class PackageController extends Controller
             return redirect()->route('my-purchases');
         }
 
-        return view('package.buy', [
+        return view('pages.paytr_form', [
             'title' => $package->title . ' ' . __('Buy'),
-            'package' => $package
+            'token' => $this->packageService->getToken(Auth::user(), $package, $order)
         ]);
     }
 

@@ -19,16 +19,14 @@ namespace App\Helper;
 
 use App\Issue;
 use App\Order;
+use App\Package;
 use App\Services\IssueService;
+use App\Services\PackageService;
 use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Request;
 use Molayli\CloudflareRealIpServiceProvider;
 
 class PayTR
 {
-
-    protected $issueService;
-
     /**
      * Merchant credentials.
      *
@@ -64,10 +62,12 @@ class PayTR
     private $no_installment = 1; // 1 => no installment, 0 => support installment and set $max_installment variable.
     private $max_installment = 0; // 0 => maximum installment set by system defaults, 1-12 => installment number
 
-    public function __construct(IssueService $issueService)
-    {
-        $this->issueService = $issueService;
 
+    /**
+     * Create a new instance.
+     */
+    public function __construct()
+    {
         $this->merchant_id = config('paytr.merchant_id');
         $this->merchant_key = config('paytr.merchant_key');
         $this->merchant_salt = config('paytr.merchant_salt');
@@ -156,10 +156,16 @@ class PayTR
 
         $order = Order::where('id', $merchant_oid)->first();
         $issue = Issue::where('language', $order->language)->where('issue', $order->issues[0])->first();
+        $package = Package::where('language', $order->language)->where('issues', $order->issues)->first();
 
         if ($status == 'success') {
             $order->status = 'successful';
-            $this->issueService->assignIssueToUser($order->user, $issue, $order);
+
+            if (count($order->issues) == 1) { // issue
+                (new IssueService())->assignIssueToUser($order->user, $issue, $order);
+            } else { // package
+                (new PackageService())->assignPackageToUser($order->user, $package, $order);
+            }
         } else {
             $order->status = 'unsuccessful';
         }

@@ -6,6 +6,7 @@ use App\Issue;
 use App\Http\Controllers\Controller;
 use App\Services\IssueService;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class IssueController extends Controller
 {
@@ -37,15 +38,19 @@ class IssueController extends Controller
     {
         $issue = Issue::where('slug', $slug)->firstOrFail();
 
-        $order = $this->issueService->buy(Auth::user(), $issue);
+        if (!$issue->is_purchased)
+            $order = $this->issueService->createOrder(Auth::user(), $issue);
 
         // If user already bought this issue, redirect my purchases page.
-        if ($issue->is_purchased)
-            return redirect()->route('issues.read', $slug);
+        if ($issue->is_purchased) {
+            Session::flash('class', 'success');
+            Session::flash('message', __('The issue has been successfully added to your account.'));
 
-        return view('issue.buy', [
+            return redirect()->route('my-purchases');
+        }
+
+        return view('pages.paytr_form', [
             'title' => $issue->title . ' ' . __('Buy'),
-            'issue' => $issue,
             'token' => $this->issueService->getToken(Auth::user(), $issue, $order)
         ]);
     }
