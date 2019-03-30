@@ -155,15 +155,18 @@ class PayTR
             dd('PAYTR notification failed: bad hash');
 
         $order = Order::where('id', $merchant_oid)->first();
-        $issue = Issue::where('language', $order->language)->where('issue', $order->issues[0])->first();
-        $package = Package::where('language', $order->language)->where('issues', $order->issues)->first();
 
         if ($status == 'success') {
             $order->status = 'successful';
 
             if (count($order->issues) == 1) { // issue
+                $issue = Issue::where('language', $order->language)->where('issue', $order->issues[0])->first();
                 (new IssueService())->assignIssueToUser($order->user, $issue, $order);
             } else { // package
+                $issues = array_map(function ($val) {
+                    return (int)$val;
+                }, $order->issues);
+                $package = Package::where('language', $order->language)->where('issues', json_encode($issues))->first();
                 (new PackageService())->assignPackageToUser($order->user, $package, $order);
             }
         } else {
