@@ -97,9 +97,13 @@
     "You are receiving this email because you are purchased new issue(s).": "Yeni sayı(lar) satın aldığınız için bu epostayı alıyorsunuz.",
     "Product": "Ürün",
     "Total": "Toplam",
+    "Status": "Durum",
     "Date": "Tarih",
     "See My Purchased": "Satın Almalarımı Görüntüle",
     "Order History": "Sipariş Geçmişi",
     "is Published!": "Çıktı!",
-    "If you haven't purchased it yet, click the button below to buy it!": "Henüz satın almadıysanız, satın almak için aşağıdaki düğmeyi tıklayın!"
+    "If you haven't purchased it yet, click the button below to buy it!": "Henüz satın almadıysanız, satın almak için aşağıdaki düğmeyi tıklayın!",
+    "pending": "beklemede",
+    "unsuccessful": "başarısız",
+    "successful": "başarılı"
 }

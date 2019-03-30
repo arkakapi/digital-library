@@ -39,10 +39,16 @@ class OrderService
                     $class = $data == 'successful' ? 'success' : $class;
                     $class = $data == 'unsuccessful' ? 'danger' : $class;
                     $class = $data == 'pending' ? 'warning' : $class;
-                    return '<span class="btn btn-sm btn-' . $class . '" > ' . $data . ' </span>';
+                    return '<span class="btn btn-sm btn-' . $class . '" > ' . __($data) . ' </span>';
                 }
             ],
-            ['db' => 'total', 'dt' => 5],
+            [
+                'db' => 'total',
+                'dt' => 5,
+                'formatter' => function ($data, $row) {
+                    return $data . ' ' . ($row['language'] == 'tr' ? 'TL' : 'USD');
+                }
+            ],
             ['db' => 'created_at', 'dt' => 6],
         ];
     }
