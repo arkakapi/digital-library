@@ -520,19 +520,20 @@ Arka Kapı Magazine.</p>
                 'month' => '01-02 2019',
                 'language' => 'en',
                 'content' => '<ul>
- 	<li>Cyber Security Conferences - Ayşenur Burak</li>
- 	<li>WiPi Hunter Detecting - Besim Altınok</li>
- 	<li>Web Application Firewall (WAF) Bypassing Methods - Ulaş Fırat Özdemir</li>
- 	<li>Taking Control of Admin Account on Active Directory using the DCC - Girayhan Menekay</li>
- 	<li>Dynamic Host Configuration to Root - Barkın Kılıç</li>
- 	<li>Offensive Touch to Defensive World - Halil Dalabasmaz</li>
- 	<li>Simone Margaritelli Interview - Utku Şen</li>
- 	<li>Denial of Service - Bener Kaya</li>
- 	<li>A Young Hacker in the Corridors of a Holding at Midnight - Yusuf Şahin</li>
- 	<li>Revolutionary Blockchain Technology - Mustafa Yalçın</li>
- 	<li>How I hacked into a college’s website! - Aditya Anand</li>
- 	<li>Meltdown, Spectre and Foreshadow - Chris Stephenson</li>
- 	<li>The Dangers of Wireless Networks - Besim Altınok</li>
+	<li>Cyber Security Conferences - Ayşenur Burak</li>
+	<li>Cryptology In Industrial Revolution - Bayram Gök</li>
+	<li>The 10 Biggest Hacks Of 2018 - Arka Kapi Magazine</li>
+	<li>Back To The Old Tech: Offline Communication Networks And Security - Utku Şen</li>
+	<li>Waf Bypassing Methods Part 2: Tricks And Indirect Access - Ulaş Firat Özdemir</li>
+	<li>Mini Threat Intelligence - Mert Sarica</li>
+	<li>Krack (Key Reinstallation Attack) - Ulaş Firat Özdemir</li>
+	<li>Daniel Bohannon Interview - Utku Şen</li>
+	<li>The Role And Comparison Of Operating Systems In Mass Surveillance (Qubes Os, Tails Os, Subgraph Os) - Furkan Senan</li>
+	<li>The Ss7 Protocol And Potential Dangers In Gsm Networks - Murat Şişman</li>
+	<li>Aprs: What Is It, What Does It Do And How To Use It - Murat Kaygisiz</li>
+	<li>Key Exchange Problem In Public Key Cryptography And Keybase - Recep Kizilarslan</li>
+	<li>Oldest Of The Hackers I - Bill Gosper - Cansu Topukçu</li>
+	<li>Technical Constraints Of The Blockchain Projects - Mert Susur</li>
 </ul>',
                 'preamble' => '<p>Last month on 10 December it was the 70th anniversary of the proclamation of the Universal
 Declaration of Human Rights; the purest form of
