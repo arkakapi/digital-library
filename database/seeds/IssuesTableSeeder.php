@@ -274,25 +274,7 @@ Wikipedia’dan doğrudan soruların yanıtlarını talep edebilirler.</p>
                 'price' => 9.99,
                 'month' => '10-11 2018',
                 'language' => 'tr',
-                'content' => '<ul>
-	<li>Şubat ‘19 Siber Güvenlik & Bilişim Etkinlikleri • Arka Kapı Dergi</li>
-	<li>Kripto Para Haberleri - Uzmancoin.com</li>
-	<li>Kubilay Onur Güngör Söyleşi: Cyber Struggle</li>
-	<li>Gelecekte Antivirüs Ürünlerine Yer Yok - Utku Şen</li>
-	<li>20. Yüzyıl Elektronik Çağında Kriptoloji - Bayram Gök</li>
-	<li>Rastgele Sayılar Rastgele Olmayınca... - Chris Stephenson</li>
-	<li>Sır Paylaşım Sistemleri - Ceren İnce</li>
-	<li>IPFS (InterPlanetary File System) ile Kalıcı Web - Mustafa Yalçın</li>
-	<li>Gerçek Gizlilik İsteyenler için Kripto Para Monero (XMR) - Arka Kapı Dergi</li>
-	<li>Google vs. Authy 2FA’da Güvenlik Savaşları - Ulaş Fırat Özdemir</li>
-	<li>Kablosuz Ağlarda Parola Kırma Saldırıları - Besim Altınok</li>
-	<li>Bilgisayardaki Ajan PyShellSpy - Ferdi Gül</li>
-	<li>Python Scapy Kütüphanesi ile Ağ Paketi Programlama II - Güray Yıldırım</li>
-	<li>Siber Güvenlikte Yeni Odak Noktası Zihinsel Sağlık - Huriye Özdemir</li>
-	<li>Yazılımcılar için Okuma Listesi - Muhammed Hilmi Koca</li>
-	<li>SigintOS - Murat Şişman</li>
-	<li>Telsiz Haberleşmesi Altyapı Bilgileri - Murat Kaygısız</li>
-</ul>',
+                'content' => '<ul><li>Aralık ‘18 - Ocak ‘19 Siber Güvenlik &amp; Bilişim Etkinlikleri - Arka Kapı Dergi</li><li>Kripto Para Haberleri - uzmancoin.com</li><li>Siber Güvenlik Çalışmaları Kapsamında İstanbul Millî Eğitim Müdürlüğü ile Söyleşi - Cafer Uluç</li><li>Siber Güvenliğin Gelecek 30 Yılı İçin Kehanetler - Utku Şen</li><li>Insight’in Düşündürdükleri: Güvenliğin ve Güvenilirliğin Geleceği - Chris Stephenson</li><li>3VE: Hollywood Filmlerini Aratmayan bir Dolandırıcılık Hikâyesi - Ümran Yıldırımkaya</li><li>Havayolu Şirketleri Hangi Kişisel Bilgileri, Neden Topluyor? - Dr. Ferhat Dikbıyık</li><li>Veri Tabanı Saldırıları ve Korunma Yöntemleri - Ömer Faruk Çolakoğlu</li><li>Çarşıda Buldum Bir Tane: Escrow Ödeme Altyapısını Kullanan Yüzlerce Siteyi Etkileyen Zafiyet - Berk Düşünür</li><li>Google’ın bildiği sır değildir! - Yusuf Şahin</li><li>Kendi Virüsünü Kendin Yaz: LockDown - Bener Kaya</li><li>Örnek Vakalarla Adli Bilişim Olay 2: X-Files: Bu Dosyalar Nereden Geldi? - Koray Peksayar</li><li>Suçluları yakalamak için, işinde “kötü” olmak zorundasın! - Utku Şen</li><li>Richard Greenblatt: Eski Hacker’lardan Kim Kaldı? - Cansu Topukçu</li><li>Güneşin Altında Söylenecek Çok Söz var Kuzey Koreli Hacker Grubu Lazarus - Onur Oktay</li><li>II. Dünya Savaşı’nın Kriptoloji Cephesi - Enigma Şifreleme Makinesi - Bayram Gök</li><li>Scapy ile Network Programlama 1 - Güray Yıldırım</li><li>Yazılımcılar için Okuma Listesi - Muhammed Hilmi Koca</li><li>ECHOLINK: Telsiz &amp; İnternet Birlikteliği Üzerine - Murat Kaygısız</li></ul>',
                 'preamble' => '<p>Geçtiğimiz 10 Aralık İnsan Hakları Evrensel Bildigesi’nin 70. yıldönümü idi.</p>
 <p>Spartaküs’den günümüze insanlığın tırnakları ile yazdığı bir destanın
 en billur hali.</p>
