@@ -7,6 +7,10 @@
 
             @csrf
 
+            <!-- for chrome hack -->
+            <input type="email" name="email" style="opacity: 0;position: absolute;">
+            <input type="password" name="password" autocomplete="new-password" style="opacity: 0;position: absolute;">
+
             <div class="card mb-3">
                 <div class="card-header">
                     Yeni Kullanıcı Ekle
