@@ -45,7 +45,7 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="name"><b>Adı-Soyadı</b></label>
-                            <input id="name" name="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ $user->name }}">
+                            <input id="name" name="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ $user->name }}" autocomplete="off">
                             @if ($errors->has('name'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('name') }}
@@ -75,7 +75,7 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="password"><b>Parola</b> <i>Değiştirmeyecekseniz boş bırakın.</i></label>
-                            <input id="password" name="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
+                            <input id="password" name="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" autocomplete="off">
                             @if ($errors->has('password'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('password') }}
@@ -120,7 +120,7 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="job"><b>Meslek</b></label>
-                            <input id="job" name="job" type="text" class="form-control{{ $errors->has('job') ? ' is-invalid' : '' }}" value="{{ $user->job }}">
+                            <input id="job" name="job" type="text" class="form-control{{ $errors->has('job') ? ' is-invalid' : '' }}" value="{{ $user->job }}" autocomplete="off">
                             @if ($errors->has('job'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('job') }}
