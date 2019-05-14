@@ -119,7 +119,7 @@ class UserController extends AdminController
             'country_id' => ['required', 'exists:countries,id'],
         ]);
 
-        $data = $request->all();
+        $data = $request->except('email');
 
         // Set password (if sent)
         $data['password'] = Hash::make($request->input('password'));
