@@ -57,6 +57,8 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $request->validate([
+            'name' => ['nullable', 'string'],
+            'job' => ['nullable', 'string'],
             'language' => ['required', 'string', 'regex:(tr|en)'],
             'country_id' => ['required', 'exists:countries,id'],
             'password' => ['nullable', 'string', 'min:6', 'confirmed'],
