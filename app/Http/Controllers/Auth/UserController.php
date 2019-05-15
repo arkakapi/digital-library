@@ -60,7 +60,7 @@ class UserController extends Controller
             'name' => ['nullable', 'string'],
             'job' => ['nullable', 'string'],
             'language' => ['required', 'string', 'regex:(tr|en)'],
-            'country_id' => ['required', 'exists:countries,id'],
+            'country_id' => ['required', 'string', 'exists:countries,id'],
             'password' => ['nullable', 'string', 'min:6', 'confirmed'],
         ]);
 
