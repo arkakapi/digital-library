@@ -14,7 +14,7 @@
                                 'Thank you for considering contributing to the :app_name! See <a href=":link" target="_blank">opened issues</a>.',
                                 [
                                     'app_name' => trans('app.name'),
-                                    'link' => 'https://github.com/arkakapi/subscription-system/issues'
+                                    'link' => 'https://github.com/arkakapi/digital-library/issues'
                                 ]
                             )
                         </p>
