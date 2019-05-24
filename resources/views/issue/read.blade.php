@@ -5,7 +5,10 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">{{ $issue->title }}</div>
+                    <div class="card-header" style="line-height: 36px;">
+                        {{ $issue->title }}
+                        <a href="{{ route('issues.pdf', $issue->slug) }}" class="btn btn-success float-right"><span class="fa fa-expand-arrows-alt"></span> {{ __('Fullscreen Mode') }}</a>
+                    </div>
 
                     <div class="card-body">
                         <div class="embed-responsive embed-responsive-1by1">
