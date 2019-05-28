@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\IsAdmin;
+use App\Http\Middleware\FrameOptionsHeaderMiddleware;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -58,6 +59,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            FrameOptionsHeaderMiddleware::class,
             SetLocale::class,
         ],
 
