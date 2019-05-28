@@ -16,7 +16,7 @@ class FrameOptionsHeaderMiddleware
     public function handle($request, Closure $next)
     {
         $response = $next($request);
-        $response->header('X-Frame-Options', 'deny');
+        $response->headers->set('X-Frame-Options', 'sameorigin');
         return $response;
     }
 }
