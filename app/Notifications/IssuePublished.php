@@ -59,10 +59,19 @@ class IssuePublished extends Notification
      */
     public function toMail($notifiable)
     {
+
+        $issues = $this->user->{'purchases_' . $this->issue->language};
+        $is_purchased = in_array($this->issue->issue, $issues);
+
+        $message = __('If you haven\'t purchased it yet, click the button below to buy it!');
+        if($is_purchased) {
+            $message = __('Dear reader, you have purchased the :issue. issue. Click the button below to read!', ['issue' => $this->issue->issue]);
+        }
+
         return (new MailMessage)
             ->subject($this->issue->title . ' ' . __('is Published!'))
             ->line($this->issue->title . ' ' . __('is Published!'))
-            ->line(__('If you haven\'t purchased it yet, click the button below to buy it!'))
+            ->line($message)
             ->action($this->issue->title, route('issues.show', $this->issue->slug));
     }
 

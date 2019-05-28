@@ -103,6 +103,7 @@
     "Order History": "Sipariş Geçmişi",
     "is Published!": "Çıktı!",
     "If you haven't purchased it yet, click the button below to buy it!": "Henüz satın almadıysanız, satın almak için aşağıdaki düğmeyi tıklayın!",
+    "Dear reader, you have purchased the :issue. issue. Click the button below to read!": "Değerli okurumuz, satın almış olduğunuz :issue. sayı yayınlandı. Okumak için aşağıdaki düğmeyi tıklayın!",
     "pending": "beklemede",
     "unsuccessful": "başarısız",
     "successful": "başarılı",
