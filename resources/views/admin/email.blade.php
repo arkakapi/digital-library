@@ -117,7 +117,7 @@
                                         if (count == users.length) {
                                             $('#progress .alert').removeClass('alert-info');
                                             $('#progress .alert').addClass('alert-success');
-                                            //alert('Gonderim Tamamlandi');
+                                            alert('Gonderim Tamamlandi');
                                         }
                                         count++;
                                         resolve();
