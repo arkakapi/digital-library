@@ -44,7 +44,7 @@
                 <div class="col-sm-12 col-md-6 issue">
                     <a href="{{ route('issues.show', $issue->slug) }}">
                         <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ Storage::disk('public')->url($issue->slug . '.jpg') }}" alt="">
+                            <img class="card-img-top" width="550px" height="750px" src="{{ Storage::disk('public')->url($issue->slug . '.jpg') }}" alt="">
                             <div class="card-body">
                                 <p class="card-text text-center">{{ $issue->title }}</p>
                             </div>
