@@ -86,20 +86,20 @@ class IssueService
         return $data;
     }
 
-    /**
+ /**
      * Update PDF file.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Issue $issue
-     * @param  string $slug
+     * @param Request $request
+     * @param Issue $issue
+     * @param string $slug
      */
     public function updatePdf(Request $request, Issue $issue, $slug)
     {
         // Upload new PDF
-        if ($request->file('pdf')) {
+        if (!is_null($request->file('pdf'))) {
             $pdf = $request->file('pdf');
-            Storage::disk('local')->put($slug . '.pdf', file_get_contents($pdf));
             Storage::disk('local')->delete($issue->slug . '.pdf');
+            Storage::disk('local')->put($slug . '.pdf', file_get_contents($pdf));
         } else if ($issue->slug != $slug) {
             // If changed title and not selected any pdf, change pdf file name
             Storage::disk('local')->move($issue->slug . '.pdf', $slug . '.pdf');
@@ -109,18 +109,18 @@ class IssueService
     /**
      * Update Cover image file.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Issue $issue
-     * @param  string $slug
+     * @param Request $request
+     * @param Issue $issue
+     * @param string $slug
      */
     public function updateCover(Request $request, Issue $issue, $slug)
     {
         // Upload new Cover
-        if ($request->file('cover')) {
+        if (!is_null($request->file('cover'))) {
             $cover = $request->file('cover');
-            Storage::disk('public')->put($slug . '.jpg', file_get_contents($cover));
             Storage::disk('public')->delete($issue->slug . '.jpg');
-        } else if ($issue->slug != $slug) {
+            Storage::disk('public')->put($slug . '.jpg', file_get_contents($cover));
+        } else if ($issue->slug != $slug ) {
             // If changed title and not selected any cover, change cover file name
             Storage::disk('public')->move($issue->slug . '.jpg', $slug . '.jpg');
         }

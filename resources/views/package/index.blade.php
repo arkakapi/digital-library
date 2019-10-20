@@ -37,7 +37,7 @@
                                         @if($issue)
                                             <div class="card mb-4 box-shadow">
                                                 <a href="{{ route('issues.show', $issue->slug) }}">
-                                                    <img class="card-img-top" src="{{ Storage::disk('public')->url($issue->slug . '.jpg') }}" alt="">
+                                                    <img class="card-img-top" width="155px" height="195px" src="{{ Storage::disk('public')->url($issue->slug . '.jpg') }}" alt="">
                                                 </a>
                                                 <div class="card-body">
                                                     <p class="card-text text-center">
@@ -48,7 +48,7 @@
                                             </div>
                                         @else
                                             <div class="card mb-4 box-shadow">
-                                                <img class="card-img-top" src="{{ asset('images/empty_cover.jpg') }}" alt="">
+                                                <img class="card-img-top" width="155px" height="195px" src="{{ asset('images/empty_cover.jpg') }}" alt="">
                                                 <div class="card-body">
                                                     <p class="card-text text-center">
                                                         {{ ($package->language == 'tr' ? 'Sayı' : 'Issue') . ' ' . $issue_number}}
