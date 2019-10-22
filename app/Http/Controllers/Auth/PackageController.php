@@ -36,6 +36,9 @@ class PackageController extends Controller
      */
     public function buyForm($slug)
     {
+		
+		return __('Our temporary purchases have been suspended. Now you can only access our published issues for free.');
+		
         $package = Package::where('slug', $slug)->firstOrFail();
 
         if (!$package->is_purchased)
