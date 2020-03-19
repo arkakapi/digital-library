@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,15 +14,15 @@
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
     <!-- Open Graph Tags -->
-    <meta property="og:locale" content="{{ app()->getLocale() }}"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content="@if(isset($title)){{ $title }} |@endif {{ trans('app.name') }}"/>
-    <meta property="og:url" content="{{ url()->full() }}"/>
-    <meta property="og:site_name" content="{{ trans('app.name') }}"/>
-    <meta property="og:image" content="{{ asset('images/open_graph.jpg') }}"/>
-    <meta property="og:image:secure_url" content="{{ asset('images/open_graph.jpg') }}"/>
-    <meta property="og:image:width" content="1200"/>
-    <meta property="og:image:height" content="630"/>
+    <meta property="og:locale" content="{{ app()->getLocale() }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="@if(isset($title)){{ $title }} |@endif {{ trans('app.name') }}" />
+    <meta property="og:url" content="{{ url()->full() }}" />
+    <meta property="og:site_name" content="{{ trans('app.name') }}" />
+    <meta property="og:image" content="{{ asset('images/open_graph.jpg') }}" />
+    <meta property="og:image:secure_url" content="{{ asset('images/open_graph.jpg') }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -38,7 +39,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139873462-1"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
@@ -46,53 +47,53 @@
     </script>
 
 </head>
+
 <body>
-<div id="app">
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-        <div class="container">
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+            <div class="container">
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ trans('app.name') }}
-            </a>
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ trans('app.name') }}
+                </a>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto">
 
-                </ul>
+                    </ul>
 
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">{{ __('Homepage') }}</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home') }}">{{ __('Homepage') }}</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('issues.index') }}">{{ __('Issues') }}</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('issues.index') }}">{{ __('Issues') }}</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('packages.index') }}">{{ __('Packages') }}</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('packages.index') }}">{{ __('Packages') }}</a>
+                        </li>
 
-                    <!-- Authentication Links -->
-                    @guest
+                        <!-- Authentication Links -->
+                        @guest
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
                         @endif
-                    @else
+                        @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('my-purchases') }}">{{ __('My Purchases') }}</a>
                         </li>
@@ -113,41 +114,47 @@
                                 </form>
                             </div>
 
-                        @if(Auth::user()->is_admin)
-                            <li class="nav-item">
-                                <a class="nav-link" style="color: #f00;" href="{{ route('admin.dashboard') }}">{{ __('Admin Panel') }}</a>
-                            </li>
-                            @endif
+                            @if(Auth::user()->is_admin)
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: #f00;" href="{{ route('admin.dashboard') }}">{{ __('Admin Panel') }}</a>
+                        </li>
+                        @endif
 
-                            </li>
+                        </li>
                         @endguest
-                </ul>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('packages.stayHome') }}">{{ __('#StayHome') }}</a>
+                        </li>
+
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <main role="main">
+        <main role="main">
 
-        <div class="container">
-            @if(Session::has('message'))
+            <div class="container">
+                @if(Session::has('message'))
                 <div class="alert alert-{{ Session::get('class') }}" role="alert">
                     {{ __(Session::get('message')) }}
                 </div>
-            @endif
-        </div>
+                @endif
+            </div>
 
 
-        @yield('content')
+            @yield('content')
 
-    </main>
+        </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p class="text-muted">{{ trans('app.name') . ', ' . date('Y') }} - <a href="{{ route('contact') }}">{{ __('Contact') }}</a></p>
-        </div>
-    </footer>
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">{{ trans('app.name') . ', ' . date('Y') }} - <a href="{{ route('contact') }}">{{ __('Contact') }}</a></p>
+            </div>
+        </footer>
 
-</div>
+    </div>
 
 </body>
+
 </html>
