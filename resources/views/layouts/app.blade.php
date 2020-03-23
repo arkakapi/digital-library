@@ -17,7 +17,7 @@
     <meta property="og:locale" content="{{ app()->getLocale() }}" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="@if(isset($title)){{ $title }} |@endif {{ trans('app.name') }}" />
-    <meta property="og:url" content="{{ secure_url()->full() }}" />
+    <meta property="og:url" content="{{ url()->full() }}" />
     <meta property="og:site_name" content="{{ trans('app.name') }}" />
     <meta property="og:image" content="{{ secure_asset('images/open_graph.jpg') }}" />
     <meta property="og:image:secure_url" content="{{ secure_asset('images/open_graph.jpg') }}" />
@@ -57,7 +57,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <a class="navbar-brand" href="{{ secure_url('/') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     {{ trans('app.name') }}
                 </a>
 
