@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.min.css" rel="stylesheet">
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/admin.css') }}" rel="stylesheet">
 
     @yield('css')
 
@@ -116,7 +116,7 @@
     <i class="fas fa-angle-up"></i>
 </a>
 
-<script src="{{ asset('js/admin.js') }}"></script>
+<script src="{{ secure_asset('js/admin.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
 

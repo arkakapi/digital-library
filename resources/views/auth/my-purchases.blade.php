@@ -32,7 +32,7 @@
                                                 </div>
                                             @else
                                                 <div class="card mb-4 box-shadow">
-                                                    <img class="card-img-top" width="155px" height="195px" src="{{ asset('images/empty_cover.jpg') }}" alt="">
+                                                    <img class="card-img-top" width="155px" height="195px" src="{{ secure_asset('images/empty_cover.jpg') }}" alt="">
                                                     <div class="card-body">
                                                         <p class="card-text text-center">
                                                             {{ ($package->language == 'tr' ? 'Sayı' : 'Issue') . ' ' . $issue_number}}

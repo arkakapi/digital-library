@@ -4,7 +4,7 @@
 
     <section class="jumbotron text-center">
         <div class="container">
-            <img src="{{ asset('images/logo.png') }}" class="img-fluid" alt="">
+            <img src="{{ secure_asset('images/logo.png') }}" class="img-fluid" alt="">
             <h1 class="jumbotron-heading">@lang('app.name')</h1>
             <p class="lead text-muted">
                 {{ __('') }}

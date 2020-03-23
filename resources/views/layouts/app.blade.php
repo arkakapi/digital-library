@@ -11,7 +11,7 @@
     <title>@if(isset($title)){{ $title }} | @endif{{ trans('app.name') }}</title>
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ secure_asset('images/favicon.png') }}">
 
     <!-- Open Graph Tags -->
     <meta property="og:locale" content="{{ app()->getLocale() }}" />
@@ -19,13 +19,13 @@
     <meta property="og:title" content="@if(isset($title)){{ $title }} |@endif {{ trans('app.name') }}" />
     <meta property="og:url" content="{{ url()->full() }}" />
     <meta property="og:site_name" content="{{ trans('app.name') }}" />
-    <meta property="og:image" content="{{ asset('images/open_graph.jpg') }}" />
-    <meta property="og:image:secure_url" content="{{ asset('images/open_graph.jpg') }}" />
+    <meta property="og:image" content="{{ secure_asset('images/open_graph.jpg') }}" />
+    <meta property="og:image:secure_url" content="{{ secure_asset('images/open_graph.jpg') }}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ secure_asset('js/app.js') }}" defer></script>
     <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5bc64da80c55ed0011c0228a&product=inline-share-buttons' async='async'></script>
 
     <!-- Fonts -->
@@ -34,7 +34,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139873462-1"></script>
