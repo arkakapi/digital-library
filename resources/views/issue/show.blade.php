@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <a href="{{ route('issues.show', $issue->slug) }}">
-                                        <img class="card-img-right" src="{{ Storage::disk('public')->secure_url($issue->slug . '.jpg') }}" alt="{{ $issue->title }}" title="{{ $issue->title }}" data-holder-rendered="true">
+                                        <img class="card-img-right" src="{{ Storage::disk('public')->url($issue->slug . '.jpg') }}" alt="{{ $issue->title }}" title="{{ $issue->title }}" data-holder-rendered="true">
                                     </a>
                                     <hr>
                                     <i class="btn btn-warning">
