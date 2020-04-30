@@ -26,16 +26,18 @@
                                     </a>
                                     <hr>
                                     <i class="btn btn-warning">
-                                        {{ __('Price') }}:
-                                        @if($issue->price > 0)
-                                            {{ $issue->price }}
-                                            {{ $issue->language == 'tr' ? __('TL') : __('USD') }}
-                                        @else
-                                            {{ __('FREE!') }}
-                                        @endif
+                                        <strike>
+                                            {{ __('Price') }}:
+                                            @if($issue->price > 0)
+                                                {{ $issue->price }}
+                                                {{ $issue->language == 'tr' ? __('TL') : __('USD') }}
+                                            @else
+                                                {{ __('FREE!') }}
+                                            @endif
+                                        </strike>
                                     </i>
                                     <hr>
-                                    <a href="{{ route('issues.read', $issue->slug) }}" class="btn btn-info">{{ __('Read') }} <span class="fa fa-angle-right"></span></a>
+                                    <a href="{{ route('issues.read', $issue->slug) }}" class="btn btn-success">{{ __('Read Free') }} {{ __('#StayHome') }} <span class="fa fa-angle-right"></span></a>
                                     @if($issue->is_purchased)
                                         <!--a href="{{ route('issues.read', $issue->slug) }}" class="btn btn-info">{{ __('Read') }} <span class="fa fa-angle-right"></span></a-->
                                     @else
