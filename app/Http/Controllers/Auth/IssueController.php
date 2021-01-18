@@ -36,8 +36,8 @@ class IssueController extends Controller
      */
     public function buyForm($slug)
     {
-        return __('Our temporary purchases have been suspended. Now you can only access our published issues for free.');
-
+		return __('Our temporary purchases have been suspended. Now you can only access our published issues for free.');
+		
         $issue = Issue::where('slug', $slug)->firstOrFail();
 
         if (!$issue->is_purchased)
@@ -82,10 +82,11 @@ class IssueController extends Controller
     {
         $issue = Issue::where('slug', $slug)->firstOrFail();
 
-        // If user not have access this to issue // Disable these checks for #stayhome corona virus
-        //if (!Auth::user()->is_admin && !$issue->is_purchased)
-        //    abort(403);
+        // If user not have access this to issue
+        if (!Auth::user()->is_admin && !$issue->is_purchased)
+            abort(403);
 
         return response()->file(storage_path('app/' . $slug . '.pdf'));
     }
+
 }

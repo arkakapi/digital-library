@@ -19,16 +19,4 @@ class PackageController extends Controller
         ]);
     }
 
-    /**
-     * #StayHome for Corona Virus
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function stayHome()
-    {
-        return view('package.stay-home', [
-            'title' => __('#StayHome'),
-            'packages' => Package::all()
-        ]);
-    }
 }

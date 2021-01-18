@@ -34,9 +34,6 @@ Route::get('/issues/{issue}/pdf', 'Auth\IssueController@pdf')->name('issues.pdf'
 Route::get('/packages', 'PackageController@index')->name('packages.index');
 Route::get('/packages/{package}/buy', 'Auth\PackageController@buyForm')->name('packages.buy');
 
-// #StayHome for Corona Virus
-Route::get('/stay-home', 'PackageController@stayHome')->name('packages.stayHome');
-
 // My Purchases
 Route::get('/my-purchases', 'Auth\UserController@myPurchases')->name('my-purchases');
 
@@ -77,4 +74,5 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Send email
     Route::get('/email', 'Admin\EmailController@form')->name('email.form');
     Route::get('/email/send/{user_id}/{issue_id}', 'Admin\EmailController@send')->name('email.send');
+
 });
