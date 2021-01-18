@@ -36,13 +36,10 @@ class PackageController extends Controller
      */
     public function buyForm($slug)
     {
+		
+		return __('Our temporary purchases have been suspended. Now you can only access our published issues for free.');
+		
         $package = Package::where('slug', $slug)->firstOrFail();
-
-        // Temporary suspend purchases START
-        if ($package->price > 0) {
-            return __('Our temporary purchases have been suspended. Now you can only access our published issues for free.');
-        }
-        // Temporary suspend purchases END
 
         if (!$package->is_purchased)
             $order = $this->packageService->createOrder(Auth::user(), $package);
@@ -60,4 +57,5 @@ class PackageController extends Controller
             'token' => $this->packageService->getToken(Auth::user(), $package, $order)
         ]);
     }
+
 }

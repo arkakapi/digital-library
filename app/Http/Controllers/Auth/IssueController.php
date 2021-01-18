@@ -36,13 +36,9 @@ class IssueController extends Controller
      */
     public function buyForm($slug)
     {
-        $issue = Issue::where('slug', $slug)->firstOrFail();
+        return __('Our temporary purchases have been suspended. Now you can only access our published issues for free.');
 
-        // Temporary suspend purchases START
-        if ($issue->price > 0) {
-            return __('Our temporary purchases have been suspended. Now you can only access our published issues for free.');
-        }
-        // Temporary suspend purchases END
+        $issue = Issue::where('slug', $slug)->firstOrFail();
 
         if (!$issue->is_purchased)
             $order = $this->issueService->createOrder(Auth::user(), $issue);
