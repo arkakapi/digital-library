@@ -27,14 +27,14 @@
                             @php $issue = $package->exist_issues->where('issue', $issue_number)->first(); @endphp
                             @if($issue)
                             <div class="card mb-4 box-shadow">
-                                <a href="{{ route('issues.show', $issue->slug) }}">
+                                <a href="{{ route('issues.read', $issue->slug) }}">
                                     <img class="card-img-top" width="155px" height="195px" src="{{ Storage::disk('public')->url($issue->slug . '.jpg') }}" alt="">
                                 </a>
                                 <div class="card-body">
                                     <p class="card-text text-center">
                                         {{ ($issue->language == 'tr' ? 'Sayı' : 'Issue') . ' ' . $issue->issue}}
                                     </p>
-                                    <a href="{{ route('issues.show', $issue->slug) }}" class="btn btn-success">{{ __('Read') }} <span class="fa fa-angle-right"></span></a>
+                                    <a href="{{ route('issues.read', $issue->slug) }}" class="btn btn-success">{{ __('Read') }} <span class="fa fa-angle-right"></span></a>
                                 </div>
                             </div>
                             @else
