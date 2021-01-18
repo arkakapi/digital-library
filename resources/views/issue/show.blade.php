@@ -35,11 +35,10 @@
                                         @endif
                                     </i>
                                     <hr>
-                                    <a href="{{ route('issues.read', $issue->slug) }}" class="btn btn-info">{{ __('Read') }} <span class="fa fa-angle-right"></span></a>
                                     @if($issue->is_purchased)
-                                        <!--a href="{{ route('issues.read', $issue->slug) }}" class="btn btn-info">{{ __('Read') }} <span class="fa fa-angle-right"></span></a-->
+                                        <a href="{{ route('issues.read', $issue->slug) }}" class="btn btn-info">{{ __('Read') }} <span class="fa fa-angle-right"></span></a>
                                     @else
-                                        <!--a href="{{ route('issues.buy', $issue->slug) }}" class="btn btn-success">{{ __('Buy') }} <span class="fa fa-angle-right"></span></a-->
+                                        <a href="{{ route('issues.buy', $issue->slug) }}" class="btn btn-success">{{ __('Buy') }} <span class="fa fa-angle-right"></span></a>
                                     @endif
                                 </div>
                             </div>
