@@ -34,6 +34,7 @@
                                     <p class="card-text text-center">
                                         {{ ($issue->language == 'tr' ? 'Sayı' : 'Issue') . ' ' . $issue->issue}}
                                     </p>
+                                    <a href="{{ route('issues.show', $issue->slug) }}" class="btn btn-success">{{ __('Read') }} <span class="fa fa-angle-right"></span></a>
                                 </div>
                             </div>
                             @else
